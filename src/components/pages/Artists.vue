@@ -22,14 +22,22 @@
       <!----->
 
       <!--Artist Pictures--->
+      <b-row style="padding-bottom: 10px">
+        <b-col>
+          <b-card>
+            <h1> <b>LABELARTISTS</b></h1>
+          </b-card>
+        </b-col>
+      </b-row>
+
       <b-row>
         <div v-for="obj in arDat" v-bind:key="obj.aId">
           <div v-if="obj.type === 'l'">
-            <b-col>
+            <b-col cols="12">
               <b-card img-top>
                 <b-card-header>
                   <h2>
-                    {{ obj.name }}
+                    <b>{{ obj.name }}</b>
                   </h2>
                 </b-card-header>
 
@@ -37,33 +45,27 @@
                   thumbnail
                   fluid
                   :src="obj.img"
-                  width="300px"
+                  width="313px"
                   height="300px"
                 >
                 </b-img>
 
                 <b-card-title>
-                  <h1>
-                    <i>MAIN LABEL:  </i><b>{{ obj.mainLabel }}</b>
-                  </h1>
+                  <h2>
+                    <i>MAIN LABEL: </i><b>{{ obj.mainLabel }}</b>
+                  </h2>
                 </b-card-title>
 
                 <b-card-sub-title>
-                  <h1>
-                    <i>Sub - Labels:  </i><b>{{ obj.subLabel }}</b>
-                  </h1>
+                  <h2>
+                    <i>Sub - Labels: </i><b>{{ obj.subLabel }}</b>
+                  </h2>
                 </b-card-sub-title>
 
                 <b-card-body>
-                  <b-card-text>
-
-                  </b-card-text>
-                  <b-button variant="primary">
-                    PROFIL
-                  </b-button>
-                  <b-button variant="success"> 
-                    BUCHEN
-                  </b-button>
+                  <b-card-text> </b-card-text>
+                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="success"> BUCHEN </b-button>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -71,6 +73,7 @@
           <br />
         </div>
       </b-row>
+
     </b-container>
   </div>
 </template>
@@ -88,9 +91,12 @@ export default {
 };
 </script>
 
-<style>
-h1 {
-  font-size: 28px !important;
-  color: white !important;
+<style scoped>
+h1 > b{
+  font-size: 24px !important;
+  color: black !important;
+}
+h2 > b {
+  font-size: 20px !important;
 }
 </style>

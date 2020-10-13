@@ -63,11 +63,11 @@
             >
           </b-nav-item>
 
-          <!--<b-nav-item>
+          <b-nav-item>
             <div id="sideBarMain">
-              <b-button v-b-toggle.sidebar-right>Music Player</b-button>
+              <b-button v-b-toggle.sidebar-right>LOGIN</b-button>
             </div>
-          </b-nav-item>-->
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -76,7 +76,7 @@
     <!--SidBar-->
     <b-sidebar id="sidebar-right" title="Sidebar" right shadow>
       <div class="px-3 py-2">
-        <div class="top">
+        <!-- <div class="top">
           <div
             class="playerGallery"
             style="width: 100% !important; margin-top: 5% !important"
@@ -102,11 +102,11 @@
               Released on:
             </p>
           </div>
-        </div>
+        </div> -->
 
         <Login />
 
-        <div
+        <!-- <div
           class="bottom"
           style="
             width: 100% !important;
@@ -160,7 +160,7 @@
             style="width: 100% !important; margin-top: 2% !important"
             >CLOSE</b-button
           >
-        </div>
+        </div> -->
       </div>
     </b-sidebar>
     <!---->
@@ -295,10 +295,6 @@ export default {
   font-size: 14px !important;
   color: black;
 }
-h1,
-h2 {
-  font-weight: normal;
-}
 a {
   font-size: 18px !important;
   text-decoration: none !important;
@@ -315,7 +311,6 @@ a {
   text-align: center;
   color: #2c3e50;
   margin-top: 0;
-  min-height: 1080px;
 }
 #navBarMain {
   background-color: black !important;

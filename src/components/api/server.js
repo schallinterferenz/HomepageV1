@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8087"
 };
 
 app.use(cors(corsOptions));
@@ -21,8 +21,10 @@ app.get("/", (req, res) => {
   res.json({ message: "SIR Automatic Programable Interface" });
 });
 
+require("./app/routes/db.routes.js")(app);
+
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8088;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

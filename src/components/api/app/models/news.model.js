@@ -5,9 +5,7 @@ module.exports = mongoose => {
         "news",
         mongoose.Schema(
             {
-                id: Number,
-                date: Date,
-                autor: String,
+                author: String,
                 title: String,
                 subtitle: String,
                 newstext: String,
@@ -18,5 +16,5 @@ module.exports = mongoose => {
         )
     );
 
-    return User;
+    return News;
 }

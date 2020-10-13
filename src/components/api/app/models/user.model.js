@@ -5,9 +5,11 @@ module.exports = mongoose => {
         "user",
         mongoose.Schema(
             {
-                id: Number,
+                _id : String,
                 username: String,
                 passwordHashed: String,
+                createdAt: Date,
+                updatedAt: Date
             },
             {
                 timestamps: true

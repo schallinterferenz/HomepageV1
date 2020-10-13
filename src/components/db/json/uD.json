@@ -1,0 +1,19 @@
+[
+	{
+		"uID": 0,
+		"uc" : 0,
+		"uN": "admin",
+		"p": "start123"
+	},
+	{
+		"uID": 1,
+		"uC": 1,
+		"uN": "admin",
+		"p": "start123"
+	},
+	{
+		"uID": 0,
+		"uN": "admin",
+		"p": "start123"
+	}
+]

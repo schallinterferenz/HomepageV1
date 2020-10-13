@@ -1,0 +1,422 @@
+[
+  {
+    "aId": 0,
+    "type": "l",
+    "img": "/static/pictures/art/l/fallout.jpg",
+    "name": "FALLOUT",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 1,
+    "type": "l",
+    "img": "/static/pictures/art/l/shapeshifter.jpg",
+    "name": "SHAPESHIFTER",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 2,
+    "type": "l",
+    "img": "/static/pictures/art/l/tiefenentspannt.jpg",
+    "name": "TIEFENENTSPANNT",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 3,
+    "type": "l",
+    "img": "/static/pictures/art/l/neowelt.jpg",
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 4,
+    "type": "l",
+    "img": "/static/pictures/art/l/woshi.jpg",
+    "name": "WOSHI",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 5,
+    "type": "l",
+    "img": "/static/pictures/art/l/artcore.jpg",
+    "name": "ARTCORE TECHNO",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 6,
+    "type": "l",
+    "img": "/static/pictures/art/l/utzzmann.jpg",
+    "name": "UTZZMANN",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 7,
+    "type": "l",
+    "img": "/static/pictures/art/l/tkk.jpg",
+    "name": "TECHNOKABELKEVIN",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 8,
+    "type": "r",
+    "img": "/static/pictures/art/r/neowelt.jpg",
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 9,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 10,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 11,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 12,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 13,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 14,
+    "type": "r",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 15,
+    "type": "c",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 16,
+    "type": "c",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 17,
+    "type": "c",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 18,
+    "type": "c",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  },
+  {
+    "aId": 19,
+    "type": "c",
+    "img": {},
+    "name": "Neowelt",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101",
+    "tracks": [
+      {
+        "tID": 0,
+        "src": "",
+        "img": {},
+        "price": 1,
+        "rbtGrp": 0
+      }
+    ]
+  }
+]

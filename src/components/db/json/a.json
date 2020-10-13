@@ -2,23 +2,14 @@
   {
     "aId": 0,
     "type": "l",
-    "img": "/static/pictures/art/l/fallout.jpg",
-    "name": "FALLOUT",
+    "img": "/static/pictures/art/l/neowelt.jpg",
+    "name": "NEOWELT",
     "vita": "",
     "mainLabel": "SCHALLINTERFERENZ",
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 1,
@@ -30,16 +21,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 2,
@@ -51,37 +33,19 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 3,
     "type": "l",
-    "img": "/static/pictures/art/l/neowelt.jpg",
-    "name": "Neowelt",
+    "img": "/static/pictures/art/l/fallout.jpg",
+    "name": "FALLOUT",
     "vita": "",
     "mainLabel": "SCHALLINTERFERENZ",
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 4,
@@ -93,16 +57,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 5,
@@ -114,16 +69,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 6,
@@ -135,16 +81,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 7,
@@ -156,16 +93,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 8,
@@ -177,16 +105,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 9,
@@ -198,16 +117,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 10,
@@ -219,16 +129,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 11,
@@ -240,16 +141,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 12,
@@ -261,16 +153,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 13,
@@ -282,16 +165,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 14,
@@ -303,16 +177,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 15,
@@ -324,16 +189,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 16,
@@ -345,16 +201,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 17,
@@ -366,16 +213,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 18,
@@ -387,16 +225,7 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
   },
   {
     "aId": 19,
@@ -408,15 +237,19 @@
     "subLabel": "",
     "soundcloud": "https://soundcloud.com/neowelt",
     "facebook": "https://www.facebook.com/neoweltofficial",
-    "youtube": "https://www.youtube.com/user/edi4101",
-    "tracks": [
-      {
-        "tID": 0,
-        "src": "",
-        "img": {},
-        "price": 1,
-        "rbtGrp": 0
-      }
-    ]
+    "youtube": "https://www.youtube.com/user/edi4101"
+  },
+  {
+    "aId": 20,
+    "type": "l",
+    "img": "/static/pictures/art/l/ditek.jpg",
+    "name": "-D1T3K-",
+    "vita": "",
+    "mainLabel": "SCHALLINTERFERENZ",
+    "subLabel": "",
+    "soundcloud": "https://soundcloud.com/neowelt",
+    "facebook": "https://www.facebook.com/neoweltofficial",
+    "youtube": "https://www.youtube.com/user/edi4101"
   }
+
 ]

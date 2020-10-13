@@ -1,11 +1,18 @@
 <template>
   <div id="app">
     <!--Nav-->
+    <div>
+      <b-alert show dismissible>
+        Diese Seite benutzt Cookies von Drittanbietern wie Soundcloud, Facebook, Google. Bei weiterer Benutzung der Website, stimmen sie der Anwendung von Cookies zu! <b>&rArr;</b>
+      </b-alert>
+    </div>
+
     <b-navbar toggleable="lg" type="dark" variant="info" id="navBarMain">
       <b-navbar-brand
         href
-        style="color: white !important; font-size: 28px !important;"
-      >SCHALLINTERFERENZ</b-navbar-brand>
+        style="color: white !important; font-size: 28px !important"
+        >SCHALLINTERFERENZ</b-navbar-brand
+      >
 
       <!---->
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -13,15 +20,21 @@
         <b-navbar-nav>
           <!---->
           <b-nav-item>
-            <router-link to="/" style="color: #00ff08 !important;">HOME</router-link>
+            <router-link to="/" style="color: #00ff08 !important"
+              >HOME</router-link
+            >
           </b-nav-item>
 
           <b-nav-item>
-            <router-link to="/workshops" style="color: #00ff08 !important;">WORKSHOPS</router-link>
+            <router-link to="/workshops" style="color: #00ff08 !important"
+              >WORKSHOPS</router-link
+            >
           </b-nav-item>
 
           <b-nav-item>
-            <router-link to="/release" style="color: #00ff08 !important;">RELEASE</router-link>
+            <router-link to="/release" style="color: #00ff08 !important"
+              >RELEASE</router-link
+            >
           </b-nav-item>
 
           <!---<b-nav-item>
@@ -29,7 +42,9 @@
           </b-nav-item>-->
 
           <b-nav-item>
-            <router-link to="/artists" style="color: #00ff08 !important;">ARTISTS</router-link>
+            <router-link to="/artists" style="color: #00ff08 !important"
+              >ARTISTS</router-link
+            >
           </b-nav-item>
 
           <!--<b-nav-item disabled>
@@ -37,11 +52,15 @@
           </b-nav-item>-->
 
           <b-nav-item>
-            <router-link to="/aboutus" style="color: #00ff08 !important;">ABOUT US</router-link>
+            <router-link to="/aboutus" style="color: #00ff08 !important"
+              >ABOUT US</router-link
+            >
           </b-nav-item>
 
           <b-nav-item>
-            <router-link to="/impressum" style="color: #00ff08 !important;">IMPRESSUM</router-link>
+            <router-link to="/impressum" style="color: #00ff08 !important"
+              >IMPRESSUM</router-link
+            >
           </b-nav-item>
 
           <!--<b-nav-item>
@@ -58,14 +77,30 @@
     <b-sidebar id="sidebar-right" title="Sidebar" right shadow>
       <div class="px-3 py-2">
         <div class="top">
-          <div class="playerGallery" style="width: 100% !important; margin-top: 5% !important">
-            <b-img src="https://picsum.photos/500/500/?image=54" fluid thumbnail></b-img>
+          <div
+            class="playerGallery"
+            style="width: 100% !important; margin-top: 5% !important"
+          >
+            <b-img
+              src="https://picsum.photos/500/500/?image=54"
+              fluid
+              thumbnail
+            ></b-img>
           </div>
 
-          <div class="playerText" style="width: 100% !important; margin-top: 5% !important">
-            <p style="color: white !important;margin-top: 10px !important">Sie hören:</p>
-            <p style="color: white !important;margin-top: 10px !important">ARTIST:</p>
-            <p style="color: white !important;margin-top: 10px !important">Released on:</p>
+          <div
+            class="playerText"
+            style="width: 100% !important; margin-top: 5% !important"
+          >
+            <p style="color: white !important; margin-top: 10px !important">
+              Sie hören:
+            </p>
+            <p style="color: white !important; margin-top: 10px !important">
+              ARTIST:
+            </p>
+            <p style="color: white !important; margin-top: 10px !important">
+              Released on:
+            </p>
           </div>
         </div>
 
@@ -73,7 +108,11 @@
 
         <div
           class="bottom"
-          style="width: 100% !important; position: fixed !important; bottom: 0 !important"
+          style="
+            width: 100% !important;
+            position: fixed !important;
+            bottom: 0 !important;
+          "
         >
           <div class="scPlayer">
             <iframe
@@ -85,27 +124,42 @@
               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/802641415&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
             ></iframe>
             <div
-              style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"
+              style="
+                font-size: 10px;
+                color: #cccccc;
+                line-break: anywhere;
+                word-break: normal;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-family: Interstate, Lucida Grande, Lucida Sans Unicode,
+                  Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+                font-weight: 100;
+              "
             >
               <a
                 href="https://soundcloud.com/artcoretechno"
                 title="ARTCØRE [TECHNO]"
                 target="_blank"
-                style="color: #cccccc; text-decoration: none;"
-              >ARTCØRE [TECHNO]</a> ·
+                style="color: #cccccc; text-decoration: none"
+                >ARTCØRE [TECHNO]</a
+              >
+              ·
               <a
                 href="https://soundcloud.com/artcoretechno/neowelt-antrazit-artcore-techno-rmx-freedownload"
                 title="Neowelt - Antrazit _ARTCØRE [TECHNO] rmx FREEDOWNLOAD"
                 target="_blank"
-                style="color: #cccccc; text-decoration: none;"
-              >Neowelt - Antrazit _ARTCØRE [TECHNO] rmx FREEDOWNLOAD</a>
+                style="color: #cccccc; text-decoration: none"
+                >Neowelt - Antrazit _ARTCØRE [TECHNO] rmx FREEDOWNLOAD</a
+              >
             </div>
           </div>
 
           <b-button
             v-b-toggle.sidebar-right
             style="width: 100% !important; margin-top: 2% !important"
-          >CLOSE</b-button>
+            >CLOSE</b-button
+          >
         </div>
       </div>
     </b-sidebar>
@@ -116,47 +170,80 @@
     <!---->
 
     <!--Footter-->
-    <b-container style="position: fixed; bottom: 0; max-width: 100%;" class="footer">
+    <b-container
+      style="position: fixed; bottom: 0; max-width: 100%"
+      class="footer"
+    >
       <b-row>
         <!---->
         <b-col cols="3">
-          <router-link to="/aboutus" style="font-size: 12px !important;">About Us</router-link>
-          <router-link to="/impressum" style="font-size: 12px !important;">| Kontakt</router-link>
-          <router-link to="/workshops" style="font-size: 12px !important;">| Workshops</router-link>
+          <router-link to="/aboutus" style="font-size: 12px !important"
+            >About Us</router-link
+          >
+          <router-link to="/impressum" style="font-size: 12px !important"
+            >| Kontakt</router-link
+          >
+          <router-link to="/workshops" style="font-size: 12px !important"
+            >| Workshops</router-link
+          >
           <!--<router-link to="/artists" style="font-size: 12px !important;">Artists</router-link>-->
         </b-col>
         <!---->
         <b-col cols="6"></b-col>
         <b-col cols="3">
           <a href="https://www.instagram.com/SCHALLINTERFERENZ.official/">
-            <img src="/static/pictures/ico/insta.png" style="width:20px !important" />
+            <img
+              src="/static/pictures/ico/insta.png"
+              style="width: 20px !important"
+            />
           </a>
-          
+
           <a href="https://www.facebook.com/SCHALLINTERFERENZ">
-            <img src="/static/pictures/ico/fb.png" style="width:20px !important" />
+            <img
+              src="/static/pictures/ico/fb.png"
+              style="width: 20px !important"
+            />
           </a>
 
           <a href="https://soundcloud.com/SCHALLINTERFERENZrecords">
-            <img src="/static/pictures/ico/sc.png" style="width:20px !important" />
+            <img
+              src="/static/pictures/ico/sc.png"
+              style="width: 20px !important"
+            />
           </a>
 
           <a href="https://www.youtube.com/channel/UCBY9DR6Vmp2Gq58FLoe8M4Q">
-            <img src="/static/pictures/ico/yt.png" style="width:20px !important" />
+            <img
+              src="/static/pictures/ico/yt.png"
+              style="width: 20px !important"
+            />
           </a>
 
-          
-          <a href="https://www.traxsource.com/label/41265/SCHALLINTERFERENZ-records">
-            <img src="/static/pictures/ico/txsc.png" style="width:20px !important" />
+          <a
+            href="https://www.traxsource.com/label/41265/SCHALLINTERFERENZ-records"
+          >
+            <img
+              src="/static/pictures/ico/txsc.png"
+              style="width: 20px !important"
+            />
           </a>
 
-          <a href="https://www.beatport.com/label/SCHALLINTERFERENZ-records/73307">
-            <img src="/static/pictures/ico/btpt.png" style="width:20px !important" />
+          <a
+            href="https://www.beatport.com/label/SCHALLINTERFERENZ-records/73307"
+          >
+            <img
+              src="/static/pictures/ico/btpt.png"
+              style="width: 20px !important"
+            />
           </a>
 
           <a
             href="https://www.junodownload.com/search/?facet%5Blabel_facet%5D%5B%5D=SCHALLINTERFERENZ"
           >
-            <img src="/static/pictures/ico/jd.png" style="width:20px !important" />
+            <img
+              src="/static/pictures/ico/jd.png"
+              style="width: 20px !important"
+            />
           </a>
         </b-col>
       </b-row>
@@ -168,6 +255,9 @@
 <script>
 import "howler";
 import Login from "./components/modules/Login";
+import Vue from "vue";
+
+export const ModalBus = new Vue();
 
 export default {
   name: "App",
@@ -175,10 +265,10 @@ export default {
     Login,
   },
   props: {
-    ctrack: "",
-    tname: "",
-    artist: "",
-    tduration: "",
+    ctrack: String,
+    tname: String,
+    artist: String,
+    tduration: String,
   },
   created() {},
   data() {
@@ -195,23 +285,7 @@ export default {
     };
   },
   methods: {
-    play: () => {
-      var sound = new Howl({
-        src: ["t1.wav"],
-        autoplay: true,
-        loop: true,
-        volume: 0.5,
-        onend: function () {
-          console.log("Finished!");
-        },
-      });
-
-      sound.play();
-    },
-    lin: () => {},
-    setPath: (path) => {
-      this.ctrack = path;
-    },
+    created: () => {},
   },
 };
 </script>

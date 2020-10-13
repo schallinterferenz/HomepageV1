@@ -12,7 +12,7 @@
               von allen Stilrichtungen die hier vertreten sind, spielt
               HardTechno eine treibende Rolle. Falls sie interessiert an der
               Vita des einzelnen Artists, oder an einem Booking des Künstlers,
-              klicken sie auf "WEITER"
+              klicken sie auf "BUCHEN"
             </b-card-text>
           </b-card>
         </b-col>

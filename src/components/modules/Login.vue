@@ -40,8 +40,6 @@
 <script>
 import Axios from "axios";
 import api from "../api/app/controller/api.controller";
-import utils from "./util.methods";
-const crypto = require('crypto');
 
 export default {
   name: "Login",

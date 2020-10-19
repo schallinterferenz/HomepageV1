@@ -74,6 +74,171 @@
         </div>
       </b-row>
 
+      <br />
+      <br />
+
+      <b-row style="padding-bottom: 10px">
+        <b-col>
+          <b-card>
+            <h1> <b>RELEASING ARTISTS</b></h1>
+          </b-card>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <div v-for="obj in arDat" v-bind:key="obj.aId">
+          <div v-if="obj.type === 'r' && obj.online == 'True'">
+            <b-col cols="12">
+              <b-card img-top>
+                <b-card-header>
+                  <h2>
+                    <b>{{ obj.name }}</b>
+                  </h2>
+                </b-card-header>
+
+                <b-img
+                  thumbnail
+                  fluid
+                  :src="obj.img"
+                  width="313px"
+                  height="300px"
+                >
+                </b-img>
+
+                <b-card-title>
+                  <h2>
+                    <i>MAIN LABEL: </i><b>{{ obj.mainLabel }}</b>
+                  </h2>
+                </b-card-title>
+
+                <b-card-sub-title>
+                  <h2>
+                    <i>Sub - Labels: </i><b>{{ obj.subLabel }}</b>
+                  </h2>
+                </b-card-sub-title>
+
+                <b-card-body>
+                  <b-card-text> </b-card-text>
+                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="success" v-if="obj.showBooking == 'True'"> BUCHEN </b-button>
+                </b-card-body>
+              </b-card>
+            </b-col>
+          </div>
+          <br />
+        </div>
+      </b-row>
+
+      <br />
+      <br />
+
+      <b-row style="padding-bottom: 10px">
+        <b-col>
+          <b-card>
+            <h1> <b>AGENGY ARTISTS</b></h1>
+          </b-card>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <div v-for="obj in arDat" v-bind:key="obj.aId">
+          <div v-if="obj.type === 'a' && obj.online == 'True'">
+            <b-col cols="12">
+              <b-card img-top>
+                <b-card-header>
+                  <h2>
+                    <b>{{ obj.name }}</b>
+                  </h2>
+                </b-card-header>
+
+                <b-img
+                  thumbnail
+                  fluid
+                  :src="obj.img"
+                  width="313px"
+                  height="300px"
+                >
+                </b-img>
+
+                <b-card-title>
+                  <h2>
+                    <i>MAIN LABEL: </i><b>{{ obj.mainLabel }}</b>
+                  </h2>
+                </b-card-title>
+
+                <b-card-sub-title>
+                  <h2>
+                    <i>Sub - Labels: </i><b>{{ obj.subLabel }}</b>
+                  </h2>
+                </b-card-sub-title>
+
+                <b-card-body>
+                  <b-card-text> </b-card-text>
+                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="success"> BUCHEN </b-button>
+                </b-card-body>
+              </b-card>
+            </b-col>
+          </div>
+          <br />
+        </div>
+      </b-row>
+
+      <br />
+      <br />
+
+      <b-row style="padding-bottom: 10px">
+        <b-col>
+          <b-card>
+            <h1> <b>COOPERATIONS</b></h1>
+          </b-card>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <div v-for="obj in arDat" v-bind:key="obj.aId">
+          <div v-if="obj.type === 'c' && obj.online == 'True'">
+            <b-col cols="12">
+              <b-card img-top>
+                <b-card-header>
+                  <h2>
+                    <b>{{ obj.name }}</b>
+                  </h2>
+                </b-card-header>
+
+                <b-img
+                  thumbnail
+                  fluid
+                  :src="obj.img"
+                  width="313px"
+                  height="300px"
+                >
+                </b-img>
+
+                <b-card-title>
+                  <h2>
+                    <i>MAIN LABEL: </i><b>{{ obj.mainLabel }}</b>
+                  </h2>
+                </b-card-title>
+
+                <b-card-sub-title>
+                  <h2>
+                    <i>Sub - Labels: </i><b>{{ obj.subLabel }}</b>
+                  </h2>
+                </b-card-sub-title>
+
+                <b-card-body>
+                  <b-card-text> </b-card-text>
+                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="success" v-if="obj.showBooking == 'True'"> BUCHEN </b-button>
+                </b-card-body>
+              </b-card>
+            </b-col>
+          </div>
+          <br />
+        </div>
+      </b-row>
+
     </b-container>
   </div>
 </template>

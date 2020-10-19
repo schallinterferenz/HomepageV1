@@ -38,35 +38,30 @@
 </template>
 
 <script>
-import Axios from 'axios';
+import Axios from "axios";
 import api from "../api/app/controller/api.controller";
 import utils from "./util.methods";
+const crypto = require('crypto');
 
 export default {
   name: "Login",
   data() {
     return {
-      n: "",
-      p: "",
+      User: {
+        username: "",
+        password: ""
+      }
     };
   },
   methods: {
     setUser: (value) => {
-      this.n = value;
+      this.User.username = value;
     },
     setPW: (value) => {
-      this.p = value;
+      this.User.password = value;
     },
     login: () => {
-      let User = {};
-      User.id = utils.generateID();
-      User.username = this.n;
-      User.passwordHashed = this.p;
-
-      var jsonString = JSON.stringify(User);
-
-      Axios.get()
-      console.log(jsonString);
+      var hash = utils.hashString(string);
     },
   },
 };

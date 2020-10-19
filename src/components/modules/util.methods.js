@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 exports.generateID = () => {
     var result = "";
     var characters =
@@ -11,3 +13,10 @@ exports.generateID = () => {
     }
     return result;
 }
+
+exports.hashString = (str) => {
+    var hash = crypto.getHashes();
+    var hashPwd = crypto.createHash('sha1').update(str).digest('hex');
+  
+    return hash;
+  }

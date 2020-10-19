@@ -8,13 +8,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 // import mongoose from 'mongoose';
 
-const {Howl, Howler} = require('howler');
+const { Howl, Howler } = require('howler');
+
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const axios = require('axios').default;
+
+
 
 //Import the mongoose module
 // const mongoose = require('mongoose').default;

@@ -67,7 +67,8 @@ public class AsyncMessageSender implements MessageSender<XMessage> {
     public void send(XMessage message) {
         CompletableFuture<Void> f = new CompletableFuture<>();
         // write a message asynchronously that will notify the future when complete
-        send(message, f, () -> f.complete(null));
+        send(message, f, () 
+f.complete(null));
         // wait on the future to return
         try {
             f.get();

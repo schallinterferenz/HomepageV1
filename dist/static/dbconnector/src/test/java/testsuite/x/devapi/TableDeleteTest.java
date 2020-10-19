@@ -115,7 +115,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsCountsAndId(testSession, 0, testDelete3, 0, -1);
             assertPreparedStatementsCountsAndId(testSession, 0, testDelete4, 0, -1);
 
-            // A. Set binds: 1st execute -> non-prepared.
+            // A. Set binds: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 0, testDelete1, 0, -1);
             assertTestPreparedStatementsResult(testDelete2.bind("n", 2).execute(), 3, testTbl2.getName(), 1);
@@ -128,7 +129,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
             testPreparedStatementsResetData();
 
-            // B. Set orderBy resets execution count: 1st execute -> non-prepared.
+            // B. Set orderBy resets execution count: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testDelete1.orderBy("id").execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 0, testDelete1, 0, -1);
             assertTestPreparedStatementsResult(testDelete2.orderBy("id").execute(), 3, testTbl2.getName(), 1);
@@ -141,7 +143,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
             testPreparedStatementsResetData();
 
-            // C. Set binds reuse statement: 2nd execute -> prepare + execute.
+            // C. Set binds reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 1, testDelete1, 1, 1);
             assertTestPreparedStatementsResult(testDelete2.bind("n", 3).execute(), 2, testTbl2.getName(), 1, 2);
@@ -154,7 +157,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 4, 0);
             testPreparedStatementsResetData();
 
-            // D. Set binds reuse statement: 3rd execute -> execute.
+            // D. Set binds reuse statement: 3rd execute 
+execute.
             assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 4, testDelete1, 1, 2);
             assertTestPreparedStatementsResult(testDelete2.bind("n", 4).execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -167,7 +171,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 0);
             testPreparedStatementsResetData();
 
-            // E. Set orderBy deallocates and resets execution count: 1st execute -> deallocate + non-prepared.
+            // E. Set orderBy deallocates and resets execution count: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testDelete1.orderBy("id").execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 3, testDelete1, 0, -1);
             assertTestPreparedStatementsResult(testDelete2.orderBy("id").execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -180,7 +185,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 4);
             testPreparedStatementsResetData();
 
-            // F. No Changes: 2nd execute -> prepare + execute.
+            // F. No Changes: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
             assertPreparedStatementsCountsAndId(testSession, 1, testDelete1, 1, 1);
             assertTestPreparedStatementsResult(testDelete2.execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -193,7 +199,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 8, 12, 4);
             testPreparedStatementsResetData();
 
-            // G. Set limit for the first time deallocates and re-prepares: 1st execute -> re-prepare + execute.
+            // G. Set limit for the first time deallocates and re-prepares: 1st execute 
+re-prepare + execute.
             assertTestPreparedStatementsResult(testDelete1.limit(1).execute(), 1, testTbl1.getName(), 2, 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 4, testDelete1, 1, 1);
             assertTestPreparedStatementsResult(testDelete2.limit(1).execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -206,7 +213,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 16, 8);
             testPreparedStatementsResetData();
 
-            // H. Set limit reuse prepared statement: 2nd execute -> execute.
+            // H. Set limit reuse prepared statement: 2nd execute 
+execute.
             assertTestPreparedStatementsResult(testDelete1.limit(2).execute(), 2, testTbl1.getName(), 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 4, testDelete1, 1, 2);
             assertTestPreparedStatementsResult(testDelete2.limit(2).execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -219,7 +227,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 8);
             testPreparedStatementsResetData();
 
-            // I. Set sort deallocates and resets execution count, set limit has no effect: 1st execute -> deallocate + non-prepared.
+            // I. Set sort deallocates and resets execution count, set limit has no effect: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testDelete1.orderBy("id").limit(1).execute(), 1, testTbl1.getName(), 2, 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 3, testDelete1, 0, -1);
             assertTestPreparedStatementsResult(testDelete2.orderBy("id").limit(1).execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -232,7 +241,8 @@ public class TableDeleteTest extends BaseTableTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 12);
             testPreparedStatementsResetData();
 
-            // J. Set limit reuse statement: 2nd execute -> prepare + execute.
+            // J. Set limit reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testDelete1.limit(2).execute(), 2, testTbl1.getName(), 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 1, testDelete1, 1, 1);
             assertTestPreparedStatementsResult(testDelete2.limit(2).execute(), 1, testTbl2.getName(), 1, 2, 3);
@@ -268,7 +278,8 @@ public class TableDeleteTest extends BaseTableTestCase {
                 testDelete1 = testTbl1.delete().where("true");
                 testDelete2 = testTbl2.delete().where("true");
 
-                // 1st execute -> don't prepare.
+                // 1st execute 
+don't prepare.
                 assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 0, testDelete1, 0, -1);
                 assertTestPreparedStatementsResult(testDelete2.execute(), 4, testTbl2.getName());
@@ -277,7 +288,8 @@ public class TableDeleteTest extends BaseTableTestCase {
                 assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
                 testPreparedStatementsResetData();
 
-                // 2nd execute -> prepare + execute.
+                // 2nd execute 
+prepare + execute.
                 assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 1, testDelete1, 1, 1);
                 assertTestPreparedStatementsResult(testDelete2.execute(), 4, testTbl2.getName()); // Fails preparing, execute as non-prepared.
@@ -286,7 +298,8 @@ public class TableDeleteTest extends BaseTableTestCase {
                 assertPreparedStatementsStatusCounts(testSession, 2, 1, 0); // Failed prepare also counts.
                 testPreparedStatementsResetData();
 
-                // 3rd execute -> execute.
+                // 3rd execute 
+execute.
                 assertTestPreparedStatementsResult(testDelete1.execute(), 4, testTbl1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 1, testDelete1, 1, 2);
                 assertTestPreparedStatementsResult(testDelete2.execute(), 4, testTbl2.getName()); // Execute as non-prepared.

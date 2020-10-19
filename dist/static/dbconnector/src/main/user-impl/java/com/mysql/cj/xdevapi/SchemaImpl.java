@@ -92,8 +92,10 @@ public class SchemaImpl implements Schema {
     public List<Collection> getCollections(String pattern) {
         Set<String> strTypes = Arrays.stream(new DbObjectType[] { DbObjectType.COLLECTION }).map(DatabaseObject.DbObjectType::toString)
                 .collect(Collectors.toSet());
-        Predicate<com.mysql.cj.result.Row> rowFiler = r -> (strTypes).contains(r.getValue(1, this.svf));
-        Function<com.mysql.cj.result.Row, String> rowToName = r -> r.getValue(0, this.svf);
+        Predicate<com.mysql.cj.result.Row> rowFiler = r 
+(strTypes).contains(r.getValue(1, this.svf));
+        Function<com.mysql.cj.result.Row, String> rowToName = r 
+r.getValue(0, this.svf);
         List<String> objectNames = this.mysqlxSession.query(this.xbuilder.buildListObjects(this.name, pattern), rowFiler, rowToName, Collectors.toList());
         return objectNames.stream().map(this::getCollection).collect(Collectors.toList());
     }
@@ -106,8 +108,10 @@ public class SchemaImpl implements Schema {
     public List<Table> getTables(String pattern) {
         Set<String> strTypes = Arrays.stream(new DbObjectType[] { DbObjectType.TABLE, DbObjectType.VIEW, DbObjectType.COLLECTION_VIEW })
                 .map(DatabaseObject.DbObjectType::toString).collect(Collectors.toSet());
-        Predicate<com.mysql.cj.result.Row> rowFiler = r -> (strTypes).contains(r.getValue(1, this.svf));
-        Function<com.mysql.cj.result.Row, String> rowToName = r -> r.getValue(0, this.svf);
+        Predicate<com.mysql.cj.result.Row> rowFiler = r 
+(strTypes).contains(r.getValue(1, this.svf));
+        Function<com.mysql.cj.result.Row, String> rowToName = r 
+r.getValue(0, this.svf);
         List<String> objectNames = this.mysqlxSession.query(this.xbuilder.buildListObjects(this.name, pattern), rowFiler, rowToName, Collectors.toList());
         return objectNames.stream().map(this::getTable).collect(Collectors.toList());
     }

@@ -6135,7 +6135,8 @@ public class ConnectionRegressionTest extends BaseTestCase {
         masterHosts.add(mainConnectionUrl.getHostOrSpawnIsolated(masterHost));
         List<HostInfo> slaveHosts = new ArrayList<>(); // empty
         Map<String, String> properties = new HashMap<>();
-        props.stringPropertyNames().stream().forEach(k -> properties.put(k, props.getProperty(k)));
+        props.stringPropertyNames().stream().forEach(k 
+properties.put(k, props.getProperty(k)));
         ReplicationConnection replConn = ReplicationConnectionProxy.createProxyInstance(new ReplicationConnectionUrl(masterHosts, slaveHosts, properties));
         return replConn;
     }
@@ -8298,7 +8299,8 @@ public class ConnectionRegressionTest extends BaseTestCase {
                 }
             }
 
-            return super.preProcess(() -> {
+            return super.preProcess(() 
+{
                 return sql;
             }, interceptedQuery);
         }
@@ -11660,7 +11662,8 @@ public class ConnectionRegressionTest extends BaseTestCase {
 
         // clientInfoProvider=DummyClass
         Connection testConn2 = getConnectionWithProps("clientInfoProvider=DummyClass");
-        Throwable t = assertThrows(SQLClientInfoException.class, () -> {
+        Throwable t = assertThrows(SQLClientInfoException.class, () 
+{
             testConn2.setClientInfo("testBug98445", "testBug98445Data5");
             return null;
         });
@@ -11670,7 +11673,8 @@ public class ConnectionRegressionTest extends BaseTestCase {
 
         // clientInfoProvider=java.lang.Object
         Connection testConn3 = getConnectionWithProps("clientInfoProvider=java.lang.Object");
-        t = assertThrows(SQLClientInfoException.class, () -> {
+        t = assertThrows(SQLClientInfoException.class, () 
+{
             testConn3.setClientInfo("testBug98445", "testBug98445Data6");
             return null;
         });

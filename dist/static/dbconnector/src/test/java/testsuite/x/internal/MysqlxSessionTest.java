@@ -131,8 +131,10 @@ public class MysqlxSessionTest extends InternalXBaseTestCase {
 
         Set<String> strTypes = Arrays.stream(new DbObjectType[] { DbObjectType.COLLECTION }).map(DatabaseObject.DbObjectType::toString)
                 .collect(Collectors.toSet());
-        Predicate<com.mysql.cj.result.Row> rowFiler = r -> (strTypes).contains(r.getValue(1, svf));
-        Function<com.mysql.cj.result.Row, String> rowToName = r -> r.getValue(0, svf);
+        Predicate<com.mysql.cj.result.Row> rowFiler = r 
+(strTypes).contains(r.getValue(1, svf));
+        Function<com.mysql.cj.result.Row, String> rowToName = r 
+r.getValue(0, svf);
 
         List<String> collNames = this.session.query(builder.buildListObjects(getTestDatabase(), null), rowFiler, rowToName, Collectors.toList());
         assertTrue(collNames.contains(collName));
@@ -165,7 +167,8 @@ public class MysqlxSessionTest extends InternalXBaseTestCase {
         stringDocs.add("{'_id':'2'}");
         stringDocs.add("{'_id':'3'}");
         stringDocs.add("{'_id':'4'}");
-        stringDocs = stringDocs.stream().map(s -> s.replaceAll("'", "\"")).collect(Collectors.toList());
+        stringDocs = stringDocs.stream().map(s 
+s.replaceAll("'", "\"")).collect(Collectors.toList());
         this.session.query(builder.buildDocInsert(getTestDatabase(), collName, stringDocs, false), new UpdateResultBuilder<>());
 
         FilterParams filterParams = new DocFilterParams(getTestDatabase(), collName);
@@ -208,7 +211,8 @@ public class MysqlxSessionTest extends InternalXBaseTestCase {
         }
         XMessageBuilder builder = (XMessageBuilder) this.session.<XMessage>getMessageBuilder();
         List<Integer> ints = this.session.query(builder.buildSqlStatement("select 2 union select 1"), null,
-                r -> r.getValue(0, new IntegerValueFactory(new DefaultPropertySet())), Collectors.toList());
+                r 
+r.getValue(0, new IntegerValueFactory(new DefaultPropertySet())), Collectors.toList());
         assertEquals(2, ints.size());
         assertEquals(new Integer(2), ints.get(0));
         assertEquals(new Integer(1), ints.get(1));

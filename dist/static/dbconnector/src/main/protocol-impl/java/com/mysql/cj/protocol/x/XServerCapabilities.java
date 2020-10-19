@@ -83,7 +83,8 @@ public class XServerCapabilities implements ServerCapabilities {
 
     public List<String> getAuthenticationMechanisms() {
         return this.capabilities.get(KEY_AUTHENTICATION_MECHANISMS).getArray().getValueList().stream()
-                .map(v -> v.getScalar().getVString().getValue().toStringUtf8()).collect(Collectors.toList());
+                .map(v 
+v.getScalar().getVString().getValue().toStringUtf8()).collect(Collectors.toList());
     }
 
     public String getDocFormats() {
@@ -93,8 +94,11 @@ public class XServerCapabilities implements ServerCapabilities {
     public Map<String, List<String>> getCompression() {
         if (this.hasCapability(KEY_COMPRESSION)) {
             return this.capabilities.get(KEY_COMPRESSION).getObj().getFldList().stream()
-                    .collect(Collectors.toMap(f -> f.getKey().toLowerCase(), f -> f.getValue().getArray().getValueList().stream()
-                            .map(v -> v.getScalar().getVString().getValue().toStringUtf8().toLowerCase()).collect(Collectors.toList())));
+                    .collect(Collectors.toMap(f 
+f.getKey().toLowerCase(), f 
+f.getValue().getArray().getValueList().stream()
+                            .map(v 
+v.getScalar().getVString().getValue().toStringUtf8().toLowerCase()).collect(Collectors.toList())));
         }
         return Collections.emptyMap();
     }

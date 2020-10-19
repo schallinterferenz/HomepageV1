@@ -259,7 +259,8 @@ public class ExprUnparser {
 
     static String objectToString(Object o) {
         String fields = o.getFldList().stream().map(
-                f -> new StringBuilder().append("'").append(quoteJsonKey(f.getKey())).append("'").append(":").append(exprToString(f.getValue())).toString())
+                f 
+new StringBuilder().append("'").append(quoteJsonKey(f.getKey())).append("'").append(":").append(exprToString(f.getValue())).toString())
                 .collect(Collectors.joining(", "));
         return new StringBuilder("{").append(fields).append("}").toString();
     }

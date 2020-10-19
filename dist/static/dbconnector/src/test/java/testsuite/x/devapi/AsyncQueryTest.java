@@ -160,7 +160,8 @@ public class AsyncQueryTest extends BaseCollectionTestCase {
             json = json.replace("{", "{\"_id\": \"1\", "); // Inject an _id.
         }
         CompletableFuture<AddResult> resF = this.collection.add(json).executeAsync();
-        CompletableFuture<DocResult> docF = resF.thenCompose((AddResult res) -> {
+        CompletableFuture<DocResult> docF = resF.thenCompose((AddResult res) 
+{
             if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.5"))) {
                 assertTrue(res.getGeneratedIds().get(0).matches("[a-f0-9]{28}"));
             } else {
@@ -169,7 +170,8 @@ public class AsyncQueryTest extends BaseCollectionTestCase {
             return this.collection.find("firstName like '%Fra%'").executeAsync();
         });
 
-        DbDoc d = docF.thenApply((DocResult docs) -> docs.next()).get(5, TimeUnit.SECONDS);
+        DbDoc d = docF.thenApply((DocResult docs) 
+docs.next()).get(5, TimeUnit.SECONDS);
         JsonString val = (JsonString) d.get("lastName");
         assertEquals("Wright", val.getString());
     }
@@ -206,7 +208,8 @@ public class AsyncQueryTest extends BaseCollectionTestCase {
             return;
         }
         CompletableFuture<SqlResult> resF = this.session.sql("set @cjTestVar = 1").executeAsync();
-        resF.thenAccept(res -> {
+        resF.thenAccept(res 
+{
             assertFalse(res.hasData());
             assertEquals(0, res.getAffectedItemsCount());
             assertEquals(null, res.getAutoIncrementValue());
@@ -221,7 +224,8 @@ public class AsyncQueryTest extends BaseCollectionTestCase {
             return;
         }
         CompletableFuture<SqlResult> resF = this.session.sql("select 1,2,3 from dual").executeAsync();
-        resF.thenAccept(res -> {
+        resF.thenAccept(res 
+{
             assertTrue(res.hasData());
             Row r = res.next();
             assertEquals("1", r.getString(0));

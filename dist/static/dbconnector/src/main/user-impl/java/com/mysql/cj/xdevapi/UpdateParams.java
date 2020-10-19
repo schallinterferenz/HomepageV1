@@ -48,7 +48,8 @@ public class UpdateParams {
      *            field -&gt; value_expression map
      */
     public void setUpdates(Map<String, Object> updates) {
-        updates.entrySet().forEach(e -> addUpdate(e.getKey(), e.getValue()));
+        updates.entrySet().forEach(e 
+addUpdate(e.getKey(), e.getValue()));
     }
 
     /**

@@ -96,7 +96,8 @@ public class SessionTest extends DevApiBaseTestCase {
     @AfterEach
     public void teardownSessionTest() {
         if (this.isSetForXTests) {
-            this.createdTestSchemas.forEach(schemaName -> {
+            this.createdTestSchemas.forEach(schemaName 
+{
                 try {
                     this.session.dropSchema(schemaName);
                 } catch (XProtocolError x) {
@@ -255,7 +256,8 @@ public class SessionTest extends DevApiBaseTestCase {
                 // Test using a connection String.
                 final String testUri = String.format(testUriPattern, getTestHost(), getTestPort(), testSchemaName, authMech);
 
-                assertThrows(testCase, XProtocolError.class, "ERROR \\d{4} \\(HY000\\) Unknown database '" + testSchemaName + "'", () -> {
+                assertThrows(testCase, XProtocolError.class, "ERROR \\d{4} \\(HY000\\) Unknown database '" + testSchemaName + "'", () 
+{
                     testSessionFactory.getSession(testUri);
                     return null;
                 });
@@ -269,7 +271,8 @@ public class SessionTest extends DevApiBaseTestCase {
                 testProps.setProperty(PropertyKey.DBNAME.getKeyName(), testSchemaName);
                 testProps.setProperty(PropertyKey.xdevapiAuth.getKeyName(), authMech);
 
-                assertThrows(testCase, XProtocolError.class, "ERROR \\d{4} \\(HY000\\) Unknown database '" + testSchemaName + "'", () -> {
+                assertThrows(testCase, XProtocolError.class, "ERROR \\d{4} \\(HY000\\) Unknown database '" + testSchemaName + "'", () 
+{
                     testSessionFactory.getSession(testUri);
                     return null;
                 });
@@ -1073,7 +1076,8 @@ public class SessionTest extends DevApiBaseTestCase {
     private <EX extends Throwable> void testPooledSessions_assertFailureTimeout(Client cli, int expLowLimit, int expUpLimit, Class<EX> throwable,
             String message) {
         long begin = System.currentTimeMillis();
-        assertThrows(throwable, message, () -> cli.getSession());
+        assertThrows(throwable, message, () 
+cli.getSession());
         long end = System.currentTimeMillis() - begin;
         assertTrue(end >= expLowLimit && end < expUpLimit, "Expected: " + expLowLimit + ".." + expUpLimit + ". Got " + end);
     }
@@ -1197,41 +1201,49 @@ public class SessionTest extends DevApiBaseTestCase {
         //    xdevapi.connection-attributes=[key1=value1,_key2=value2]
         //    xdevapi.connection-attributes=_key1=value1
         //    xdevapi.connection-attributes=key1=value1,_key2=value2
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             this.fact.getSession(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "[_key1=value1]", true));
             return null;
         });
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             Client cli1 = cf.getClient(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "[_key1=value1]", true), new Properties());
             cli1.getSession();
             return null;
         });
 
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             this.fact.getSession(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "[key1=value1,_key2=value2]", true));
             return null;
         });
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             Client cli1 = cf.getClient(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "[key1=value1,_key2=value2]", true), new Properties());
             cli1.getSession();
             return null;
         });
 
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             this.fact.getSession(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "_key1=value1", true));
             return null;
         });
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             Client cli1 = cf.getClient(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "_key1=value1", true), new Properties());
             cli1.getSession();
             return null;
         });
 
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             this.fact.getSession(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "key1=value1,_key2=value2", true));
             return null;
         });
-        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () -> {
+        assertThrows(WrongArgumentException.class, "Key names in \"xdevapi.connection-attributes\" cannot start with \"_\".", () 
+{
             Client cli1 = cf.getClient(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "key1=value1,_key2=value2", true), new Properties());
             cli1.getSession();
             return null;
@@ -1303,11 +1315,13 @@ public class SessionTest extends DevApiBaseTestCase {
 
         // TSFR13 Create a Session with xdevapi.connection-attributes=[key1=value1,key1=value2] in the connection string, verify that
         // a WrongArgumentException exception is thrown with the message Duplicate key "key1" used in "xdevapi.connection-attributes".
-        assertThrows(WrongArgumentException.class, "Duplicate key \"key1\" used in \"xdevapi.connection-attributes\".", () -> {
+        assertThrows(WrongArgumentException.class, "Duplicate key \"key1\" used in \"xdevapi.connection-attributes\".", () 
+{
             this.fact.getSession(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "key1=value1,key1=value2", true));
             return null;
         });
-        assertThrows(WrongArgumentException.class, "Duplicate key \"key1\" used in \"xdevapi.connection-attributes\".", () -> {
+        assertThrows(WrongArgumentException.class, "Duplicate key \"key1\" used in \"xdevapi.connection-attributes\".", () 
+{
             Client cli1 = cf.getClient(baseUrlLocal + makeParam(PropertyKey.xdevapiConnectionAttributes, "key1=value1,key1=value2", true), new Properties());
             cli1.getSession();
             return null;
@@ -1411,7 +1425,8 @@ public class SessionTest extends DevApiBaseTestCase {
             FindStatement testFind2 = testSession.getDefaultSchema().getCollection("testPrepStmtClean").find();
             SelectStatement testSelect2 = testSession.getDefaultSchema().getCollectionAsTable("testPrepStmtClean").select("_id");
 
-            // 1st execute -> don't prepare.
+            // 1st execute 
+don't prepare.
             testFind1.execute();
             assertPreparedStatementsCountsAndId(testSession, 0, testFind1, 0, -1);
             testSelect1.execute();
@@ -1423,7 +1438,8 @@ public class SessionTest extends DevApiBaseTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // 2nd execute -> prepare + execute.
+            // 2nd execute 
+prepare + execute.
             testFind1.execute();
             assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 1);
             testSelect1.execute();
@@ -1517,12 +1533,14 @@ public class SessionTest extends DevApiBaseTestCase {
 
             FindStatement testFind = testSession.getDefaultSchema().getCollection("testPrepStmtPooling").find();
 
-            // 1st execute -> don't prepare.
+            // 1st execute 
+don't prepare.
             testFind.execute();
             assertPreparedStatementsCountsAndId(testSession, 0, testFind, 0, -1);
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // 2nd execute -> prepare + execute.
+            // 2nd execute 
+prepare + execute.
             testFind.execute();
             assertPreparedStatementsCountsAndId(testSession, 1, testFind, 1, 1);
             assertPreparedStatementsStatusCounts(testSession, 1, 1, 0);
@@ -1547,7 +1565,8 @@ public class SessionTest extends DevApiBaseTestCase {
 
             testFind = testSession.getDefaultSchema().getCollection("testPrepStmtPooling").find();
 
-            // 1st execute -> don't prepare.
+            // 1st execute 
+don't prepare.
             testFind.execute();
             assertPreparedStatementsCountsAndId(testSession, 0, testFind, 0, -1);
             if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.16"))) { // Mysqlx.Session.Reset doesn't clear PS counters.
@@ -1555,7 +1574,8 @@ public class SessionTest extends DevApiBaseTestCase {
             } else {
                 assertPreparedStatementsStatusCounts(testSession, 0, 1, 0);
             }
-            // 2nd execute -> prepare + execute.
+            // 2nd execute 
+prepare + execute.
             testFind.execute();
             assertPreparedStatementsCountsAndId(testSession, 1, testFind, 1, 1);
             if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.16"))) { // Mysqlx.Session.Reset doesn't clear PS counters.
@@ -1676,8 +1696,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> h + ":" + getTestPort()).collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+h + ":" + getTestPort()).collect(Collectors.joining(","));
         String testUri = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
 
         Set<String> downHosts = new HashSet<>();
@@ -1695,7 +1718,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             this.fact.getSession(testUri);
             return null;
         });
@@ -1718,8 +1742,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> "(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+"(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
         String testUriPatternPriorities = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
         String testUri = String.format(testUriPatternPriorities, 60, 80, 100, 20, 40);
         int[] hostsOrder = new int[] { 3, 2, 1, 5, 4 };
@@ -1742,7 +1769,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             this.fact.getSession(testUri);
             return null;
         });
@@ -1768,8 +1796,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> h + ":" + getTestPort()).collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+h + ":" + getTestPort()).collect(Collectors.joining(","));
         String testUri = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
 
         final ClientFactory cf = new ClientFactory();
@@ -1791,7 +1822,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             client.getSession();
             return null;
         });
@@ -1825,8 +1857,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> h + ":" + getTestPort()).collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+h + ":" + getTestPort()).collect(Collectors.joining(","));
         String testUri = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
 
         final ClientFactory cf = new ClientFactory();
@@ -1847,7 +1882,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             client.getSession();
             return null;
         });
@@ -1876,8 +1912,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> "(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+"(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
         String testUriPatternPriorities = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
         String testUri = String.format(testUriPatternPriorities, 60, 80, 100, 20, 40);
         int[] hostsOrder = new int[] { 3, 2, 1, 5, 4 };
@@ -1904,7 +1943,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             client.getSession();
             return null;
         });
@@ -1948,8 +1988,11 @@ public class SessionTest extends DevApiBaseTestCase {
 
         final String testUriPattern = "mysqlx://%s:%s@[%s]/%s?" + PropertyKey.xdevapiConnectTimeout.getKeyName() + "=100&"
                 + PropertyKey.socketFactory.getKeyName() + "=" + UnreliableSocketFactory.class.getName();
-        String testHosts = IntStream.range(1, 6).mapToObj(i -> "host" + i).peek(h -> UnreliableSocketFactory.mapHost(h, getTestHost()))
-                .map(h -> "(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
+        String testHosts = IntStream.range(1, 6).mapToObj(i 
+"host" + i).peek(h 
+UnreliableSocketFactory.mapHost(h, getTestHost()))
+                .map(h 
+"(address=" + h + ":" + getTestPort() + ",priority=%d)").collect(Collectors.joining(","));
         String testUriPatternPriorities = String.format(testUriPattern, getTestUser(), getTestPassword(), testHosts, getTestDatabase());
         String testUri = String.format(testUriPatternPriorities, 60, 80, 100, 20, 40);
         int[] hostsOrder = new int[] { 3, 2, 1, 5, 4 };
@@ -1975,7 +2018,8 @@ public class SessionTest extends DevApiBaseTestCase {
         }
 
         // None of the hosts is available by now.
-        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+        assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
             client.getSession();
             return null;
         });

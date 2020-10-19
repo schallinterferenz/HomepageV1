@@ -336,7 +336,8 @@ public class ExprUtil {
 
         } else if (cls == JsonArray.class) {
             return Expr.newBuilder().setType(Expr.Type.ARRAY).setArray(Expr.newBuilder().setType(Expr.Type.ARRAY).getArrayBuilder()
-                    .addAllValue(((JsonArray) value).stream().map(f -> ExprUtil.argObjectToExpr(f, true)).collect(Collectors.toList()))).build();
+                    .addAllValue(((JsonArray) value).stream().map(f 
+ExprUtil.argObjectToExpr(f, true)).collect(Collectors.toList()))).build();
 
         } else if (cls == JsonString.class) {
             return buildLiteralScalar(((JsonString) value).getString());

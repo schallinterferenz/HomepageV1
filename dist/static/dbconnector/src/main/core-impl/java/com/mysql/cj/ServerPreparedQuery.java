@@ -193,7 +193,8 @@ public class ServerPreparedQuery extends AbstractPreparedQuery<ServerPreparedQue
     public <T extends Resultset> T serverExecute(int maxRowsToRetrieve, boolean createStreamingResultSet, ColumnDefinition metadata,
             ProtocolEntityFactory<T, NativePacketPayload> resultSetFactory) {
         if (this.session.shouldIntercept()) {
-            T interceptedResults = this.session.invokeQueryInterceptorsPre(() -> {
+            T interceptedResults = this.session.invokeQueryInterceptorsPre(() 
+{
                 return getOriginalSql();
             }, this, true);
 
@@ -369,7 +370,8 @@ public class ServerPreparedQuery extends AbstractPreparedQuery<ServerPreparedQue
 
         } catch (CJException sqlEx) {
             if (this.session.shouldIntercept()) {
-                this.session.invokeQueryInterceptorsPost(() -> {
+                this.session.invokeQueryInterceptorsPost(() 
+{
                     return getOriginalSql();
                 }, this, null, true);
             }
@@ -390,7 +392,8 @@ public class ServerPreparedQuery extends AbstractPreparedQuery<ServerPreparedQue
                     metadata != null ? metadata : this.resultFields, resultSetFactory);
 
             if (this.session.shouldIntercept()) {
-                T interceptedResults = this.session.invokeQueryInterceptorsPost(() -> {
+                T interceptedResults = this.session.invokeQueryInterceptorsPost(() 
+{
                     return getOriginalSql();
                 }, this, rs, true);
 
@@ -421,7 +424,8 @@ public class ServerPreparedQuery extends AbstractPreparedQuery<ServerPreparedQue
                     this.session.getExceptionInterceptor());
         } catch (CJException sqlEx) {
             if (this.session.shouldIntercept()) {
-                this.session.invokeQueryInterceptorsPost(() -> {
+                this.session.invokeQueryInterceptorsPost(() 
+{
                     return getOriginalSql();
                 }, this, null, true);
             }

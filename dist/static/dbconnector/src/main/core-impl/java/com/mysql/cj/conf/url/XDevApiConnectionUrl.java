@@ -120,7 +120,8 @@ public class XDevApiConnectionUrl extends ConnectionUrl {
         if (hasPriority) {
             this.prioritySorted = true;
             this.hosts.sort(
-                    Comparator.<HostInfo, Integer>comparing(hi -> Integer.parseInt(hi.getHostProperties().get(PropertyKey.PRIORITY.getKeyName()))).reversed());
+                    Comparator.<HostInfo, Integer>comparing(hi 
+Integer.parseInt(hi.getHostProperties().get(PropertyKey.PRIORITY.getKeyName()))).reversed());
         }
     }
 
@@ -155,7 +156,8 @@ public class XDevApiConnectionUrl extends ConnectionUrl {
         if (this.prioritySorted) {
             if (this.hasDuplicatedPriorities) { // Randomly sort hosts with same priority.
                 Map<Integer, List<HostInfo>> hostsByPriority = this.hosts.stream()
-                        .collect(Collectors.groupingBy(hi -> Integer.valueOf(hi.getHostProperties().get(PropertyKey.PRIORITY.getKeyName()))));
+                        .collect(Collectors.groupingBy(hi 
+Integer.valueOf(hi.getHostProperties().get(PropertyKey.PRIORITY.getKeyName()))));
                 this.hosts = hostsByPriority.entrySet().stream()
                         .sorted(Comparator.<Map.Entry<Integer, List<HostInfo>>, Integer>comparing(Entry::getKey).reversed()).map(Entry::getValue)
                         .peek(Collections::shuffle).flatMap(List::stream).collect(Collectors.toList());

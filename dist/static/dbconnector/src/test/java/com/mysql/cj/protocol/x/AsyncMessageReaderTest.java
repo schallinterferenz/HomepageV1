@@ -277,7 +277,8 @@ public class AsyncMessageReaderTest {
         reader.start();
 
         // close the socket after the read is pending
-        new Thread(() -> {
+        new Thread(() 
+{
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
@@ -289,7 +290,8 @@ public class AsyncMessageReaderTest {
 
         // interrupt this test thread if it does happen to hang
         Thread testThread = Thread.currentThread();
-        Thread interruptThread = new Thread(() -> {
+        Thread interruptThread = new Thread(() 
+{
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
@@ -325,7 +327,8 @@ public class AsyncMessageReaderTest {
         reader.start();
 
         // close the socket after the read is pending
-        new Thread(() -> {
+        new Thread(() 
+{
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
@@ -337,7 +340,8 @@ public class AsyncMessageReaderTest {
 
         // interrupt this test thread if it does happen to hang
         Thread testThread = Thread.currentThread();
-        Thread interruptThread = new Thread(() -> {
+        Thread interruptThread = new Thread(() 
+{
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {

@@ -92,7 +92,8 @@ public class DocResultBuilder implements ResultBuilder<DocResult> {
 
     @Override
     public DocResult build() {
-        this.result = new DocResultImpl(new BufferedRowList(this.rows), () -> this.statementExecuteOkBuilder.build(), this.pset);
+        this.result = new DocResultImpl(new BufferedRowList(this.rows), () 
+this.statementExecuteOkBuilder.build(), this.pset);
         return this.result;
     }
 }

@@ -586,7 +586,9 @@ public class TableSelectTest extends BaseTableTestCase {
             return;
         }
 
-        Function<RowResult, List<String>> asStringList = rr -> rr.fetchAll().stream().map(r -> r.getString(0)).collect(Collectors.toList());
+        Function<RowResult, List<String>> asStringList = rr 
+rr.fetchAll().stream().map(r 
+r.getString(0)).collect(Collectors.toList());
 
         sqlUpdate("DROP TABLE IF EXISTS testTableRowLockOptions");
         sqlUpdate("CREATE TABLE testTableRowLockOptions (_id VARCHAR(32), a VARCHAR(20))");
@@ -683,7 +685,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             futRes = table2.select("_id").where("_id < '3'").lockExclusive().executeAsync();
             final CompletableFuture<RowResult> fr1 = futRes;
-            assertThrows(TimeoutException.class, () -> fr1.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr1.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -700,7 +703,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> table2.select("_id").where("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
+                    () 
+table2.select("_id").where("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -708,7 +712,8 @@ public class TableSelectTest extends BaseTableTestCase {
             final CompletableFuture<RowResult> fr2 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr2.get(3, TimeUnit.SECONDS));
+                    () 
+fr2.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -748,7 +753,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             futRes = table2.select("_id").where("_id < '3'").lockShared().executeAsync();
             final CompletableFuture<RowResult> fr3 = futRes;
-            assertThrows(TimeoutException.class, () -> fr3.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr3.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -765,7 +771,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> table2.select("_id").where("_id < '3'").lockShared(Statement.LockContention.NOWAIT).execute());
+                    () 
+table2.select("_id").where("_id < '3'").lockShared(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -773,7 +780,8 @@ public class TableSelectTest extends BaseTableTestCase {
             final CompletableFuture<RowResult> fr4 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr4.get(3, TimeUnit.SECONDS));
+                    () 
+fr4.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -813,7 +821,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             futRes = table2.select("_id").where("_id < '3'").lockExclusive().executeAsync();
             final CompletableFuture<RowResult> fr5 = futRes;
-            assertThrows(TimeoutException.class, () -> fr5.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr5.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -830,7 +839,8 @@ public class TableSelectTest extends BaseTableTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> table2.select("_id").where("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
+                    () 
+table2.select("_id").where("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -838,7 +848,8 @@ public class TableSelectTest extends BaseTableTestCase {
             final CompletableFuture<RowResult> fr6 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr6.get(3, TimeUnit.SECONDS));
+                    () 
+fr6.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -904,21 +915,24 @@ public class TableSelectTest extends BaseTableTestCase {
             assertTrue(rows.hasNext());
             Row r = rows.next();
             assertEquals(0, r.getInt(0));
-            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () -> rows.hasNext());
+            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () 
+rows.hasNext());
             sess.close(); // It was hanging
 
             // XProtocol.readRowOrNull()
             sess = new SessionFactory().getSession(this.testProperties);
             SqlResult rs1 = sess.sql("select c1-c2 from testBug22038729 order by c1 desc").execute();
             assertEquals(0, rs1.fetchOne().getInt(0));
-            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () -> rs1.fetchOne());
+            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () 
+rs1.fetchOne());
             sess.close(); // It was hanging
 
             // XProtocol.drainRows()
             sess = new SessionFactory().getSession(this.testProperties);
             sess.sql("select c1-c2 from testBug22038729 order by c1 desc").execute();
             XProtocol xp = (XProtocol) pf.get(((SessionImpl) sess).getSession());
-            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () -> {
+            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT UNSIGNED value is out of range .*", () 
+{
                 xp.drainRows();
                 return xp;
             });
@@ -936,7 +950,8 @@ public class TableSelectTest extends BaseTableTestCase {
             assertTrue(rs2.hasNext());
             r = rs2.next();
             assertEquals(-9223372036854774808L, r.getLong(0));
-            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT value is out of range .*", () -> rs2.hasNext());
+            assertThrows(XProtocolError.class, "ERROR 1690 \\(22003\\) BIGINT value is out of range .*", () 
+rs2.hasNext());
             sess.close(); // It was hanging
 
         } finally {
@@ -982,7 +997,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // A. Set binds: 1st execute -> non-prepared.
+            // A. Set binds: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 0, testSelect1, 0, -1);
             assertTestPreparedStatementsResult(testSelect2.bind("n", 2).execute(), 2, 8);
@@ -994,7 +1010,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // B. Set orderBy resets execution count: 1st execute -> non-prepared.
+            // B. Set orderBy resets execution count: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testSelect1.orderBy("id").execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 0, testSelect1, 0, -1);
             assertTestPreparedStatementsResult(testSelect2.orderBy("id").execute(), 2, 8);
@@ -1006,7 +1023,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // C. Set binds reuse statement: 2nd execute -> prepare + execute.
+            // C. Set binds reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 1, testSelect1, 1, 1);
             assertTestPreparedStatementsResult(testSelect2.bind("n", 3).execute(), 3, 8);
@@ -1018,7 +1036,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 4, 4, 0);
 
-            // D. Set binds reuse statement: 3rd execute -> execute.
+            // D. Set binds reuse statement: 3rd execute 
+execute.
             assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 4, testSelect1, 1, 2);
             assertTestPreparedStatementsResult(testSelect2.bind("n", 4).execute(), 4, 8);
@@ -1030,7 +1049,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 0);
 
-            // E. Set where deallocates and resets execution count: 1st execute -> deallocate + non-prepared.
+            // E. Set where deallocates and resets execution count: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testSelect1.where("true").execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 3, testSelect1, 0, -1);
             assertTestPreparedStatementsResult(testSelect2.where("true AND ord >= :n").bind("n", 4).execute(), 4, 8);
@@ -1042,7 +1062,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 4);
 
-            // F. No Changes: 2nd execute -> prepare + execute.
+            // F. No Changes: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 1, testSelect1, 1, 1);
             assertTestPreparedStatementsResult(testSelect2.bind("n", 4).execute(), 4, 8);
@@ -1054,7 +1075,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 8, 12, 4);
 
-            // G. Set limit for the first time deallocates and re-prepares: 1st execute -> re-prepare + execute.
+            // G. Set limit for the first time deallocates and re-prepares: 1st execute 
+re-prepare + execute.
             assertTestPreparedStatementsResult(testSelect1.limit(2).execute(), 1, 2);
             assertPreparedStatementsCountsAndId(testSession, 4, testSelect1, 1, 1);
             assertTestPreparedStatementsResult(testSelect2.limit(2).execute(), 4, 5);
@@ -1066,7 +1088,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 12, 16, 8);
 
-            // H. Set limit and offset reuse prepared statement: 2nd execute -> execute.
+            // H. Set limit and offset reuse prepared statement: 2nd execute 
+execute.
             assertTestPreparedStatementsResult(testSelect1.limit(1).offset(1).execute(), 2, 2);
             assertPreparedStatementsCountsAndId(testSession, 4, testSelect1, 1, 2);
             assertTestPreparedStatementsResult(testSelect2.limit(1).offset(1).execute(), 5, 5);
@@ -1078,7 +1101,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 8);
 
-            // I. Set orderBy deallocates and resets execution count, set limit and bind has no effect: 1st execute -> deallocate + non-prepared.
+            // I. Set orderBy deallocates and resets execution count, set limit and bind has no effect: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testSelect1.orderBy("id").limit(2).execute(), 2, 3);
             assertPreparedStatementsCountsAndId(testSession, 3, testSelect1, 0, -1);
             assertTestPreparedStatementsResult(testSelect2.orderBy("id").limit(2).bind("n", 4).execute(), 5, 6);
@@ -1090,7 +1114,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 12);
 
-            // J. Set offset reuse statement: 2nd execute -> prepare + execute.
+            // J. Set offset reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testSelect1.offset(0).execute(), 1, 2);
             assertPreparedStatementsCountsAndId(testSession, 1, testSelect1, 1, 1);
             assertTestPreparedStatementsResult(testSelect2.offset(0).execute(), 4, 5);
@@ -1124,7 +1149,8 @@ public class TableSelectTest extends BaseTableTestCase {
                 testSelect1 = testTbl.select("ord");
                 testSelect2 = testTbl.select("ord");
 
-                // 1st execute -> don't prepare.
+                // 1st execute 
+don't prepare.
                 assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
                 assertPreparedStatementsCountsAndId(testSession, 0, testSelect1, 0, -1);
                 assertTestPreparedStatementsResult(testSelect2.execute(), 1, 8);
@@ -1132,7 +1158,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
                 assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-                // 2nd execute -> prepare + execute.
+                // 2nd execute 
+prepare + execute.
                 assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
                 assertPreparedStatementsCountsAndId(testSession, 1, testSelect1, 1, 1);
                 assertTestPreparedStatementsResult(testSelect2.execute(), 1, 8); // Fails preparing, execute as non-prepared.
@@ -1140,7 +1167,8 @@ public class TableSelectTest extends BaseTableTestCase {
 
                 assertPreparedStatementsStatusCounts(testSession, 2, 1, 0); // Failed prepare also counts.
 
-                // 3rd execute -> execute.
+                // 3rd execute 
+execute.
                 assertTestPreparedStatementsResult(testSelect1.execute(), 1, 8);
                 assertPreparedStatementsCountsAndId(testSession, 1, testSelect1, 1, 2);
                 assertTestPreparedStatementsResult(testSelect2.execute(), 1, 8); // Execute as non-prepared.

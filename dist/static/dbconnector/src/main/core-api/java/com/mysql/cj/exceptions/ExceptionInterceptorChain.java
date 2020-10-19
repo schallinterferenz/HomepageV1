@@ -42,7 +42,8 @@ public class ExceptionInterceptorChain implements ExceptionInterceptor {
 
     public ExceptionInterceptorChain(String interceptorClasses, Properties props, Log log) {
         this.interceptors = Util.<ExceptionInterceptor> loadClasses(interceptorClasses, "Connection.BadExceptionInterceptor", this).stream()
-                .map(o -> o.init(props, log)).collect(Collectors.toList());
+                .map(o 
+o.init(props, log)).collect(Collectors.toList());
     }
 
     public void addRingZero(ExceptionInterceptor interceptor) {

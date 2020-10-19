@@ -483,7 +483,8 @@ public class ConnectionImpl implements JdbcConnection, SessionEventListener, Ser
 
     @Override
     public void unSafeQueryInterceptors() throws SQLException {
-        this.queryInterceptors = this.queryInterceptors.stream().map(u -> ((NoSubInterceptorWrapper) u).getUnderlyingInterceptor())
+        this.queryInterceptors = this.queryInterceptors.stream().map(u 
+((NoSubInterceptorWrapper) u).getUnderlyingInterceptor())
                 .collect(Collectors.toList());
 
         if (this.session != null) {
@@ -496,7 +497,8 @@ public class ConnectionImpl implements JdbcConnection, SessionEventListener, Ser
         this.queryInterceptors = Util
                 .<QueryInterceptor>loadClasses(this.propertySet.getStringProperty(PropertyKey.queryInterceptors).getStringValue(),
                         "MysqlIo.BadQueryInterceptor", getExceptionInterceptor())
-                .stream().map(o -> new NoSubInterceptorWrapper(o.init(this, this.props, this.session.getLog()))).collect(Collectors.toList());
+                .stream().map(o 
+new NoSubInterceptorWrapper(o.init(this, this.props, this.session.getLog()))).collect(Collectors.toList());
     }
 
     @Override
@@ -1287,7 +1289,8 @@ public class ConnectionImpl implements JdbcConnection, SessionEventListener, Ser
                         .<ConnectionLifecycleInterceptor>loadClasses(
                                 this.propertySet.getStringProperty(PropertyKey.connectionLifecycleInterceptors).getStringValue(),
                                 "Connection.badLifecycleInterceptor", getExceptionInterceptor())
-                        .stream().map(o -> o.init(this, this.props, this.session.getLog())).collect(Collectors.toList());
+                        .stream().map(o 
+o.init(this, this.props, this.session.getLog())).collect(Collectors.toList());
             } catch (CJException e) {
                 throw SQLExceptionsMapping.translateException(e, getExceptionInterceptor());
             }

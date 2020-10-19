@@ -414,29 +414,36 @@ public class SecureSessionTest extends DevApiBaseTestCase {
         }
 
         assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.",
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_CA)));
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_CA)));
 
         assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.",
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)));
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)));
 
         assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.",
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
                         + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
 
         Properties props = new Properties(this.sslFreeTestProperties);
         props.setProperty(PropertyKey.xdevapiSSLMode.getKeyName(), PropertyDefinitions.SslMode.VERIFY_CA.toString());
-        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
         props.setProperty(PropertyKey.xdevapiSSLMode.getKeyName(), PropertyDefinitions.SslMode.VERIFY_IDENTITY.toString());
-        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
         props.setProperty(PropertyKey.xdevapiSSLMode.getKeyName(), PropertyDefinitions.SslMode.VERIFY_IDENTITY.toString());
-        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, "No truststore provided to verify the Server certificate\\.", () 
+this.fact.getSession(props));
     }
 
     /**
@@ -451,12 +458,14 @@ public class SecureSessionTest extends DevApiBaseTestCase {
 
         // Meaningful error message is deep inside the stack trace.
         assertThrows(CJCommunicationsException.class,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)
                         + makeParam(PropertyKey.xdevapiSSLTrustStorePassword, this.trustStorePassword)));
 
         assertThrows(CJCommunicationsException.class,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.VERIFY_IDENTITY)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)
                         + makeParam(PropertyKey.xdevapiSSLTrustStorePassword, this.trustStorePassword)
                         + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
@@ -466,10 +475,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
         props.setProperty(PropertyKey.xdevapiSSLTrustStoreUrl.getKeyName(), this.trustStoreUrl);
         props.setProperty(PropertyKey.xdevapiSSLTrustStorePassword.getKeyName(), this.trustStorePassword);
         // Meaningful error message is deep inside the stack trace.
-        assertThrows(CJCommunicationsException.class, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-        assertThrows(CJCommunicationsException.class, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, () 
+this.fact.getSession(props));
     }
 
     /**
@@ -484,49 +495,61 @@ public class SecureSessionTest extends DevApiBaseTestCase {
         String expectedError = "Incompatible security settings\\. "
                 + "The property 'xdevapi.ssl-truststore' requires 'xdevapi.ssl-mode' as 'VERIFY_CA' or 'VERIFY_IDENTITY'\\.";
         assertThrows(CJCommunicationsException.class, expectedError,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)));
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)));
 
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(this.sslFreeBaseUrl
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(this.sslFreeBaseUrl
                 + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl) + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
 
         assertThrows(CJCommunicationsException.class, expectedError,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.REQUIRED)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.REQUIRED)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)));
 
         assertThrows(CJCommunicationsException.class, expectedError,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.REQUIRED)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.REQUIRED)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl) + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
 
         assertThrows(CJCommunicationsException.class, expectedError,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.DISABLED)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.DISABLED)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl)));
 
         assertThrows(CJCommunicationsException.class, expectedError,
-                () -> this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.DISABLED)
+                () 
+this.fact.getSession(this.sslFreeBaseUrl + makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.SslMode.DISABLED)
                         + makeParam(PropertyKey.xdevapiSSLTrustStoreUrl, this.trustStoreUrl) + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
 
         Properties props = new Properties(this.sslFreeTestProperties);
         props.setProperty(PropertyKey.xdevapiSSLTrustStoreUrl.getKeyName(), this.trustStoreUrl);
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
         props.setProperty(PropertyKey.xdevapiSSLMode.getKeyName(), PropertyDefinitions.SslMode.REQUIRED.toString());
         props.setProperty(PropertyKey.xdevapiSSLTrustStoreUrl.getKeyName(), this.trustStoreUrl);
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
         props.setProperty(PropertyKey.xdevapiSSLMode.getKeyName(), PropertyDefinitions.SslMode.DISABLED.toString());
         props.setProperty(PropertyKey.xdevapiSSLTrustStoreUrl.getKeyName(), this.trustStoreUrl);
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
 
         props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-        assertThrows(CJCommunicationsException.class, expectedError, () -> this.fact.getSession(props));
+        assertThrows(CJCommunicationsException.class, expectedError, () 
+this.fact.getSession(props));
     }
 
     /**
@@ -557,7 +580,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
             final Field mf = XAuthenticationProvider.class.getDeclaredField("authMech");
             mf.setAccessible(true);
 
-            Function<Session, AuthMech> getAuthMech = s -> {
+            Function<Session, AuthMech> getAuthMech = s 
+{
                 try {
                     return (AuthMech) mf.get(((XProtocol) pf.get(sf.get(s))).getAuthenticationProvider());
                 } catch (IllegalArgumentException | IllegalAccessException e) {
@@ -722,10 +746,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 }
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.4"))) { // SHA256_MEMORY support added in MySQL 8.0.4.
                     // *** User: testAuthMechSha256; Auth: SHA256_MEMORY.
@@ -774,10 +800,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 }
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.4"))) { // SHA256_MEMORY support added in MySQL 8.0.4.
                     // User: testAuthMechCachingSha2; Auth: SHA256_MEMORY.
@@ -805,10 +833,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
             props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "EXTERNAL");
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () 
+this.fact.getSession(props));
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () 
+this.fact.getSession(props));
 
             props.remove(PropertyKey.xdevapiAuth.getKeyName());
 
@@ -885,10 +915,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
             props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "PLAIN");
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-            assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-            assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
             // *** User: testAuthMechNative; Auth: MYSQL41.
             props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "MYSQL41");
@@ -933,10 +965,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "PLAIN");
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
                 // *** User: testAuthMechSha256; Auth: MYSQL41.
                 props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "MYSQL41");
@@ -945,10 +979,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 }
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.4"))) { // SHA256_MEMORY support added in MySQL 8.0.4.
                     // *** User: testAuthMechSha256; Auth: SHA256_MEMORY.
@@ -977,10 +1013,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "PLAIN");
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () -> this.fact.getSession(props));
+                assertThrows(XProtocolError.class, "PLAIN authentication is not allowed via unencrypted connection\\.", () 
+this.fact.getSession(props));
 
                 // *** User: testAuthMechCachingSha2; Auth: MYSQL41.
                 props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "MYSQL41");
@@ -989,10 +1027,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 }
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-                assertThrows(XProtocolError.class, accessDeniedErrMsg, () -> this.fact.getSession(props)); // Auth mech mismatch.
+                assertThrows(XProtocolError.class, accessDeniedErrMsg, () 
+this.fact.getSession(props)); // Auth mech mismatch.
 
                 if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.4"))) { // SHA256_MEMORY support added in MySQL 8.0.4.
                     // *** User: testAuthMechCachingSha2; Auth: SHA256_MEMORY.
@@ -1020,10 +1060,12 @@ public class SecureSessionTest extends DevApiBaseTestCase {
             props.setProperty(PropertyKey.xdevapiAuth.getKeyName(), "EXTERNAL");
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
-            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () 
+this.fact.getSession(props));
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
-            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () -> this.fact.getSession(props));
+            assertThrows(XProtocolError.class, "ERROR 1251 \\(HY000\\) Invalid authentication method EXTERNAL", () 
+this.fact.getSession(props));
 
             props.remove(PropertyKey.xdevapiAuth.getKeyName());
         } finally {
@@ -1109,11 +1151,13 @@ public class SecureSessionTest extends DevApiBaseTestCase {
         } else {
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
             assertThrows(CJCommunicationsException.class, "javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake",
-                    () -> this.fact.getSession(props));
+                    () 
+this.fact.getSession(props));
 
             props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "true");
             assertThrows(CJCommunicationsException.class, "Server does not provide enough data to proceed with SSL handshake.",
-                    () -> this.fact.getSession(props));
+                    () 
+this.fact.getSession(props));
         }
 
         /* Against OpenSSL server */
@@ -1454,7 +1498,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
             } else {
                 props.setProperty(PropertyKey.xdevapiUseAsyncProtocol.getKeyName(), "false");
                 assertThrows(CJCommunicationsException.class, "javax.net.ssl.SSLHandshakeException: Remote host closed connection during handshake",
-                        () -> this.fact.getSession(props));
+                        () 
+this.fact.getSession(props));
             }
 
             /* Against Commercial server */
@@ -1516,16 +1561,19 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 // TS.FR.2_1. Create an X DevAPI session using a connection string containing the connection property xdevapi.tls-versions without any value.
                 // Assess that the code terminates with a WrongArgumentException containing the defined message.
                 assertThrows(WrongArgumentException.class, "At least one TLS protocol version must be specified in 'xdevapi.tls-versions' list.",
-                        () -> this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, "")));
+                        () 
+this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, "")));
 
                 // TS.FR.2_2. Create an X DevAPI session using a connection properties map containing the connection property xdevapi.tls-versions without any value.
                 // Assess that the code terminates with a WrongArgumentException containing the defined message.
                 propsOpenSSL.setProperty(PropertyKey.xdevapiTlsVersions.getKeyName(), "");
                 assertThrows(WrongArgumentException.class, "At least one TLS protocol version must be specified in 'xdevapi.tls-versions' list.",
-                        () -> this.fact.getSession(propsOpenSSL));
+                        () 
+this.fact.getSession(propsOpenSSL));
 
                 // TS.FR.2_3. Repeat the test TS.FR.2_1 using a ClientFactory instead of a SessionFactory.
-                assertThrows(WrongArgumentException.class, "At least one TLS protocol version must be specified in 'xdevapi.tls-versions' list.", () -> {
+                assertThrows(WrongArgumentException.class, "At least one TLS protocol version must be specified in 'xdevapi.tls-versions' list.", () 
+{
                     Client cli1 = cf.getClient(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, ""),
                             "{\"pooling\": {\"enabled\": true}}");
                     cli1.getSession();
@@ -1536,18 +1584,21 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 // an invalid value, for example SSLv3. Assess that the code terminates with a WrongArgumentException containing the defined message.
                 assertThrows(WrongArgumentException.class,
                         "'SSLv3' not recognized as a valid TLS protocol version \\(should be one of TLSv1.3, TLSv1.2, TLSv1.1, TLSv1\\).",
-                        () -> this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, "SSLv3")));
+                        () 
+this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, "SSLv3")));
 
                 // TS.FR.3_2. Create an X DevAPI session using a connection properties map containing the connection property xdevapi.tls-versions with
                 // an invalid value, for example SSLv3. Assess that the code terminates with a WrongArgumentException containing the defined message.
                 propsOpenSSL.setProperty(PropertyKey.xdevapiTlsVersions.getKeyName(), "SSLv3");
                 assertThrows(WrongArgumentException.class,
                         "'SSLv3' not recognized as a valid TLS protocol version \\(should be one of TLSv1.3, TLSv1.2, TLSv1.1, TLSv1\\).",
-                        () -> this.fact.getSession(propsOpenSSL));
+                        () 
+this.fact.getSession(propsOpenSSL));
 
                 // TS.FR.3_3. Repeat the test TS.FR.3_1 using a ClientFactory instead of a SessionFactory.
                 assertThrows(WrongArgumentException.class,
-                        "'SSLv3' not recognized as a valid TLS protocol version \\(should be one of TLSv1.3, TLSv1.2, TLSv1.1, TLSv1\\).", () -> {
+                        "'SSLv3' not recognized as a valid TLS protocol version \\(should be one of TLSv1.3, TLSv1.2, TLSv1.1, TLSv1\\).", () 
+{
                             Client cli1 = cf.getClient(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + makeParam(PropertyKey.xdevapiTlsVersions, "SSLv3"),
                                     "{\"pooling\": {\"enabled\": true}}");
                             cli1.getSession();
@@ -1580,7 +1631,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
 
                 // TS.FR.4_4. Create an X DevAPI session using a connection string containing the connection property xdevapi.tls-ciphersuites with a single invalid cipher-suite.
                 // Assess that the connection property is initialized with the correct values and that the connection fails with an SSL error.
-                Throwable ex = assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+                Throwable ex = assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
                     this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam
                             + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_RSA_EXPORT1024_WITH_RC4_56_MD5"));
                     return null;
@@ -1616,7 +1668,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 // Assess that the connection property is initialized with the correct values and that the connection fails with an SSL error.
                 propsOpenSSL.setProperty(PropertyKey.xdevapiTlsCiphersuites.getKeyName(), "TLS_RSA_EXPORT1024_WITH_RC4_56_MD5");
                 assertThrows(CJCommunicationsException.class,
-                        "javax.net.ssl.SSLHandshakeException: No appropriate protocol \\(protocol is disabled or cipher suites are inappropriate\\)", () -> {
+                        "javax.net.ssl.SSLHandshakeException: No appropriate protocol \\(protocol is disabled or cipher suites are inappropriate\\)", () 
+{
                             this.fact.getSession(propsOpenSSL);
                             return null;
                         });
@@ -1648,7 +1701,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 assertTlsVersion(testSession, "TLSv1.2");
                 testSession.close();
 
-                ex = assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () -> {
+                ex = assertThrows(CJCommunicationsException.class, "Unable to connect to any of the target hosts\\.", () 
+{
                     Client cli1 = cf.getClient(
                             this.opensslTlsFreeBaseUrl + useAsyncProtocolParam
                                     + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_RSA_EXPORT1024_WITH_RC4_56_MD5"),
@@ -1735,7 +1789,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 String xdevapiSSLMode = makeParam(PropertyKey.xdevapiSSLMode, PropertyDefinitions.XdevapiSslMode.DISABLED.toString());
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(
+                        () 
+this.fact.getSession(
                                 this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode + makeParam(PropertyKey.xdevapiTlsVersions, "TLSv1.2")
                                         + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_DHE_RSA_WITH_AES_128_CBC_SHA")));
 
@@ -1743,7 +1798,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 // but not xdevapi.tls-ciphersuites. Assess that the code terminates with a WrongArgumentException containing the defined message.
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(
+                        () 
+this.fact.getSession(
                                 this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode + makeParam(PropertyKey.xdevapiTlsVersions, "TLSv1.2")));
 
                 //
@@ -1751,7 +1807,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 // but not xdevapi.tls-versions. Assess that the code terminates with a WrongArgumentException containing the defined message.
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsCiphersuites.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode
+                        () 
+this.fact.getSession(this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode
                                 + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_DHE_RSA_WITH_AES_128_CBC_SHA")));
 
                 //
@@ -1762,7 +1819,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 propsOpenSSL.setProperty(PropertyKey.xdevapiTlsCiphersuites.getKeyName(), "TLS_DHE_RSA_WITH_AES_128_CBC_SHA");
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(propsOpenSSL));
+                        () 
+this.fact.getSession(propsOpenSSL));
 
                 // TS.FR.6_5. Create an X DevAPI session using a connection properties map with the connection property xdevapi.ssl-mode=DISABLED and the connection property xdevapi.tls-versions
                 // but not xdevapi.tls-ciphersuites. Assess that the code terminates with a WrongArgumentException containing the defined message.
@@ -1770,7 +1828,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 propsOpenSSL.remove(PropertyKey.xdevapiTlsCiphersuites.getKeyName());
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(propsOpenSSL));
+                        () 
+this.fact.getSession(propsOpenSSL));
 
                 // TS.FR.6_6. Create an X DevAPI session using a connection properties map with the connection property xdevapi.ssl-mode=DISABLED and the connection property xdevapi.tls-ciphersuites
                 // but not xdevapi.tls-versions. Assess that the code terminates with a WrongArgumentException containing the defined message.
@@ -1778,11 +1837,13 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                 propsOpenSSL.setProperty(PropertyKey.xdevapiTlsCiphersuites.getKeyName(), "TLS_DHE_RSA_WITH_AES_128_CBC_SHA");
                 assertThrows(WrongArgumentException.class,
                         "Option '" + PropertyKey.xdevapiTlsCiphersuites.getKeyName() + "' can not be specified when SSL connections are disabled.",
-                        () -> this.fact.getSession(propsOpenSSL));
+                        () 
+this.fact.getSession(propsOpenSSL));
 
                 // TS.FR.6_7. Repeat the tests TS.FR.6_1 to TS.FR.6_3 using a ClientFactory instead of a SessionFactory.
                 assertThrows(WrongArgumentException.class,
-                        "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.", () -> {
+                        "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.", () 
+{
                             Client cli1 = cf.getClient(
                                     this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode + makeParam(PropertyKey.xdevapiTlsVersions, "TLSv1.2"),
                                     "{\"pooling\": {\"enabled\": true}}");
@@ -1790,7 +1851,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                             return null;
                         });
                 assertThrows(WrongArgumentException.class,
-                        "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.", () -> {
+                        "Option '" + PropertyKey.xdevapiTlsVersions.getKeyName() + "' can not be specified when SSL connections are disabled.", () 
+{
                             Client cli1 = cf.getClient(
                                     this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode + makeParam(PropertyKey.xdevapiTlsVersions, "TLSv1.2")
                                             + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_DHE_RSA_WITH_AES_128_CBC_SHA"),
@@ -1799,7 +1861,8 @@ public class SecureSessionTest extends DevApiBaseTestCase {
                             return null;
                         });
                 assertThrows(WrongArgumentException.class,
-                        "Option '" + PropertyKey.xdevapiTlsCiphersuites.getKeyName() + "' can not be specified when SSL connections are disabled.", () -> {
+                        "Option '" + PropertyKey.xdevapiTlsCiphersuites.getKeyName() + "' can not be specified when SSL connections are disabled.", () 
+{
                             Client cli1 = cf.getClient(
                                     this.opensslTlsFreeBaseUrl + useAsyncProtocolParam + xdevapiSSLMode
                                             + makeParam(PropertyKey.xdevapiTlsCiphersuites, "TLS_DHE_RSA_WITH_AES_128_CBC_SHA"),

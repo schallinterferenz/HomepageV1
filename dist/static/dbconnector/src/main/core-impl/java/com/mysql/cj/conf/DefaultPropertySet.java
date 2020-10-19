@@ -264,8 +264,10 @@ public class DefaultPropertySet implements PropertySet, Serializable {
 
     @Override
     public void reset() {
-        this.PROPERTY_KEY_TO_RUNTIME_PROPERTY.values().forEach(p -> p.resetValue());
-        this.PROPERTY_NAME_TO_RUNTIME_PROPERTY.values().forEach(p -> p.resetValue());
+        this.PROPERTY_KEY_TO_RUNTIME_PROPERTY.values().forEach(p 
+p.resetValue());
+        this.PROPERTY_NAME_TO_RUNTIME_PROPERTY.values().forEach(p 
+p.resetValue());
         postInitialization();
     }
 }

@@ -120,7 +120,8 @@ public class LoadBalanceConnectionUrl extends ConnectionUrl {
      * @return a list of this connection URL hosts in the form of host:port pairs
      */
     public List<String> getHostInfoListAsHostPortPairs() {
-        return this.hosts.stream().map(hi -> hi.getHostPortPair()).collect(Collectors.toList());
+        return this.hosts.stream().map(hi 
+hi.getHostPortPair()).collect(Collectors.toList());
     }
 
     /**

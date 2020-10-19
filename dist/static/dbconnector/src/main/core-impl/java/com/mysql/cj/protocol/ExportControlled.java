@@ -126,10 +126,14 @@ public class ExportControlled {
         try {
             Properties tlsSettings = new Properties();
             tlsSettings.load(ExportControlled.class.getResourceAsStream(TLS_SETTINGS_RESOURCE));
-            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Mandatory").split("\\s*,\\s*")).forEach(s -> ALLOWED_CIPHERS.add(s.trim()));
-            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Approved").split("\\s*,\\s*")).forEach(s -> ALLOWED_CIPHERS.add(s.trim()));
-            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Deprecated").split("\\s*,\\s*")).forEach(s -> ALLOWED_CIPHERS.add(s.trim()));
-            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Unacceptable.Mask").split("\\s*,\\s*")).forEach(s -> RESTRICTED_CIPHER_SUBSTR.add(s.trim()));
+            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Mandatory").split("\\s*,\\s*")).forEach(s 
+ALLOWED_CIPHERS.add(s.trim()));
+            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Approved").split("\\s*,\\s*")).forEach(s 
+ALLOWED_CIPHERS.add(s.trim()));
+            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Deprecated").split("\\s*,\\s*")).forEach(s 
+ALLOWED_CIPHERS.add(s.trim()));
+            Arrays.stream(tlsSettings.getProperty("TLSCiphers.Unacceptable.Mask").split("\\s*,\\s*")).forEach(s 
+RESTRICTED_CIPHER_SUBSTR.add(s.trim()));
         } catch (IOException e) {
             throw ExceptionFactory.createException("Unable to load TlsSettings.properties");
         }
@@ -152,7 +156,9 @@ public class ExportControlled {
                 // mandatory, approved and deprecated ciphers
                 .filter(ALLOWED_CIPHERS::contains)
                 // unacceptable ciphers
-                .filter(c -> !RESTRICTED_CIPHER_SUBSTR.stream().filter(r -> c.contains(r)).findFirst().isPresent())
+                .filter(c 
+!RESTRICTED_CIPHER_SUBSTR.stream().filter(r 
+c.contains(r)).findFirst().isPresent())
                 //
                 .collect(Collectors.toList());
 
@@ -357,7 +363,8 @@ public class ExportControlled {
 
             if (verifyServerCertificate) {
                 try {
-                    Set<TrustAnchor> anch = Arrays.stream(tm.getAcceptedIssuers()).map(c -> new TrustAnchor(c, null)).collect(Collectors.toSet());
+                    Set<TrustAnchor> anch = Arrays.stream(tm.getAcceptedIssuers()).map(c 
+new TrustAnchor(c, null)).collect(Collectors.toSet());
                     this.validatorParams = new PKIXParameters(anch);
                     this.validatorParams.setRevocationEnabled(false);
                     this.validator = CertPathValidator.getInstance("PKIX");

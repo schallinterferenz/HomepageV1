@@ -129,7 +129,8 @@ public class CollectionTest extends BaseCollectionTestCase {
         }
         String collName = "testRequireExists";
         dropCollection(collName);
-        assertThrows(WrongArgumentException.class, () -> this.schema.getCollection(collName, true));
+        assertThrows(WrongArgumentException.class, () 
+this.schema.getCollection(collName, true));
     }
 
     @Test
@@ -287,46 +288,62 @@ public class CollectionTest extends BaseCollectionTestCase {
 
         // FR5_4 Create an index where its definition is a JSON document but its structure is not valid.
         assertThrows(XDevAPIError.class, "Index definition does not contain fields.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"type\": \"INDEX\"}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"type\": \"INDEX\"}"));
         assertThrows(XDevAPIError.class, "Index definition 'fields' member must be an array of index fields.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": 123}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": 123}"));
         assertThrows(XDevAPIError.class, "Index field definition must be a JSON document.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [123]}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [123]}"));
         assertThrows(XDevAPIError.class, "Index field definition has no document path.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"type\": 123}]}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"type\": 123}]}"));
         assertThrows(XDevAPIError.class, "Index field 'field' member must be a string.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": 123}]}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": 123}]}"));
         assertThrows(XDevAPIError.class, "Index field definition has no field type.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\"}]}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\"}]}"));
         assertThrows(XDevAPIError.class, "Index type must be a string.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\", \"type\": 123}]}"));
-        assertThrows(XDevAPIError.class, "Index field 'required' member must be boolean.", () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\", \"type\": 123}]}"));
+        assertThrows(XDevAPIError.class, "Index field 'required' member must be boolean.", () 
+CollectionTest.this.collection.createIndex("myIndex",
                 "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(5)\", \"required\": \"yes\"}]}"));
-        assertThrows(XDevAPIError.class, "Index field 'options' member must be integer.", () -> CollectionTest.this.collection.createIndex("myIndex",
+        assertThrows(XDevAPIError.class, "Index field 'options' member must be integer.", () 
+CollectionTest.this.collection.createIndex("myIndex",
                 "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"GEOJSON\", \"options\": \"qqq\"}]}"));
-        assertThrows(XDevAPIError.class, "Index field 'srid' member must be integer.", () -> CollectionTest.this.collection.createIndex("myIndex",
+        assertThrows(XDevAPIError.class, "Index field 'srid' member must be integer.", () 
+CollectionTest.this.collection.createIndex("myIndex",
                 "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"GEOJSON\", \"options\": 2, \"srid\": \"qqq\"}]}"));
-        assertThrows(XDevAPIError.class, "Wrong index type 'SPTIAL'. Must be 'INDEX' or 'SPATIAL'.", () -> CollectionTest.this.collection.createIndex("myIndex",
+        assertThrows(XDevAPIError.class, "Wrong index type 'SPTIAL'. Must be 'INDEX' or 'SPATIAL'.", () 
+CollectionTest.this.collection.createIndex("myIndex",
                 "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(5)\"}], \"type\":\"SPTIAL\"}"));
         assertThrows(XDevAPIError.class, "Index type must be a string.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(5)\"}], \"type\":123}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(5)\"}], \"type\":123}"));
 
         // FR5_6 Create a 'SPATIAL' index with "required" flag set to false.
         assertThrows(XProtocolError.class, "ERROR 5117 \\(HY000\\) GEOJSON index requires 'constraint.required: TRUE",
-                () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex",
                         "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"GEOJSON\", \"required\": false, \"options\": 2, \"srid\": 4326}], \"type\":\"SPATIAL\"}"));
 
         // FR5_8 Create an index specifying geojson options for non geojson data type.
         assertThrows(XDevAPIError.class, "Index field 'options' member should not be used for field types other than GEOJSON.",
-                () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex",
                         "{\"fields\": [{\"field\": \"$.myGeoJsonField\", \"type\": \"TEXT(10)\", \"required\": true, \"options\": 2, \"srid\": 4326}]}"));
         assertThrows(XDevAPIError.class, "Index field 'srid' member should not be used for field types other than GEOJSON.",
-                () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex",
                         "{\"fields\": [{\"field\": \"$.myGeoJsonField\", \"type\": \"TEXT(10)\", \"required\": true, \"srid\": 4326}]}"));
 
         // ET_2 Create an index specifying SPATIAL as the index type for a non spatial data type
         assertThrows(XProtocolError.class, "ERROR 3106 \\(HY000\\) 'Spatial index on virtual generated column' is not supported for generated columns.",
-                () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex",
                         "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(10)\"}], \"type\":\"SPATIAL\"}"));
 
         if (mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.12"))) {
@@ -338,28 +355,37 @@ public class CollectionTest extends BaseCollectionTestCase {
         } else {
             // ET_3 Create an index specifying INDEX as the index type for a spatial data type
             assertThrows(XProtocolError.class, "ERROR 1170 \\(42000\\) BLOB/TEXT column .+_gj_r_.+ used in key specification without a key length",
-                    () -> CollectionTest.this.collection.createIndex("myIndex",
+                    () 
+CollectionTest.this.collection.createIndex("myIndex",
                             "{\"fields\": [{\"field\": \"$.myGeoJsonField\", \"type\": \"GEOJSON\", \"required\": true, \"options\": 2, \"srid\": 4326}],"
                                     + " \"type\":\"INDEX\"}"));
         }
 
         // NPE checks
         assertThrows(XDevAPIError.class, "Parameter 'indexName' must not be null or empty.",
-                () -> CollectionTest.this.collection.createIndex(null, "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(200)\"}]}"));
+                () 
+CollectionTest.this.collection.createIndex(null, "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(200)\"}]}"));
         assertThrows(XDevAPIError.class, "Parameter 'indexName' must not be null or empty.",
-                () -> CollectionTest.this.collection.createIndex(" ", "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(200)\"}]}"));
+                () 
+CollectionTest.this.collection.createIndex(" ", "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"TEXT(200)\"}]}"));
         assertThrows(XDevAPIError.class, "Parameter 'jsonIndexDefinition' must not be null or empty.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", (String) null));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", (String) null));
         assertThrows(XDevAPIError.class, "Parameter 'jsonIndexDefinition' must not be null or empty.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", ""));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", ""));
         assertThrows(XDevAPIError.class, "Parameter 'indexDefinition' must not be null or empty.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", (DbDoc) null));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", (DbDoc) null));
 
         assertThrows(XDevAPIError.class, "The 'somekey' field is not allowed in indexDefinition.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"somekey\": 123}"));
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"somekey\": 123}"));
         assertThrows(XDevAPIError.class, "The 'somefield' field is not allowed in indexField.",
-                () -> CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"somefield\": 123}]}"));
-        assertThrows(XDevAPIError.class, "The 'unique' field is not allowed in indexDefinition.", () -> CollectionTest.this.collection.createIndex("myIndex",
+                () 
+CollectionTest.this.collection.createIndex("myIndex", "{\"fields\": [{\"somefield\": 123}]}"));
+        assertThrows(XDevAPIError.class, "The 'unique' field is not allowed in indexDefinition.", () 
+CollectionTest.this.collection.createIndex("myIndex",
                 "{\"fields\": [{\"field\": \"$.intField\", \"type\": \"INT\", \"required\": true}], \"unique\":true, \"type\":\"INDEX\"}"));
 
         // dropping non-existing index should not fail
@@ -422,12 +448,14 @@ public class CollectionTest extends BaseCollectionTestCase {
 
             // TS_3 - supported types and 'required=true' in array indexes; empty collection.
             assertThrows(XProtocolError.class, "ERROR 5017 \\(HY000\\) Unsupported argument specification for '\\$\\.myField'",
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(supArrType)).add("array", JsonLiteral.TRUE).add("required", JsonLiteral.TRUE)))));
 
             assertThrows(XProtocolError.class, "ERROR 5017 \\(HY000\\) Unsupported argument specification for '\\$\\.myField'",
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + supArrType + "\", \"array\": true, \"required\": true}]}"));
         }
 
@@ -452,7 +480,8 @@ public class CollectionTest extends BaseCollectionTestCase {
 
         // TS_5 - multiple array fields in same index.
         assertThrows(XProtocolError.class, "ERROR 1235 \\(42000\\) This version of MySQL doesn't yet support 'more than one multi-valued key part per index'",
-                () -> this.collection.createIndex("myIndex",
+                () 
+this.collection.createIndex("myIndex",
                         new DbDocImpl().add("fields",
                                 new JsonArray()
                                         .addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField1"))
@@ -461,7 +490,8 @@ public class CollectionTest extends BaseCollectionTestCase {
                                                 .add("type", new JsonString().setValue("CHAR(100)")).add("array", JsonLiteral.TRUE)))));
 
         assertThrows(XProtocolError.class, "ERROR 1235 \\(42000\\) This version of MySQL doesn't yet support 'more than one multi-valued key part per index'",
-                () -> this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField1\", \"type\": \"CHAR(100)\", \"array\": true}, "
+                () 
+this.collection.createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField1\", \"type\": \"CHAR(100)\", \"array\": true}, "
                         + "{\"field\": \"$.myField2\", \"type\": \"CHAR(100)\", \"array\": true}]}"));
 
         // TS_6 - supported index types that aren't supported in array fields; empty collection.
@@ -474,14 +504,16 @@ public class CollectionTest extends BaseCollectionTestCase {
             assertThrows(XProtocolError.class,
                     "ERROR 5017 \\(HY000\\) Invalid or unsupported type specification for array index '" + unsupArrType.replace("(", "\\(").replace(")", "\\)")
                             + "'",
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(unsupArrType)).add("array", JsonLiteral.TRUE)))));
 
             assertThrows(XProtocolError.class,
                     "ERROR 5017 \\(HY000\\) Invalid or unsupported type specification for array index '" + unsupArrType.replace("(", "\\(").replace(")", "\\)")
                             + "'",
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + unsupArrType + "\", \"array\": true}]}"));
         }
 
@@ -507,11 +539,13 @@ public class CollectionTest extends BaseCollectionTestCase {
             String unsupArrType = unsupArrTypes[i];
 
             assertThrows(XProtocolError.class, "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1",
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(unsupArrType)).add("array", JsonLiteral.TRUE)))));
 
-            assertThrows(XProtocolError.class, "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1", () -> this.collection
+            assertThrows(XProtocolError.class, "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1", () 
+this.collection
                     .createIndex("myIndex", "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + unsupArrType + "\", \"array\": true}]}"));
         }
         this.collection.remove("true").execute();
@@ -540,11 +574,13 @@ public class CollectionTest extends BaseCollectionTestCase {
             String errMsg = i <= 2 ? "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1"
                     : "ERROR 3903 \\(22018\\) Invalid JSON value for CAST for functional index 'myIndex'\\.";
             assertThrows(XProtocolError.class, errMsg,
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(unsupArrType)).add("array", JsonLiteral.TRUE)))));
 
-            assertThrows(XProtocolError.class, errMsg, () -> this.collection.createIndex("myIndex",
+            assertThrows(XProtocolError.class, errMsg, () 
+this.collection.createIndex("myIndex",
                     "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + unsupArrType + "\", \"array\": true}]}"));
         }
         this.collection.remove("true").execute();
@@ -574,11 +610,13 @@ public class CollectionTest extends BaseCollectionTestCase {
             String errMsg = i <= 0 ? "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1"
                     : "ERROR 3903 \\(22018\\) Invalid JSON value for CAST for functional index 'myIndex'\\.";
             assertThrows(XProtocolError.class, errMsg,
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(unsupArrType)).add("array", JsonLiteral.TRUE)))));
 
-            assertThrows(XProtocolError.class, errMsg, () -> this.collection.createIndex("myIndex",
+            assertThrows(XProtocolError.class, errMsg, () 
+this.collection.createIndex("myIndex",
                     "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + unsupArrType + "\", \"array\": true}]}"));
         }
         this.collection.remove("true").execute();
@@ -607,11 +645,13 @@ public class CollectionTest extends BaseCollectionTestCase {
             String errMsg = i <= 1 ? "ERROR 3751 \\(01000\\) Data truncated for functional index 'myIndex' at row 1"
                     : "ERROR 3903 \\(22018\\) Invalid JSON value for CAST for functional index 'myIndex'\\.";
             assertThrows(XProtocolError.class, errMsg,
-                    () -> this.collection.createIndex("myIndex",
+                    () 
+this.collection.createIndex("myIndex",
                             new DbDocImpl().add("fields", new JsonArray().addValue(new DbDocImpl().add("field", new JsonString().setValue("$.myField"))
                                     .add("type", new JsonString().setValue(unsupArrType)).add("array", JsonLiteral.TRUE)))));
 
-            assertThrows(XProtocolError.class, errMsg, () -> this.collection.createIndex("myIndex",
+            assertThrows(XProtocolError.class, errMsg, () 
+this.collection.createIndex("myIndex",
                     "{\"fields\": [{\"field\": \"$.myField\", \"type\": \"" + unsupArrType + "\", \"array\": true}]}"));
         }
         this.collection.remove("true").execute();

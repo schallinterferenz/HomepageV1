@@ -79,7 +79,8 @@ public class StreamingSqlResultBuilder implements ResultBuilder<SqlResult> {
         }
 
         AtomicBoolean readLastResult = new AtomicBoolean(false);
-        Supplier<ProtocolEntity> okReader = () -> {
+        Supplier<ProtocolEntity> okReader = () 
+{
             if (readLastResult.get()) {
                 throw new CJCommunicationsException("Invalid state attempting to read ok packet");
             }
@@ -91,20 +92,23 @@ public class StreamingSqlResultBuilder implements ResultBuilder<SqlResult> {
             readLastResult.set(true);
             return this.protocol.readQueryResult(this.statementExecuteOkBuilder);
         };
-        Supplier<SqlResult> resultStream = () -> {
+        Supplier<SqlResult> resultStream = () 
+{
             if (readLastResult.get()) {
                 return null;
             } else if (this.lastEntity != null && this.lastEntity instanceof Field || this.protocol.isSqlResultPending()) {
                 ColumnDefinition cd;
                 if (this.lastEntity != null && this.lastEntity instanceof Field) {
-                    cd = this.protocol.readMetadata((Field) this.lastEntity, (n) -> {
+                    cd = this.protocol.readMetadata((Field) this.lastEntity, (n) 
+{
                         this.statementExecuteOkBuilder.addProtocolEntity(n);
                     });
                     this.lastEntity = null;
                 } else {
                     cd = this.protocol.readMetadata();
                 }
-                return new SqlSingleResult(cd, this.protocol.getServerSession().getDefaultTimeZone(), new XProtocolRowInputStream(cd, this.protocol, (n) -> {
+                return new SqlSingleResult(cd, this.protocol.getServerSession().getDefaultTimeZone(), new XProtocolRowInputStream(cd, this.protocol, (n) 
+{
                     this.statementExecuteOkBuilder.addProtocolEntity(n);
                 }), okReader, this.pset);
             } else {

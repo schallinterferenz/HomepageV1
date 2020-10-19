@@ -55,7 +55,8 @@ public class Ipv6SupportTest extends DevApiBaseTestCase {
     public void setupIpv6SupportTest() {
         if (setupTestSession()) {
             List<Inet6Address> ipv6List = TestUtils.getIpv6List();
-            this.ipv6Addrs = ipv6List.stream().map((e) -> e.getHostAddress()).collect(Collectors.toList());
+            this.ipv6Addrs = ipv6List.stream().map((e) 
+e.getHostAddress()).collect(Collectors.toList());
             this.ipv6Addrs.add("::1"); // IPv6 loopback
 
             this.session.sql("DROP USER IF EXISTS '" + this.testUser + "'@'%'").execute();

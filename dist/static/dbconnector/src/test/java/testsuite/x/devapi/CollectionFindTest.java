@@ -589,7 +589,9 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             return;
         }
 
-        Function<DocResult, List<String>> asStringList = rr -> rr.fetchAll().stream().map(d -> ((JsonString) d.get("_id")).getString())
+        Function<DocResult, List<String>> asStringList = rr 
+rr.fetchAll().stream().map(d 
+((JsonString) d.get("_id")).getString())
                 .collect(Collectors.toList());
 
         this.collection.add("{\"_id\":\"1\", \"a\":1}").add("{\"_id\":\"2\", \"a\":1}").add("{\"_id\":\"3\", \"a\":1}").execute();
@@ -684,7 +686,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             futRes = col2.find("_id < '3'").lockExclusive().executeAsync();
             final CompletableFuture<DocResult> fr1 = futRes;
-            assertThrows(TimeoutException.class, () -> fr1.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr1.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -701,7 +704,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> col2.find("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
+                    () 
+col2.find("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -709,7 +713,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             final CompletableFuture<DocResult> fr2 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr2.get(3, TimeUnit.SECONDS));
+                    () 
+fr2.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -749,7 +754,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             futRes = col2.find("_id < '3'").lockShared().executeAsync();
             final CompletableFuture<DocResult> fr3 = futRes;
-            assertThrows(TimeoutException.class, () -> fr3.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr3.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -766,7 +772,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> col2.find("_id < '3'").lockShared(Statement.LockContention.NOWAIT).execute());
+                    () 
+col2.find("_id < '3'").lockShared(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -774,7 +781,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             final CompletableFuture<DocResult> fr4 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr4.get(3, TimeUnit.SECONDS));
+                    () 
+fr4.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -814,7 +822,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             futRes = col2.find("_id < '3'").lockExclusive().executeAsync();
             final CompletableFuture<DocResult> fr5 = futRes;
-            assertThrows(TimeoutException.class, () -> fr5.get(3, TimeUnit.SECONDS));
+            assertThrows(TimeoutException.class, () 
+fr5.get(3, TimeUnit.SECONDS));
 
             session1.rollback(); // Unlocks session2.
 
@@ -831,7 +840,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             session2.startTransaction();
             assertThrows(XProtocolError.class,
                     "ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> col2.find("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
+                    () 
+col2.find("_id < '3'").lockExclusive(Statement.LockContention.NOWAIT).execute());
             session2.rollback();
 
             session2.startTransaction();
@@ -839,7 +849,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             final CompletableFuture<DocResult> fr6 = futRes;
             assertThrows(ExecutionException.class,
                     ".*XProtocolError: ERROR 3572 \\(HY000\\) Statement aborted because lock\\(s\\) could not be acquired immediately and NOWAIT is set\\.",
-                    () -> fr6.get(3, TimeUnit.SECONDS));
+                    () 
+fr6.get(3, TimeUnit.SECONDS));
             session2.rollback();
 
             session1.rollback();
@@ -1022,7 +1033,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-        // A. Set binds: 1st execute -> non-prepared.
+        // A. Set binds: 1st execute 
+non-prepared.
         assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 0, testFind1, 0, -1);
         assertTestPreparedStatementsResult(testFind2.bind("n", 2).execute(), 2, 8);
@@ -1034,7 +1046,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-        // B. Set sort resets execution count: 1st execute -> non-prepared.
+        // B. Set sort resets execution count: 1st execute 
+non-prepared.
         assertTestPreparedStatementsResult(testFind1.sort("$._id").execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 0, testFind1, 0, -1);
         assertTestPreparedStatementsResult(testFind2.sort("$._id").execute(), 2, 8);
@@ -1046,7 +1059,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-        // C. Set binds reuse statement: 2nd execute -> prepare + execute.
+        // C. Set binds reuse statement: 2nd execute 
+prepare + execute.
         assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 1);
         assertTestPreparedStatementsResult(testFind2.bind("n", 3).execute(), 3, 8);
@@ -1058,7 +1072,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 4, 4, 0);
 
-        // D. Set binds reuse statement: 3rd execute -> execute.
+        // D. Set binds reuse statement: 3rd execute 
+execute.
         assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 4, testFind1, 1, 2);
         assertTestPreparedStatementsResult(testFind2.bind("n", 4).execute(), 4, 8);
@@ -1070,7 +1085,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 4, 8, 0);
 
-        // E. Set sort deallocates and resets execution count: 1st execute -> deallocate + non-prepared.
+        // E. Set sort deallocates and resets execution count: 1st execute 
+deallocate + non-prepared.
         assertTestPreparedStatementsResult(testFind1.sort("$._id").execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 3, testFind1, 0, -1);
         assertTestPreparedStatementsResult(testFind2.sort("$._id").bind("n", 4).execute(), 4, 8);
@@ -1082,7 +1098,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 4, 8, 4);
 
-        // F. No Changes: 2nd execute -> prepare + execute.
+        // F. No Changes: 2nd execute 
+prepare + execute.
         assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
         assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 1);
         assertTestPreparedStatementsResult(testFind2.bind("n", 4).execute(), 4, 8);
@@ -1094,7 +1111,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 8, 12, 4);
 
-        // G. Set limit for the first time deallocates and re-prepares: 1st execute -> re-prepare + execute.
+        // G. Set limit for the first time deallocates and re-prepares: 1st execute 
+re-prepare + execute.
         assertTestPreparedStatementsResult(testFind1.limit(2).execute(), 1, 2);
         assertPreparedStatementsCountsAndId(testSession, 4, testFind1, 1, 1);
         assertTestPreparedStatementsResult(testFind2.limit(2).execute(), 4, 5);
@@ -1106,7 +1124,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 12, 16, 8);
 
-        // H. Set limit and offset reuse prepared statement: 2nd execute -> execute.
+        // H. Set limit and offset reuse prepared statement: 2nd execute 
+execute.
         assertTestPreparedStatementsResult(testFind1.limit(1).offset(1).execute(), 2, 2);
         assertPreparedStatementsCountsAndId(testSession, 4, testFind1, 1, 2);
         assertTestPreparedStatementsResult(testFind2.limit(1).offset(1).execute(), 5, 5);
@@ -1118,7 +1137,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 12, 20, 8);
 
-        // I. Set sort deallocates and resets execution count, set limit and bind has no effect: 1st execute -> deallocate + non-prepared.
+        // I. Set sort deallocates and resets execution count, set limit and bind has no effect: 1st execute 
+deallocate + non-prepared.
         assertTestPreparedStatementsResult(testFind1.sort("$._id").limit(2).execute(), 2, 3);
         assertPreparedStatementsCountsAndId(testSession, 3, testFind1, 0, -1);
         assertTestPreparedStatementsResult(testFind2.sort("$._id").limit(2).bind("n", 4).execute(), 5, 6);
@@ -1130,7 +1150,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
         assertPreparedStatementsStatusCounts(testSession, 12, 20, 12);
 
-        // J. Set offset reuse statement: 2nd execute -> prepare + execute.
+        // J. Set offset reuse statement: 2nd execute 
+prepare + execute.
         assertTestPreparedStatementsResult(testFind1.offset(0).execute(), 1, 2);
         assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 1);
         assertTestPreparedStatementsResult(testFind2.offset(0).execute(), 4, 5);
@@ -1164,7 +1185,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
             testFind1 = testCol.find();
             testFind2 = testCol.find();
 
-            // 1st execute -> don't prepare.
+            // 1st execute 
+don't prepare.
             assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 0, testFind1, 0, -1);
             assertTestPreparedStatementsResult(testFind2.execute(), 1, 8);
@@ -1172,7 +1194,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
 
-            // 2nd execute -> prepare + execute.
+            // 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 1);
             assertTestPreparedStatementsResult(testFind2.execute(), 1, 8); // Fails preparing, execute as non-prepared.
@@ -1180,7 +1203,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
 
             assertPreparedStatementsStatusCounts(testSession, 2, 1, 0); // Failed prepare also counts.
 
-            // 3rd execute -> execute.
+            // 3rd execute 
+execute.
             assertTestPreparedStatementsResult(testFind1.execute(), 1, 8);
             assertPreparedStatementsCountsAndId(testSession, 1, testFind1, 1, 2);
             assertTestPreparedStatementsResult(testFind2.execute(), 1, 8); // Execute as non-prepared.
@@ -1229,7 +1253,8 @@ public class CollectionFindTest extends BaseCollectionTestCase {
         if (!mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.17"))) {
             // TSFR6
             assertThrows(XProtocolError.class, "ERROR 5150 \\(HY000\\) Invalid operator overlaps",
-                    () -> this.collection.find("[1, 2, 3] OVERLAPS $.list").execute());
+                    () 
+this.collection.find("[1, 2, 3] OVERLAPS $.list").execute());
             return;
         }
 
@@ -1298,13 +1323,19 @@ public class CollectionFindTest extends BaseCollectionTestCase {
         assertTrue(((JsonLiteral) doc.get("overlaps")).equals(JsonLiteral.FALSE));
 
         // TSFR4
-        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 0", () -> this.collection.find("overlaps $.list").execute());
-        assertThrows(WrongArgumentException.class, "No more tokens when expecting one at token pos 4", () -> this.collection.find("$.list OVERLAPS").execute());
-        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 0", () -> this.collection.find("overlaps").execute());
-        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 1", () -> this.collection.find("NOT overlaps").execute());
+        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 0", () 
+this.collection.find("overlaps $.list").execute());
+        assertThrows(WrongArgumentException.class, "No more tokens when expecting one at token pos 4", () 
+this.collection.find("$.list OVERLAPS").execute());
+        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 0", () 
+this.collection.find("overlaps").execute());
+        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 1", () 
+this.collection.find("NOT overlaps").execute());
         assertThrows(WrongArgumentException.class, "No more tokens when expecting one at token pos 5",
-                () -> this.collection.find("$.list NOT OVERLAPS").execute());
-        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 1", () -> this.collection.find("not overlaps").execute());
+                () 
+this.collection.find("$.list NOT OVERLAPS").execute());
+        assertThrows(WrongArgumentException.class, "Cannot find atomic expression at token pos: 1", () 
+this.collection.find("not overlaps").execute());
 
         // TSFR5
         res = this.collection.find("[1, 2, 3] OVERLAPS $.age").execute();

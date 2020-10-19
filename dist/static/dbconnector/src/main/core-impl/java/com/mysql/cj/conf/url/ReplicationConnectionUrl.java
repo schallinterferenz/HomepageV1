@@ -161,7 +161,8 @@ public class ReplicationConnectionUrl extends ConnectionUrl {
      * @return a list of this connection URL master hosts in the form of host:port pairs
      */
     public List<String> getMastersListAsHostPortPairs() {
-        return this.masterHosts.stream().map(hi -> hi.getHostPortPair()).collect(Collectors.toList());
+        return this.masterHosts.stream().map(hi 
+hi.getHostPortPair()).collect(Collectors.toList());
     }
 
     /**
@@ -193,7 +194,8 @@ public class ReplicationConnectionUrl extends ConnectionUrl {
      * @return a list of this connection URL master hosts in the form of host:port pairs
      */
     public List<String> getSlavesListAsHostPortPairs() {
-        return this.slaveHosts.stream().map(hi -> hi.getHostPortPair()).collect(Collectors.toList());
+        return this.slaveHosts.stream().map(hi 
+hi.getHostPortPair()).collect(Collectors.toList());
     }
 
     /**

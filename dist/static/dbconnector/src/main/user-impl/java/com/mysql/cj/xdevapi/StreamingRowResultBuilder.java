@@ -79,9 +79,11 @@ public class StreamingRowResultBuilder implements ResultBuilder<RowResult> {
             this.metadata = new DefaultColumnDefinition(this.fields.toArray(new Field[] {}));
         }
 
-        this.rowList = entity instanceof Row ? new XProtocolRowInputStream(this.metadata, (Row) entity, this.protocol, (n) -> {
+        this.rowList = entity instanceof Row ? new XProtocolRowInputStream(this.metadata, (Row) entity, this.protocol, (n) 
+{
             this.statementExecuteOkBuilder.addProtocolEntity(n);
-        }) : new XProtocolRowInputStream(this.metadata, this.protocol, (n) -> {
+        }) : new XProtocolRowInputStream(this.metadata, this.protocol, (n) 
+{
             this.statementExecuteOkBuilder.addProtocolEntity(n);
         });
 
@@ -90,7 +92,8 @@ public class StreamingRowResultBuilder implements ResultBuilder<RowResult> {
 
     @Override
     public RowResult build() {
-        return new RowResultImpl(this.metadata, this.defaultTimeZone, this.rowList, () -> {
+        return new RowResultImpl(this.metadata, this.defaultTimeZone, this.rowList, () 
+{
             return this.protocol.readQueryResult(this.statementExecuteOkBuilder);
         }, this.pset);
     }

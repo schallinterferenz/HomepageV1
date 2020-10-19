@@ -189,7 +189,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsCountsAndId(testSession, 0, testRemove3, 0, -1);
             assertPreparedStatementsCountsAndId(testSession, 0, testRemove4, 0, -1);
 
-            // A. Set binds: 1st execute -> non-prepared.
+            // A. Set binds: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 0, testRemove1, 0, -1);
             assertTestPreparedStatementsResult(testRemove2.bind("n", 2).execute(), 3, testCol2.getName(), 1);
@@ -202,7 +203,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
             testPreparedStatementsResetData();
 
-            // B. Set sort resets execution count: 1st execute -> non-prepared.
+            // B. Set sort resets execution count: 1st execute 
+non-prepared.
             assertTestPreparedStatementsResult(testRemove1.sort("$._id").execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 0, testRemove1, 0, -1);
             assertTestPreparedStatementsResult(testRemove2.sort("$._id").execute(), 3, testCol2.getName(), 1);
@@ -215,7 +217,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
             testPreparedStatementsResetData();
 
-            // C. Set binds reuse statement: 2nd execute -> prepare + execute.
+            // C. Set binds reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 1, testRemove1, 1, 1);
             assertTestPreparedStatementsResult(testRemove2.bind("n", 3).execute(), 2, testCol2.getName(), 1, 2);
@@ -228,7 +231,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 4, 0);
             testPreparedStatementsResetData();
 
-            // D. Set binds reuse statement: 3rd execute -> execute.
+            // D. Set binds reuse statement: 3rd execute 
+execute.
             assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 4, testRemove1, 1, 2);
             assertTestPreparedStatementsResult(testRemove2.bind("n", 4).execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -241,7 +245,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 0);
             testPreparedStatementsResetData();
 
-            // E. Set sort deallocates and resets execution count: 1st execute -> deallocate + non-prepared.
+            // E. Set sort deallocates and resets execution count: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testRemove1.sort("$._id").execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 3, testRemove1, 0, -1);
             assertTestPreparedStatementsResult(testRemove2.sort("$._id").execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -254,7 +259,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 4, 8, 4);
             testPreparedStatementsResetData();
 
-            // F. No Changes: 2nd execute -> prepare + execute.
+            // F. No Changes: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
             assertPreparedStatementsCountsAndId(testSession, 1, testRemove1, 1, 1);
             assertTestPreparedStatementsResult(testRemove2.execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -267,7 +273,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 8, 12, 4);
             testPreparedStatementsResetData();
 
-            // G. Set limit for the first time deallocates and re-prepares: 1st execute -> re-prepare + execute.
+            // G. Set limit for the first time deallocates and re-prepares: 1st execute 
+re-prepare + execute.
             assertTestPreparedStatementsResult(testRemove1.limit(1).execute(), 1, testCol1.getName(), 2, 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 4, testRemove1, 1, 1);
             assertTestPreparedStatementsResult(testRemove2.limit(1).execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -280,7 +287,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 16, 8);
             testPreparedStatementsResetData();
 
-            // H. Set limit reuse prepared statement: 2nd execute -> execute.
+            // H. Set limit reuse prepared statement: 2nd execute 
+execute.
             assertTestPreparedStatementsResult(testRemove1.limit(2).execute(), 2, testCol1.getName(), 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 4, testRemove1, 1, 2);
             assertTestPreparedStatementsResult(testRemove2.limit(2).execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -293,7 +301,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 8);
             testPreparedStatementsResetData();
 
-            // I. Set sort deallocates and resets execution count, set limit has no effect: 1st execute -> deallocate + non-prepared.
+            // I. Set sort deallocates and resets execution count, set limit has no effect: 1st execute 
+deallocate + non-prepared.
             assertTestPreparedStatementsResult(testRemove1.sort("$._id").limit(1).execute(), 1, testCol1.getName(), 2, 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 3, testRemove1, 0, -1);
             assertTestPreparedStatementsResult(testRemove2.sort("$._id").limit(1).execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -306,7 +315,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
             assertPreparedStatementsStatusCounts(testSession, 12, 20, 12);
             testPreparedStatementsResetData();
 
-            // J. Set limit reuse statement: 2nd execute -> prepare + execute.
+            // J. Set limit reuse statement: 2nd execute 
+prepare + execute.
             assertTestPreparedStatementsResult(testRemove1.limit(2).execute(), 2, testCol1.getName(), 3, 4);
             assertPreparedStatementsCountsAndId(testSession, 1, testRemove1, 1, 1);
             assertTestPreparedStatementsResult(testRemove2.limit(2).execute(), 1, testCol2.getName(), 1, 2, 3);
@@ -342,7 +352,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
                 testRemove1 = testCol1.remove("true");
                 testRemove2 = testCol2.remove("true");
 
-                // 1st execute -> don't prepare.
+                // 1st execute 
+don't prepare.
                 assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 0, testRemove1, 0, -1);
                 assertTestPreparedStatementsResult(testRemove2.execute(), 4, testCol2.getName());
@@ -351,7 +362,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
                 assertPreparedStatementsStatusCounts(testSession, 0, 0, 0);
                 testPreparedStatementsResetData();
 
-                // 2nd execute -> prepare + execute.
+                // 2nd execute 
+prepare + execute.
                 assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 1, testRemove1, 1, 1);
                 assertTestPreparedStatementsResult(testRemove2.execute(), 4, testCol2.getName()); // Fails preparing, execute as non-prepared.
@@ -360,7 +372,8 @@ public class CollectionRemoveTest extends BaseCollectionTestCase {
                 assertPreparedStatementsStatusCounts(testSession, 2, 1, 0); // Failed prepare also counts.
                 testPreparedStatementsResetData();
 
-                // 3rd execute -> execute.
+                // 3rd execute 
+execute.
                 assertTestPreparedStatementsResult(testRemove1.execute(), 4, testCol1.getName());
                 assertPreparedStatementsCountsAndId(testSession, 1, testRemove1, 1, 2);
                 assertTestPreparedStatementsResult(testRemove2.execute(), 4, testCol2.getName()); // Execute as non-prepared.

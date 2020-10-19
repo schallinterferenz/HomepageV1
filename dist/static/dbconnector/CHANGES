@@ -4106,7 +4106,8 @@ nn-nn-07 - Version 3.1.15
 
     - Fixed BUG#4510 - connector/j 3.1.3 beta does not handle integers
       correctly (caused by changes to support unsigned reads in
-      Buffer.readInt() -> Buffer.readShort()).
+      Buffer.readInt() 
+Buffer.readShort()).
 
     - Added support in DatabaseMetaData.getTables() and getTableTypes()
       for VIEWs which are now available in MySQL server version 5.0.x.
@@ -4537,7 +4538,8 @@ nn-nn-07 - Version 3.1.15
 
     - Fixed BUG#6198, off-by-one bug in Buffer.readString(string).
 
-    - Made TINYINT(1) -> BIT/Boolean conversion configurable via 'tinyInt1isBit'
+    - Made TINYINT(1) 
+BIT/Boolean conversion configurable via 'tinyInt1isBit'
       property (default 'true' to be JDBC compliant out of the box).
 
     - Only set 'character_set_results' during connection establishment if

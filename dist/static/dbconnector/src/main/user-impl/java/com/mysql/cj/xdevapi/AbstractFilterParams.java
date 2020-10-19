@@ -155,10 +155,14 @@ public abstract class AbstractFilterParams implements FilterParams {
         if (this.args != null) {
             IntStream.range(0, this.args.length)
                     // find unbound params
-                    .filter(i -> this.args[i] == null)
+                    .filter(i 
+this.args[i] == null)
                     // get the parameter name from the map
-                    .mapToObj(i -> this.placeholderNameToPosition.entrySet().stream().filter(e -> e.getValue() == i).map(Map.Entry::getKey).findFirst().get())
-                    .forEach(name -> {
+                    .mapToObj(i 
+this.placeholderNameToPosition.entrySet().stream().filter(e 
+e.getValue() == i).map(Map.Entry::getKey).findFirst().get())
+                    .forEach(name 
+{
                         throw new WrongArgumentException("Placeholder '" + name + "' is not bound");
                     });
         }
@@ -166,7 +170,8 @@ public abstract class AbstractFilterParams implements FilterParams {
 
     public void clearArgs() {
         if (this.args != null) {
-            IntStream.range(0, this.args.length).forEach(i -> this.args[i] = null);
+            IntStream.range(0, this.args.length).forEach(i 
+this.args[i] = null);
         }
     }
 

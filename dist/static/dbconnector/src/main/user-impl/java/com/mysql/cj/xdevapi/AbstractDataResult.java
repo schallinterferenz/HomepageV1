@@ -104,7 +104,8 @@ public abstract class AbstractDataResult<T> implements ResultStreamer, Iterator<
 
         if (this.all == null) {
             this.all = new ArrayList<>((int) count());
-            this.rows.forEachRemaining(r -> this.all.add(this.rowToData.createFromProtocolEntity(r)));
+            this.rows.forEachRemaining(r 
+this.all.add(this.rowToData.createFromProtocolEntity(r)));
             this.all = Collections.unmodifiableList(this.all);
         }
         return this.all;

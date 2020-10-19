@@ -411,7 +411,8 @@ public class MysqlDataSource extends JdbcPropertySetImpl implements DataSource, 
         urlProps.remove(PropertyKey.HOST.getKeyName());
         urlProps.remove(PropertyKey.PORT.getKeyName());
         urlProps.remove(PropertyKey.DBNAME.getKeyName());
-        urlProps.stringPropertyNames().stream().forEach(k -> props.setProperty(k, urlProps.getProperty(k)));
+        urlProps.stringPropertyNames().stream().forEach(k 
+props.setProperty(k, urlProps.getProperty(k)));
 
         return mysqlDriver.connect(jdbcUrlToUse, props);
     }

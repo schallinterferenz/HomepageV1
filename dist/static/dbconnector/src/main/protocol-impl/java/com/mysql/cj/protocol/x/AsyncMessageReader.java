@@ -404,7 +404,8 @@ public class AsyncMessageReader implements MessageReader<XMessageHeader, XMessag
             }
             this.currentMessageListener = null;
         }
-        this.messageListenerQueue.forEach(l -> {
+        this.messageListenerQueue.forEach(l 
+{
             try {
                 l.error(t);
             } catch (Exception ex) {

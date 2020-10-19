@@ -64,7 +64,7 @@
 
                 <b-card-body>
                   <b-card-text> </b-card-text>
-                  <b-button :ref=obj.aId variant="primary" v-on:click="setartist"> PROFIL </b-button>
+                  <b-button variant="primary" :id="obj.aId" v-on:click="setartist(obj.aId)" href="/#/artistpage"> PROFIL </b-button>
                   <b-button variant="success"> BUCHEN </b-button>
                 </b-card-body>
               </b-card>
@@ -119,7 +119,7 @@
 
                 <b-card-body>
                   <b-card-text> </b-card-text>
-                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="primary" :id="obj.aId" v-on:click="setartist(obj.aId)" href="/#/artistpage"> PROFIL </b-button>
                   <b-button variant="success" v-if="obj.showBooking == 'True'">
                     BUCHEN
                   </b-button>
@@ -176,7 +176,7 @@
 
                 <b-card-body>
                   <b-card-text> </b-card-text>
-                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="primary" :id="obj.aId" v-on:click="setartist(obj.aId)" href="/#/artistpage"> PROFIL </b-button>
                   <b-button variant="success"> BUCHEN </b-button>
                 </b-card-body>
               </b-card>
@@ -231,7 +231,7 @@
 
                 <b-card-body>
                   <b-card-text> </b-card-text>
-                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button variant="primary" :id="obj.aId" v-on:click="setartist(obj.aId)" href="/#/artistpage"> PROFIL </b-button>
                   <b-button variant="success" v-if="obj.showBooking == 'True'">
                     BUCHEN
                   </b-button>
@@ -248,7 +248,7 @@
 
 <script>
 import arDat from "../db/json/a.json";
-import globals from '../../global.utils'
+import globals from '../../global.utils';
 
 export default {
   name: "Artists",
@@ -258,9 +258,23 @@ export default {
     };
   },
   methods: {
-    setartist: () => {
-      var id = this.$refs
-      
+    setartist: (id) => {
+      console.log(id)
+      var arrLen = Object.keys(arDat).length
+      for(var i = 0; i < arrLen; i++){
+        if(arDat[i].aId === id){
+          globals.selectedArtist.name = arDat[i].name
+          globals.selectedArtist.vita = arDat[i].vita
+          globals.selectedArtist.references = arDat[i].references
+          globals.selectedArtist.img = arDat[i].img
+          globals.selectedArtist.soundcloud = arDat[i].soundcloud
+          globals.selectedArtist.facebook = arDat[i].facebook
+          globals.selectedArtist.youtube = arDat[i].youtube
+          if(arDat[i].type == "c" || arDat[i].type == "r"){
+            globals.selectedArtist.booking = false
+          }
+        }
+      }      
     },
   },
 };
@@ -273,5 +287,8 @@ h1 > b {
 }
 h2 > b {
   font-size: 20px !important;
+}
+.artists{
+  min-height: 100vh;
 }
 </style>

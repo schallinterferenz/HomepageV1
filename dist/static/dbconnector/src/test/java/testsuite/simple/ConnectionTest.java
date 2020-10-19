@@ -819,7 +819,8 @@ public class ConnectionTest extends BaseTestCase {
 
         // Test load local infile support disabled via client capabilities by default.
         assertThrows(SQLSyntaxErrorException.class,
-                versionMeetsMinimum(8, 0, 19) ? "Loading local data is disabled;.*" : "The used command is not allowed with this MySQL version", () -> {
+                versionMeetsMinimum(8, 0, 19) ? "Loading local data is disabled;.*" : "The used command is not allowed with this MySQL version", () 
+{
                     this.stmt.executeUpdate("LOAD DATA LOCAL INFILE '" + infile.getCanonicalPath() + "' INTO TABLE testLocalInfileDisabled");
                     return null;
                 });
@@ -834,7 +835,8 @@ public class ConnectionTest extends BaseTestCase {
             ((com.mysql.cj.jdbc.JdbcConnection) loadConn).getPropertySet().getProperty(PropertyKey.allowLoadLocalInfile).setValue(false);
 
             assertThrows(SQLException.class, "Server asked for stream in response to LOAD DATA LOCAL INFILE but functionality is disabled at client by "
-                    + "'allowLoadLocalInfile' being set to 'false'\\.", () -> {
+                    + "'allowLoadLocalInfile' being set to 'false'\\.", () 
+{
                         loadConn.createStatement().execute("LOAD DATA LOCAL INFILE '" + infile.getCanonicalPath() + "' INTO TABLE testLocalInfileDisabled");
                         return null;
                     });
@@ -1786,7 +1788,8 @@ public class ConnectionTest extends BaseTestCase {
         connProps.setProperty(PropertyKey.PASSWORD.getKeyName(), testUser);
 
         List<Inet6Address> ipv6List = TestUtils.getIpv6List();
-        List<String> ipv6Addrs = ipv6List.stream().map((e) -> e.getHostAddress()).collect(Collectors.toList());
+        List<String> ipv6Addrs = ipv6List.stream().map((e) 
+e.getHostAddress()).collect(Collectors.toList());
         ipv6Addrs.add("::1"); // IPv6 loopback
         int port = getPortFromTestsuiteUrl();
 
@@ -2023,7 +2026,8 @@ public class ConnectionTest extends BaseTestCase {
                         || !isPreparedStatement && enableEscapeProcessing == escapeProcessingDone, testCase);
             }
             final String fsql = sql;
-            return super.preProcess(() -> {
+            return super.preProcess(() 
+{
                 return fsql;
             }, interceptedQuery);
         }

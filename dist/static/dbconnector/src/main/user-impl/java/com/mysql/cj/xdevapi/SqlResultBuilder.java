@@ -99,7 +99,8 @@ public class SqlResultBuilder implements ResultBuilder<SqlResult> {
 
         } else if (entity instanceof FetchDoneMoreResults) {
             this.resultSets.add(new SqlSingleResult(this.metadata, this.defaultTimeZone, new BufferedRowList(this.rows),
-                    () -> this.statementExecuteOkBuilder.build(), this.pset));
+                    () 
+this.statementExecuteOkBuilder.build(), this.pset));
             // clear variables to accept next result set
             this.fields = new ArrayList<>();
             this.metadata = null;
@@ -111,7 +112,8 @@ public class SqlResultBuilder implements ResultBuilder<SqlResult> {
                 // no-op, possibly bug in xplugin sending FetchDone immediately following FetchDoneMoreResultsets
             } else {
                 this.resultSets.add(new SqlSingleResult(this.metadata, this.defaultTimeZone, new BufferedRowList(this.rows),
-                        () -> this.statementExecuteOkBuilder.build(), this.pset));
+                        () 
+this.statementExecuteOkBuilder.build(), this.pset));
             }
 
         } else if (entity instanceof StatementExecuteOk) {
@@ -123,7 +125,8 @@ public class SqlResultBuilder implements ResultBuilder<SqlResult> {
 
     @Override
     public SqlResult build() {
-        return this.isRowResult ? new SqlMultiResult(() -> {
+        return this.isRowResult ? new SqlMultiResult(() 
+{
             return this.resultSets.size() > 0 ? this.resultSets.remove(0) : null;
         }) : new SqlUpdateResult(this.statementExecuteOkBuilder.build());
     }

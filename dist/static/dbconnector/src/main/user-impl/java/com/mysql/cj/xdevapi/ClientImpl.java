@@ -221,7 +221,8 @@ public class ClientImpl implements Client {
         }
 
         List<String> clientPropsAsString = Stream.of(ClientProperty.values()).map(ClientProperty::getKeyName).collect(Collectors.toList());
-        propKey = (String) clientProps.keySet().stream().filter(k -> !clientPropsAsString.contains(k)).findFirst().orElse(null);
+        propKey = (String) clientProps.keySet().stream().filter(k 
+!clientPropsAsString.contains(k)).findFirst().orElse(null);
         if (propKey != null) {
             throw new XDevAPIError(String.format("Client option '%s' is not recognized as valid.", propKey));
         }
@@ -272,7 +273,8 @@ public class ClientImpl implements Client {
 
         synchronized (this.idleProtocols) {
             // 0. Close and remove idle protocols connected to a host that is not usable anymore.
-            List<PooledXProtocol> toCloseAndRemove = this.idleProtocols.stream().filter(p -> !p.isHostInfoValid(hostsList)).collect(Collectors.toList());
+            List<PooledXProtocol> toCloseAndRemove = this.idleProtocols.stream().filter(p 
+!p.isHostInfoValid(hostsList)).collect(Collectors.toList());
             toCloseAndRemove.stream().peek(PooledXProtocol::realClose).peek(this.idleProtocols::remove).map(PooledXProtocol::getHostInfo).sequential()
                     .forEach(this.demotedHosts::remove);
         }
@@ -383,14 +385,17 @@ public class ClientImpl implements Client {
             synchronized (this.idleProtocols) {
                 if (!this.isClosed) {
                     this.isClosed = true;
-                    this.idleProtocols.forEach(s -> s.realClose());
+                    this.idleProtocols.forEach(s 
+s.realClose());
                     this.idleProtocols.clear();
-                    this.activeProtocols.stream().map(WeakReference::get).filter(Objects::nonNull).forEach(s -> s.realClose());
+                    this.activeProtocols.stream().map(WeakReference::get).filter(Objects::nonNull).forEach(s 
+s.realClose());
                     this.activeProtocols.clear();
                 }
             }
         } else {
-            this.nonPooledSessions.stream().map(WeakReference::get).filter(Objects::nonNull).filter(Session::isOpen).forEach(s -> s.close());
+            this.nonPooledSessions.stream().map(WeakReference::get).filter(Objects::nonNull).filter(Session::isOpen).forEach(s 
+s.close());
         }
     }
 
@@ -442,7 +447,8 @@ public class ClientImpl implements Client {
         }
 
         boolean isHostInfoValid(List<HostInfo> hostsList) {
-            return hostsList.stream().filter(h -> h.equalHostPortPair(this.hostInfo)).findFirst().isPresent();
+            return hostsList.stream().filter(h 
+h.equalHostPortPair(this.hostInfo)).findFirst().isPresent();
         }
 
         void realClose() {

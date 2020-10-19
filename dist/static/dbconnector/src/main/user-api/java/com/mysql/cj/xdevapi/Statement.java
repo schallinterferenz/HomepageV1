@@ -108,7 +108,8 @@ public interface Statement<STMT_T, RES_T> {
     @SuppressWarnings("unchecked")
     default STMT_T bind(Map<String, Object> values) {
         clearBindings();
-        values.entrySet().forEach(e -> bind(e.getKey(), e.getValue()));
+        values.entrySet().forEach(e 
+bind(e.getKey(), e.getValue()));
         return (STMT_T) this;
     }
 
@@ -122,7 +123,8 @@ public interface Statement<STMT_T, RES_T> {
     @SuppressWarnings("unchecked")
     default STMT_T bind(List<Object> values) {
         clearBindings();
-        IntStream.range(0, values.size()).forEach(i -> bind(String.valueOf(i), values.get(i)));
+        IntStream.range(0, values.size()).forEach(i 
+bind(String.valueOf(i), values.get(i)));
         return (STMT_T) this;
     }
 

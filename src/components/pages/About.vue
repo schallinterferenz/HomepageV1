@@ -47,4 +47,7 @@ h1 {
 img {
   width: 65%;
 }
+.about {
+  min-height: 100vh;
+}
 </style>

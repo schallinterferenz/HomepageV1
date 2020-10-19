@@ -97,7 +97,8 @@ public class ModifyStatementImpl extends FilterableStatement<ModifyStatement, Re
     @Override
     public ModifyStatement unset(String... fields) {
         resetPrepareState();
-        this.updates.addAll(Arrays.stream(fields).map(docPath -> new UpdateSpec(UpdateType.ITEM_REMOVE, docPath)).collect(Collectors.toList()));
+        this.updates.addAll(Arrays.stream(fields).map(docPath 
+new UpdateSpec(UpdateType.ITEM_REMOVE, docPath)).collect(Collectors.toList()));
         return this;
     }
 

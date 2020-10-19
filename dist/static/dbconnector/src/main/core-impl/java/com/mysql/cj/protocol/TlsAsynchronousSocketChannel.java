@@ -336,7 +336,8 @@ public class TlsAsynchronousSocketChannel extends AsynchronousSocketChannel impl
                 if (isDrained(srcs)) {
                     // if we've encrypted all the source buffers, queue the last write
                     long finalTotal = totalWriteSize;
-                    Runnable successHandler = () -> {
+                    Runnable successHandler = () 
+{
                         hdlr.completed(finalTotal, null);
                         putCipherTextBuffer(cipherText);
                     };
@@ -344,7 +345,8 @@ public class TlsAsynchronousSocketChannel extends AsynchronousSocketChannel impl
                     break;
                 }
                 // otherwise, only propagate errors
-                this.bufferWriter.queueBuffer(cipherText, new ErrorPropagatingCompletionHandler<Long>(hdlr, () -> putCipherTextBuffer(cipherText)));
+                this.bufferWriter.queueBuffer(cipherText, new ErrorPropagatingCompletionHandler<Long>(hdlr, () 
+putCipherTextBuffer(cipherText)));
                 continue;
             }
         } catch (SSLException ex) {

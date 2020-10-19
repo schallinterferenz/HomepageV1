@@ -93,8 +93,10 @@ public class CompressionTest extends DevApiBaseTestCase {
             this.countersMap = new HashMap<>();
             this.deltasMap = new HashMap<>();
             Arrays.asList(MYSQLX_BYTES_RECEIVED, MYSQLX_BYTES_RECEIVED_COMPRESSED_PAYLOAD, MYSQLX_BYTES_RECEIVED_UNCOMPRESSED_FRAME, MYSQLX_BYTES_SENT,
-                    MYSQLX_BYTES_SENT_COMPRESSED_PAYLOAD, MYSQLX_BYTES_SENT_UNCOMPRESSED_FRAME).stream().peek(e -> this.countersMap.put(e, 0))
-                    .forEach(e -> this.deltasMap.put(e, 0));
+                    MYSQLX_BYTES_SENT_COMPRESSED_PAYLOAD, MYSQLX_BYTES_SENT_UNCOMPRESSED_FRAME).stream().peek(e 
+this.countersMap.put(e, 0))
+                    .forEach(e 
+this.deltasMap.put(e, 0));
 
             // Counters must be consulted using a classic connection due to Bug#30121765.
             String classicUrl = System.getProperty(PropertyDefinitions.SYSP_testsuite_url);
@@ -449,69 +451,89 @@ public class CompressionTest extends DevApiBaseTestCase {
 
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.compression' acceptable values are: 'DISABLED', 'PREFERRED' or 'REQUIRED'\\. The value 'true' is not acceptable\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "true")));
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "true")));
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.compression' acceptable values are: 'DISABLED', 'PREFERRED' or 'REQUIRED'\\. The value 'false' is not acceptable\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "false")));
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "false")));
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.compression' acceptable values are: 'DISABLED', 'PREFERRED' or 'REQUIRED'\\. The value '' is not acceptable\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "")));
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, "")));
 
         assertThrows(WrongArgumentException.class, "Compression cannot be enabled with asynchronous variant of X Protocol\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiUseAsyncProtocol, "true")));
 
         assertThrows(WrongArgumentException.class, "Compression must be enabled in order to set any compression algorithms definition\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.DISABLED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.DISABLED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test")));
 
         assertThrows(WrongArgumentException.class, "The property \"xdevapi.compression-algorithm\" must be a triplet or a list of triplets\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test")));
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test")));
         assertThrows(WrongArgumentException.class, "The property \"xdevapi.compression-algorithm\" must be a triplet or a list of triplets\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test")));
         assertThrows(WrongArgumentException.class, "The property \"xdevapi.compression-algorithm\" must be a triplet or a list of triplets\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test")));
 
         assertThrows(WrongArgumentException.class, "Error loading the class anInputStream\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,anInputStream,anOutputStream")));
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,anInputStream,anOutputStream")));
         assertThrows(WrongArgumentException.class, "Error loading the class anInputStream\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,anInputStream,anOutputStream")));
         assertThrows(WrongArgumentException.class, "Error loading the class anInputStream\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,anInputStream,anOutputStream")));
 
-        assertThrows(WrongArgumentException.class, "Error loading the class anOutputStream\\.", () -> this.fact
+        assertThrows(WrongArgumentException.class, "Error loading the class anOutputStream\\.", () 
+this.fact
                 .getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,anOutputStream")));
         assertThrows(WrongArgumentException.class, "Error loading the class anOutputStream\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,anOutputStream")));
         assertThrows(WrongArgumentException.class, "Error loading the class anOutputStream\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,anOutputStream")));
 
         assertThrows(WrongArgumentException.class,
                 "Incorrect compression algorithm designation 'test'. The compression algorithm must be identified by \"name_mode\"\\.",
-                () -> this.fact.getSession(
+                () 
+this.fact.getSession(
                         this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,java.io.OutputStream")));
         assertThrows(WrongArgumentException.class,
                 "Incorrect compression algorithm designation 'test'. The compression algorithm must be identified by \"name_mode\"\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,java.io.OutputStream")));
         assertThrows(WrongArgumentException.class,
                 "Incorrect compression algorithm designation 'test'. The compression algorithm must be identified by \"name_mode\"\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test,java.io.InputStream,java.io.OutputStream")));
 
-        assertThrows(WrongArgumentException.class, "Unknown or unsupported compression mode 'wrong'\\.", () -> this.fact.getSession(
+        assertThrows(WrongArgumentException.class, "Unknown or unsupported compression mode 'wrong'\\.", () 
+this.fact.getSession(
                 this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test_wrong,java.io.InputStream,java.io.OutputStream")));
         assertThrows(WrongArgumentException.class, "Unknown or unsupported compression mode 'wrong'\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.PREFERRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test_wrong,java.io.InputStream,java.io.OutputStream")));
         assertThrows(WrongArgumentException.class, "Unknown or unsupported compression mode 'wrong'\\.",
-                () -> this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
+                () 
+this.fact.getSession(this.compressFreeBaseUrl + makeParam(PropertyKey.xdevapiCompression, Compression.REQUIRED)
                         + makeParam(PropertyKey.xdevapiCompressionAlgorithm, "test_wrong,java.io.InputStream,java.io.OutputStream")));
     }
 

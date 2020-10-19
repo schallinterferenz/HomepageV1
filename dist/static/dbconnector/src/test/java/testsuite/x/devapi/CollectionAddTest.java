@@ -186,7 +186,8 @@ public class CollectionAddTest extends BaseCollectionTestCase {
         int expectedAssignedIds;
         if (!mysqlVersionMeetsMinimum(ServerVersion.parseVersion("8.0.5"))) {
             res = this.collection.add(json1).execute();
-            assertThrows(XProtocolError.class, "ERROR 5115 \\(HY000\\) Document is missing a required field", () -> this.collection.add(json2).execute());
+            assertThrows(XProtocolError.class, "ERROR 5115 \\(HY000\\) Document is missing a required field", () 
+this.collection.add(json2).execute());
             expectedAssignedIds = 0;
         } else {
             res = this.collection.add(json1).add(json2).execute();

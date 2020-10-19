@@ -188,7 +188,8 @@ public class MetaDataRegressionTest extends BaseTestCase {
                 //
                 if (!"field_tinyblob".equals(columnName) && !"field_tinytext".equals(columnName)) {
                     assertTrue(typeFromGetColumns == typeFromRSMD,
-                            columnName + " -> type from DBMD.getColumns(" + typeFromGetColumns + ") != type from RSMD.getColumnType(" + typeFromRSMD + ")");
+                            columnName + " 
+type from DBMD.getColumns(" + typeFromGetColumns + ") != type from RSMD.getColumnType(" + typeFromRSMD + ")");
                 }
             }
         } finally {
@@ -500,7 +501,8 @@ public class MetaDataRegressionTest extends BaseTestCase {
             for (int i = 0; i < numCols; i++) {
                 String columnName = rsmd.getColumnName(i + 1);
                 String columnTypeName = rsmd.getColumnTypeName(i + 1);
-                System.out.println(columnName + " -> " + columnTypeName);
+                System.out.println(columnName + " 
+" + columnTypeName);
             }
         } finally {
             this.stmt.execute("DROP TABLE IF EXISTS typesRegressTest");
@@ -1531,7 +1533,8 @@ public class MetaDataRegressionTest extends BaseTestCase {
         createTable(tableName, "(field1 int)");
         this.rs = this.conn.getMetaData().getTables(this.conn.getCatalog(), null, "%", new String[] { "TABLE" });
         while (this.rs.next()) {
-            System.out.println(this.rs.getString("TABLE_NAME") + " -> " + new String(this.rs.getBytes("TABLE_NAME"), "UTF-8"));
+            System.out.println(this.rs.getString("TABLE_NAME") + " 
+" + new String(this.rs.getBytes("TABLE_NAME"), "UTF-8"));
         }
         this.rs = this.conn.getMetaData().getTables(this.conn.getCatalog(), null, tableName, new String[] { "TABLE" });
         assertEquals(true, this.rs.next());
@@ -2340,7 +2343,8 @@ public class MetaDataRegressionTest extends BaseTestCase {
         Field[] typeFields = Types.class.getFields();
 
         for (int i = 0; i < typeFields.length; i++) {
-            System.out.println(typeFields[i].getName() + " -> " + typeFields[i].getType().getClass());
+            System.out.println(typeFields[i].getName() + " 
+" + typeFields[i].getType().getClass());
 
             if (Modifier.isStatic(typeFields[i].getModifiers())) {
                 try {
@@ -3445,12 +3449,18 @@ public class MetaDataRegressionTest extends BaseTestCase {
 
         // function: testBug69298_func
 
-        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), functionsMD.getString("FUNCTION_CAT"), sd + "-> FUNCTION_CAT");
-        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, functionsMD.getString("FUNCTION_SCHEM"), sd + "-> FUNCTION_SCHEM");
-        assertEquals("testBug69298_func", functionsMD.getString("FUNCTION_NAME"), sd + "-> FUNCTION_NAME");
-        assertEquals("testBug69298_func comment", functionsMD.getString("REMARKS"), sd + "-> REMARKS");
-        assertEquals(DatabaseMetaData.functionNoTable, functionsMD.getShort("FUNCTION_TYPE"), sd + "-> FUNCTION_TYPE");
-        assertEquals("testBug69298_func", functionsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), functionsMD.getString("FUNCTION_CAT"), sd + "
+FUNCTION_CAT");
+        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, functionsMD.getString("FUNCTION_SCHEM"), sd + "
+FUNCTION_SCHEM");
+        assertEquals("testBug69298_func", functionsMD.getString("FUNCTION_NAME"), sd + "
+FUNCTION_NAME");
+        assertEquals("testBug69298_func comment", functionsMD.getString("REMARKS"), sd + "
+REMARKS");
+        assertEquals(DatabaseMetaData.functionNoTable, functionsMD.getShort("FUNCTION_TYPE"), sd + "
+FUNCTION_TYPE");
+        assertEquals("testBug69298_func", functionsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
         assertFalse(functionsMD.next(), stepDescription + "no more rows expected.");
     }
@@ -3465,44 +3475,78 @@ public class MetaDataRegressionTest extends BaseTestCase {
         assertTrue(funcColsMD.next(), sd + "1st of 2 rows expected.");
 
         // function column: testBug69298_func return
-        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), funcColsMD.getString("FUNCTION_CAT"), sd + "-> FUNCTION_CAT");
-        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, funcColsMD.getString("FUNCTION_SCHEM"), sd + "-> FUNCTION_SCHEM");
-        assertEquals("testBug69298_func", funcColsMD.getString("FUNCTION_NAME"), sd + "-> FUNCTION_NAME");
-        assertEquals("", funcColsMD.getString("COLUMN_NAME"), sd + "-> COLUMN_NAME");
-        assertEquals(DatabaseMetaData.functionReturn, funcColsMD.getShort("COLUMN_TYPE"), sd + "-> COLUMN_TYPE");
-        assertEquals(Types.INTEGER, funcColsMD.getInt("DATA_TYPE"), sd + "-> DATA_TYPE");
-        assertEquals("INT", funcColsMD.getString("TYPE_NAME"), sd + "-> TYPE_NAME");
-        assertEquals(10, funcColsMD.getInt("PRECISION"), sd + "-> PRECISION");
-        assertEquals(10, funcColsMD.getInt("LENGTH"), sd + "-> LENGTH");
-        assertEquals(0, funcColsMD.getShort("SCALE"), sd + "-> SCALE");
-        assertEquals(10, funcColsMD.getShort("RADIX"), sd + "-> RADIX");
-        assertEquals(DatabaseMetaData.functionNullable, funcColsMD.getShort("NULLABLE"), sd + "-> NULLABLE");
-        assertEquals(null, funcColsMD.getString("REMARKS"), sd + "-> REMARKS");
-        assertEquals(0, funcColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "-> CHAR_OCTET_LENGTH");
-        assertEquals(0, funcColsMD.getInt("ORDINAL_POSITION"), sd + "-> ORDINAL_POSITION");
-        assertEquals("YES", funcColsMD.getString("IS_NULLABLE"), sd + "-> IS_NULLABLE");
-        assertEquals("testBug69298_func", funcColsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), funcColsMD.getString("FUNCTION_CAT"), sd + "
+FUNCTION_CAT");
+        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, funcColsMD.getString("FUNCTION_SCHEM"), sd + "
+FUNCTION_SCHEM");
+        assertEquals("testBug69298_func", funcColsMD.getString("FUNCTION_NAME"), sd + "
+FUNCTION_NAME");
+        assertEquals("", funcColsMD.getString("COLUMN_NAME"), sd + "
+COLUMN_NAME");
+        assertEquals(DatabaseMetaData.functionReturn, funcColsMD.getShort("COLUMN_TYPE"), sd + "
+COLUMN_TYPE");
+        assertEquals(Types.INTEGER, funcColsMD.getInt("DATA_TYPE"), sd + "
+DATA_TYPE");
+        assertEquals("INT", funcColsMD.getString("TYPE_NAME"), sd + "
+TYPE_NAME");
+        assertEquals(10, funcColsMD.getInt("PRECISION"), sd + "
+PRECISION");
+        assertEquals(10, funcColsMD.getInt("LENGTH"), sd + "
+LENGTH");
+        assertEquals(0, funcColsMD.getShort("SCALE"), sd + "
+SCALE");
+        assertEquals(10, funcColsMD.getShort("RADIX"), sd + "
+RADIX");
+        assertEquals(DatabaseMetaData.functionNullable, funcColsMD.getShort("NULLABLE"), sd + "
+NULLABLE");
+        assertEquals(null, funcColsMD.getString("REMARKS"), sd + "
+REMARKS");
+        assertEquals(0, funcColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "
+CHAR_OCTET_LENGTH");
+        assertEquals(0, funcColsMD.getInt("ORDINAL_POSITION"), sd + "
+ORDINAL_POSITION");
+        assertEquals("YES", funcColsMD.getString("IS_NULLABLE"), sd + "
+IS_NULLABLE");
+        assertEquals("testBug69298_func", funcColsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
         assertTrue(funcColsMD.next(), sd + "2nd of 2 rows expected.");
 
         // function column: testBug69298_func.param_func
-        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), funcColsMD.getString("FUNCTION_CAT"), sd + "-> FUNCTION_CAT");
-        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, funcColsMD.getString("FUNCTION_SCHEM"), sd + "-> FUNCTION_SCHEM");
-        assertEquals("testBug69298_func", funcColsMD.getString("FUNCTION_NAME"), sd + "-> FUNCTION_NAME");
-        assertEquals("param_func", funcColsMD.getString("COLUMN_NAME"), sd + "-> COLUMN_NAME");
-        assertEquals(DatabaseMetaData.functionColumnIn, funcColsMD.getShort("COLUMN_TYPE"), sd + "-> COLUMN_TYPE");
-        assertEquals(Types.INTEGER, funcColsMD.getInt("DATA_TYPE"), sd + "-> DATA_TYPE");
-        assertEquals("INT", funcColsMD.getString("TYPE_NAME"), sd + "-> TYPE_NAME");
-        assertEquals(10, funcColsMD.getInt("PRECISION"), sd + "-> PRECISION");
-        assertEquals(10, funcColsMD.getInt("LENGTH"), sd + "-> LENGTH");
-        assertEquals(0, funcColsMD.getShort("SCALE"), sd + "-> SCALE");
-        assertEquals(10, funcColsMD.getShort("RADIX"), sd + "-> RADIX");
-        assertEquals(DatabaseMetaData.functionNullable, funcColsMD.getShort("NULLABLE"), sd + "-> NULLABLE");
-        assertEquals(null, funcColsMD.getString("REMARKS"), sd + "-> REMARKS");
-        assertEquals(0, funcColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "-> CHAR_OCTET_LENGTH");
-        assertEquals(1, funcColsMD.getInt("ORDINAL_POSITION"), sd + "-> ORDINAL_POSITION");
-        assertEquals("YES", funcColsMD.getString("IS_NULLABLE"), sd + "-> IS_NULLABLE");
-        assertEquals("testBug69298_func", funcColsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), funcColsMD.getString("FUNCTION_CAT"), sd + "
+FUNCTION_CAT");
+        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, funcColsMD.getString("FUNCTION_SCHEM"), sd + "
+FUNCTION_SCHEM");
+        assertEquals("testBug69298_func", funcColsMD.getString("FUNCTION_NAME"), sd + "
+FUNCTION_NAME");
+        assertEquals("param_func", funcColsMD.getString("COLUMN_NAME"), sd + "
+COLUMN_NAME");
+        assertEquals(DatabaseMetaData.functionColumnIn, funcColsMD.getShort("COLUMN_TYPE"), sd + "
+COLUMN_TYPE");
+        assertEquals(Types.INTEGER, funcColsMD.getInt("DATA_TYPE"), sd + "
+DATA_TYPE");
+        assertEquals("INT", funcColsMD.getString("TYPE_NAME"), sd + "
+TYPE_NAME");
+        assertEquals(10, funcColsMD.getInt("PRECISION"), sd + "
+PRECISION");
+        assertEquals(10, funcColsMD.getInt("LENGTH"), sd + "
+LENGTH");
+        assertEquals(0, funcColsMD.getShort("SCALE"), sd + "
+SCALE");
+        assertEquals(10, funcColsMD.getShort("RADIX"), sd + "
+RADIX");
+        assertEquals(DatabaseMetaData.functionNullable, funcColsMD.getShort("NULLABLE"), sd + "
+NULLABLE");
+        assertEquals(null, funcColsMD.getString("REMARKS"), sd + "
+REMARKS");
+        assertEquals(0, funcColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "
+CHAR_OCTET_LENGTH");
+        assertEquals(1, funcColsMD.getInt("ORDINAL_POSITION"), sd + "
+ORDINAL_POSITION");
+        assertEquals("YES", funcColsMD.getString("IS_NULLABLE"), sd + "
+IS_NULLABLE");
+        assertEquals("testBug69298_func", funcColsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
         assertFalse(funcColsMD.next(), sd + "no more rows expected.");
     }
@@ -3520,12 +3564,18 @@ public class MetaDataRegressionTest extends BaseTestCase {
             assertTrue(proceduresMD.next(), sd + "1st of 2 rows expected.");
 
             // function: testBug69298_func
-            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), proceduresMD.getString("PROCEDURE_CAT"), sd + "-> PROCEDURE_CAT");
-            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, proceduresMD.getString("PROCEDURE_SCHEM"), sd + "-> PROCEDURE_SCHEM");
-            assertEquals("testBug69298_func", proceduresMD.getString("PROCEDURE_NAME"), sd + "-> PROCEDURE_NAME");
-            assertEquals("testBug69298_func comment", proceduresMD.getString("REMARKS"), sd + "-> REMARKS");
-            assertEquals(DatabaseMetaData.procedureReturnsResult, proceduresMD.getShort("PROCEDURE_TYPE"), sd + "-> PROCEDURE_TYPE");
-            assertEquals("testBug69298_func", proceduresMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), proceduresMD.getString("PROCEDURE_CAT"), sd + "
+PROCEDURE_CAT");
+            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, proceduresMD.getString("PROCEDURE_SCHEM"), sd + "
+PROCEDURE_SCHEM");
+            assertEquals("testBug69298_func", proceduresMD.getString("PROCEDURE_NAME"), sd + "
+PROCEDURE_NAME");
+            assertEquals("testBug69298_func comment", proceduresMD.getString("REMARKS"), sd + "
+REMARKS");
+            assertEquals(DatabaseMetaData.procedureReturnsResult, proceduresMD.getShort("PROCEDURE_TYPE"), sd + "
+PROCEDURE_TYPE");
+            assertEquals("testBug69298_func", proceduresMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
             assertTrue(proceduresMD.next(), sd + "2nd of 2 rows expected.");
         } else {
@@ -3533,12 +3583,18 @@ public class MetaDataRegressionTest extends BaseTestCase {
         }
 
         // procedure: testBug69298_proc
-        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), proceduresMD.getString("PROCEDURE_CAT"), sd + "-> PROCEDURE_CAT");
-        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, proceduresMD.getString("PROCEDURE_SCHEM"), sd + "-> PROCEDURE_SCHEM");
-        assertEquals("testBug69298_proc", proceduresMD.getString("PROCEDURE_NAME"), sd + "-> PROCEDURE_NAME");
-        assertEquals("testBug69298_proc comment", proceduresMD.getString("REMARKS"), sd + "-> REMARKS");
-        assertEquals(DatabaseMetaData.procedureNoResult, proceduresMD.getShort("PROCEDURE_TYPE"), sd + "-> PROCEDURE_TYPE");
-        assertEquals("testBug69298_proc", proceduresMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), proceduresMD.getString("PROCEDURE_CAT"), sd + "
+PROCEDURE_CAT");
+        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, proceduresMD.getString("PROCEDURE_SCHEM"), sd + "
+PROCEDURE_SCHEM");
+        assertEquals("testBug69298_proc", proceduresMD.getString("PROCEDURE_NAME"), sd + "
+PROCEDURE_NAME");
+        assertEquals("testBug69298_proc comment", proceduresMD.getString("REMARKS"), sd + "
+REMARKS");
+        assertEquals(DatabaseMetaData.procedureNoResult, proceduresMD.getShort("PROCEDURE_TYPE"), sd + "
+PROCEDURE_TYPE");
+        assertEquals("testBug69298_proc", proceduresMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
         assertFalse(proceduresMD.next(), stepDescription + "no more rows expected.");
     }
@@ -3556,50 +3612,90 @@ public class MetaDataRegressionTest extends BaseTestCase {
             assertTrue(procColsMD.next(), sd + "1st of 3 rows expected.");
 
             // function column: testBug69298_func return
-            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "-> PROCEDURE_CAT");
-            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "-> PROCEDURE_SCHEM");
-            assertEquals("testBug69298_func", procColsMD.getString("PROCEDURE_NAME"), sd + "-> PROCEDURE_NAME");
-            assertEquals("", procColsMD.getString("COLUMN_NAME"), sd + "-> COLUMN_NAME");
-            assertEquals(DatabaseMetaData.procedureColumnReturn, procColsMD.getShort("COLUMN_TYPE"), sd + "-> COLUMN_TYPE");
-            assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "-> DATA_TYPE");
-            assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "-> TYPE_NAME");
-            assertEquals(10, procColsMD.getInt("PRECISION"), sd + "-> PRECISION");
-            assertEquals(10, procColsMD.getInt("LENGTH"), sd + "-> LENGTH");
-            assertEquals(0, procColsMD.getShort("SCALE"), sd + "-> SCALE");
-            assertEquals(10, procColsMD.getShort("RADIX"), sd + "-> RADIX");
-            assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "-> NULLABLE");
-            assertEquals(null, procColsMD.getString("REMARKS"), sd + "-> REMARKS");
-            assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "-> COLUMN_DEF");
-            assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "-> SQL_DATA_TYPE");
-            assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "-> SQL_DATETIME_SUB");
-            assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "-> CHAR_OCTET_LENGTH");
-            assertEquals(0, procColsMD.getInt("ORDINAL_POSITION"), sd + "-> ORDINAL_POSITION");
-            assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "-> IS_NULLABLE");
-            assertEquals("testBug69298_func", procColsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "
+PROCEDURE_CAT");
+            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "
+PROCEDURE_SCHEM");
+            assertEquals("testBug69298_func", procColsMD.getString("PROCEDURE_NAME"), sd + "
+PROCEDURE_NAME");
+            assertEquals("", procColsMD.getString("COLUMN_NAME"), sd + "
+COLUMN_NAME");
+            assertEquals(DatabaseMetaData.procedureColumnReturn, procColsMD.getShort("COLUMN_TYPE"), sd + "
+COLUMN_TYPE");
+            assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "
+DATA_TYPE");
+            assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "
+TYPE_NAME");
+            assertEquals(10, procColsMD.getInt("PRECISION"), sd + "
+PRECISION");
+            assertEquals(10, procColsMD.getInt("LENGTH"), sd + "
+LENGTH");
+            assertEquals(0, procColsMD.getShort("SCALE"), sd + "
+SCALE");
+            assertEquals(10, procColsMD.getShort("RADIX"), sd + "
+RADIX");
+            assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "
+NULLABLE");
+            assertEquals(null, procColsMD.getString("REMARKS"), sd + "
+REMARKS");
+            assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "
+COLUMN_DEF");
+            assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "
+SQL_DATA_TYPE");
+            assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "
+SQL_DATETIME_SUB");
+            assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "
+CHAR_OCTET_LENGTH");
+            assertEquals(0, procColsMD.getInt("ORDINAL_POSITION"), sd + "
+ORDINAL_POSITION");
+            assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "
+IS_NULLABLE");
+            assertEquals("testBug69298_func", procColsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
             assertTrue(procColsMD.next(), sd + "2nd of 3 rows expected.");
 
             // function column: testBug69298_func.param_func
-            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "-> PROCEDURE_CAT");
-            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "-> PROCEDURE_SCHEM");
-            assertEquals("testBug69298_func", procColsMD.getString("PROCEDURE_NAME"), sd + "-> PROCEDURE_NAME");
-            assertEquals("param_func", procColsMD.getString("COLUMN_NAME"), sd + "-> COLUMN_NAME");
-            assertEquals(DatabaseMetaData.procedureColumnIn, procColsMD.getShort("COLUMN_TYPE"), sd + "-> COLUMN_TYPE");
-            assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "-> DATA_TYPE");
-            assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "-> TYPE_NAME");
-            assertEquals(10, procColsMD.getInt("PRECISION"), sd + "-> PRECISION");
-            assertEquals(10, procColsMD.getInt("LENGTH"), sd + "-> LENGTH");
-            assertEquals(0, procColsMD.getShort("SCALE"), sd + "-> SCALE");
-            assertEquals(10, procColsMD.getShort("RADIX"), sd + "-> RADIX");
-            assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "-> NULLABLE");
-            assertEquals(null, procColsMD.getString("REMARKS"), sd + "-> REMARKS");
-            assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "-> COLUMN_DEF");
-            assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "-> SQL_DATA_TYPE");
-            assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "-> SQL_DATETIME_SUB");
-            assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "-> CHAR_OCTET_LENGTH");
-            assertEquals(1, procColsMD.getInt("ORDINAL_POSITION"), sd + "-> ORDINAL_POSITION");
-            assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "-> IS_NULLABLE");
-            assertEquals("testBug69298_func", procColsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+            assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "
+PROCEDURE_CAT");
+            assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "
+PROCEDURE_SCHEM");
+            assertEquals("testBug69298_func", procColsMD.getString("PROCEDURE_NAME"), sd + "
+PROCEDURE_NAME");
+            assertEquals("param_func", procColsMD.getString("COLUMN_NAME"), sd + "
+COLUMN_NAME");
+            assertEquals(DatabaseMetaData.procedureColumnIn, procColsMD.getShort("COLUMN_TYPE"), sd + "
+COLUMN_TYPE");
+            assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "
+DATA_TYPE");
+            assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "
+TYPE_NAME");
+            assertEquals(10, procColsMD.getInt("PRECISION"), sd + "
+PRECISION");
+            assertEquals(10, procColsMD.getInt("LENGTH"), sd + "
+LENGTH");
+            assertEquals(0, procColsMD.getShort("SCALE"), sd + "
+SCALE");
+            assertEquals(10, procColsMD.getShort("RADIX"), sd + "
+RADIX");
+            assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "
+NULLABLE");
+            assertEquals(null, procColsMD.getString("REMARKS"), sd + "
+REMARKS");
+            assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "
+COLUMN_DEF");
+            assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "
+SQL_DATA_TYPE");
+            assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "
+SQL_DATETIME_SUB");
+            assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "
+CHAR_OCTET_LENGTH");
+            assertEquals(1, procColsMD.getInt("ORDINAL_POSITION"), sd + "
+ORDINAL_POSITION");
+            assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "
+IS_NULLABLE");
+            assertEquals("testBug69298_func", procColsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
             assertTrue(procColsMD.next(), sd + "3rd of 3 rows expected.");
         } else {
@@ -3607,26 +3703,46 @@ public class MetaDataRegressionTest extends BaseTestCase {
         }
 
         // procedure column: testBug69298_proc.param_proc
-        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "-> PROCEDURE_CAT");
-        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "-> PROCEDURE_SCHEM");
-        assertEquals("testBug69298_proc", procColsMD.getString("PROCEDURE_NAME"), sd + "-> PROCEDURE_NAME");
-        assertEquals("param_proc", procColsMD.getString("COLUMN_NAME"), sd + "-> COLUMN_NAME");
-        assertEquals(DatabaseMetaData.procedureColumnIn, procColsMD.getShort("COLUMN_TYPE"), sd + "-> COLUMN_TYPE");
-        assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "-> DATA_TYPE");
-        assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "-> TYPE_NAME");
-        assertEquals(10, procColsMD.getInt("PRECISION"), sd + "-> PRECISION");
-        assertEquals(10, procColsMD.getInt("LENGTH"), sd + "-> LENGTH");
-        assertEquals(0, procColsMD.getShort("SCALE"), sd + "-> SCALE");
-        assertEquals(10, procColsMD.getShort("RADIX"), sd + "-> RADIX");
-        assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "-> NULLABLE");
-        assertEquals(null, procColsMD.getString("REMARKS"), sd + "-> REMARKS");
-        assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "-> COLUMN_DEF");
-        assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "-> SQL_DATA_TYPE");
-        assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "-> SQL_DATETIME_SUB");
-        assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "-> CHAR_OCTET_LENGTH");
-        assertEquals(1, procColsMD.getInt("ORDINAL_POSITION"), sd + "-> ORDINAL_POSITION");
-        assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "-> IS_NULLABLE");
-        assertEquals("testBug69298_proc", procColsMD.getString("SPECIFIC_NAME"), sd + "-> SPECIFIC_NAME");
+        assertEquals(dbMapsToSchema ? "def" : testConn.getCatalog(), procColsMD.getString("PROCEDURE_CAT"), sd + "
+PROCEDURE_CAT");
+        assertEquals(dbMapsToSchema ? testConn.getSchema() : null, procColsMD.getString("PROCEDURE_SCHEM"), sd + "
+PROCEDURE_SCHEM");
+        assertEquals("testBug69298_proc", procColsMD.getString("PROCEDURE_NAME"), sd + "
+PROCEDURE_NAME");
+        assertEquals("param_proc", procColsMD.getString("COLUMN_NAME"), sd + "
+COLUMN_NAME");
+        assertEquals(DatabaseMetaData.procedureColumnIn, procColsMD.getShort("COLUMN_TYPE"), sd + "
+COLUMN_TYPE");
+        assertEquals(Types.INTEGER, procColsMD.getInt("DATA_TYPE"), sd + "
+DATA_TYPE");
+        assertEquals("INT", procColsMD.getString("TYPE_NAME"), sd + "
+TYPE_NAME");
+        assertEquals(10, procColsMD.getInt("PRECISION"), sd + "
+PRECISION");
+        assertEquals(10, procColsMD.getInt("LENGTH"), sd + "
+LENGTH");
+        assertEquals(0, procColsMD.getShort("SCALE"), sd + "
+SCALE");
+        assertEquals(10, procColsMD.getShort("RADIX"), sd + "
+RADIX");
+        assertEquals(DatabaseMetaData.procedureNullable, procColsMD.getShort("NULLABLE"), sd + "
+NULLABLE");
+        assertEquals(null, procColsMD.getString("REMARKS"), sd + "
+REMARKS");
+        assertEquals(null, procColsMD.getString("COLUMN_DEF"), sd + "
+COLUMN_DEF");
+        assertEquals(0, procColsMD.getInt("SQL_DATA_TYPE"), sd + "
+SQL_DATA_TYPE");
+        assertEquals(0, procColsMD.getInt("SQL_DATETIME_SUB"), sd + "
+SQL_DATETIME_SUB");
+        assertEquals(0, procColsMD.getInt("CHAR_OCTET_LENGTH"), sd + "
+CHAR_OCTET_LENGTH");
+        assertEquals(1, procColsMD.getInt("ORDINAL_POSITION"), sd + "
+ORDINAL_POSITION");
+        assertEquals("YES", procColsMD.getString("IS_NULLABLE"), sd + "
+IS_NULLABLE");
+        assertEquals("testBug69298_proc", procColsMD.getString("SPECIFIC_NAME"), sd + "
+SPECIFIC_NAME");
 
         assertFalse(procColsMD.next(), sd + "no more rows expected.");
     }
@@ -3702,18 +3818,23 @@ public class MetaDataRegressionTest extends BaseTestCase {
         sd = stepDescription + " getFunctions() ";
         rsMD = testDbMetaData.getFunctions(null, null, "testBug17248345");
         assertTrue(rsMD.next(), sd + "one row expected.");
-        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " -> FUNCTION_NAME");
+        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " 
+FUNCTION_NAME");
         assertFalse(rsMD.next(), sd + "no more rows expected.");
 
         // getFunctionColumns() must return 2 records (func return + func param).
         sd = stepDescription + " getFunctionColumns() ";
         rsMD = testDbMetaData.getFunctionColumns(null, null, "testBug17248345", "%");
         assertTrue(rsMD.next(), sd + "1st of 2 rows expected.");
-        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " -> FUNCTION_NAME");
-        assertEquals("", rsMD.getString("COLUMN_NAME"), sd + " -> COLUMN_NAME");
+        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " 
+FUNCTION_NAME");
+        assertEquals("", rsMD.getString("COLUMN_NAME"), sd + " 
+COLUMN_NAME");
         assertTrue(rsMD.next(), sd + "2nd of 2 rows expected.");
-        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " -> FUNCTION_NAME");
-        assertEquals("funccol", rsMD.getString("COLUMN_NAME"), sd + " -> COLUMN_NAME");
+        assertEquals("testBug17248345", rsMD.getString("FUNCTION_NAME"), sd + " 
+FUNCTION_NAME");
+        assertEquals("funccol", rsMD.getString("COLUMN_NAME"), sd + " 
+COLUMN_NAME");
         assertFalse(rsMD.next(), sd + "no more rows expected.");
 
         // getProcedures() must return 1 or 2 records, depending on if getProceduresReturnsFunctions is false or true
@@ -3722,12 +3843,14 @@ public class MetaDataRegressionTest extends BaseTestCase {
         rsMD = testDbMetaData.getProcedures(null, null, "testBug17248345");
         if (getProcRetFunc) {
             assertTrue(rsMD.next(), sd + "1st of 2 rows expected.");
-            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " -> PROCEDURE_NAME");
+            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " 
+PROCEDURE_NAME");
             assertTrue(rsMD.next(), sd + "2nd of 2 rows expected.");
         } else {
             assertTrue(rsMD.next(), sd + "one row expected.");
         }
-        assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " -> PROCEDURE_NAME");
+        assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " 
+PROCEDURE_NAME");
         assertFalse(rsMD.next(), sd + "no more rows expected.");
 
         // getProcedureColumns() must return 1 or 3 records, depending on if getProceduresReturnsFunctions is false or
@@ -3736,17 +3859,23 @@ public class MetaDataRegressionTest extends BaseTestCase {
         rsMD = testDbMetaData.getProcedureColumns(null, null, "testBug17248345", "%");
         if (getProcRetFunc) {
             assertTrue(rsMD.next(), sd + "1st of 3 rows expected.");
-            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " -> PROCEDURE_NAME");
-            assertEquals("", rsMD.getString("COLUMN_NAME"), sd + " -> COLUMN_NAME");
+            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " 
+PROCEDURE_NAME");
+            assertEquals("", rsMD.getString("COLUMN_NAME"), sd + " 
+COLUMN_NAME");
             assertTrue(rsMD.next(), sd + "2nd of 3 rows expected.");
-            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " -> PROCEDURE_NAME");
-            assertEquals("funccol", rsMD.getString("COLUMN_NAME"), sd + " -> COLUMN_NAME");
+            assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " 
+PROCEDURE_NAME");
+            assertEquals("funccol", rsMD.getString("COLUMN_NAME"), sd + " 
+COLUMN_NAME");
             assertTrue(rsMD.next(), sd + "3rd of 3 rows expected.");
         } else {
             assertTrue(rsMD.next(), sd + "one row expected.");
         }
-        assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " -> PROCEDURE_NAME");
-        assertEquals("proccol", rsMD.getString("COLUMN_NAME"), sd + " -> COLUMN_NAME");
+        assertEquals("testBug17248345", rsMD.getString("PROCEDURE_NAME"), sd + " 
+PROCEDURE_NAME");
+        assertEquals("proccol", rsMD.getString("COLUMN_NAME"), sd + " 
+COLUMN_NAME");
         assertFalse(rsMD.next(), sd + "no more rows expected.");
     }
 

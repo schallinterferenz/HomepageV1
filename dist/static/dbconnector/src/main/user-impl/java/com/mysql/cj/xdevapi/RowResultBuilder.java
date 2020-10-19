@@ -98,7 +98,8 @@ public class RowResultBuilder implements ResultBuilder<RowResult> {
         if (this.metadata == null) {
             this.metadata = new DefaultColumnDefinition(this.fields.toArray(new Field[] {}));
         }
-        this.result = new RowResultImpl(this.metadata, this.defaultTimeZone, new BufferedRowList(this.rows), () -> this.statementExecuteOkBuilder.build(),
+        this.result = new RowResultImpl(this.metadata, this.defaultTimeZone, new BufferedRowList(this.rows), () 
+this.statementExecuteOkBuilder.build(),
                 this.pset);
         return this.result;
     }

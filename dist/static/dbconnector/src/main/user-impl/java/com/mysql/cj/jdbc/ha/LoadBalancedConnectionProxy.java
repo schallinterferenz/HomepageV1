@@ -339,7 +339,8 @@ public class LoadBalancedConnectionProxy extends MultiHostConnectionProxy implem
             return;
         }
 
-        List<String> hostPortList = Collections.unmodifiableList(this.hostsList.stream().map(hi -> hi.getHostPortPair()).collect(Collectors.toList()));
+        List<String> hostPortList = Collections.unmodifiableList(this.hostsList.stream().map(hi 
+hi.getHostPortPair()).collect(Collectors.toList()));
 
         if (this.currentConnection == null) { // startup
             this.currentConnection = this.balancer.pickConnection(this, hostPortList, Collections.unmodifiableMap(this.liveConnections),
@@ -731,7 +732,8 @@ public class LoadBalancedConnectionProxy extends MultiHostConnectionProxy implem
         Set<String> keys = blacklistClone.keySet();
 
         // We're only interested in blacklisted hosts that are in the hostList
-        keys.retainAll(this.hostsList.stream().map(hi -> hi.getHostPortPair()).collect(Collectors.toList()));
+        keys.retainAll(this.hostsList.stream().map(hi 
+hi.getHostPortPair()).collect(Collectors.toList()));
 
         // Don't need to synchronize here as we using a local copy
         for (Iterator<String> i = keys.iterator(); i.hasNext();) {
@@ -852,7 +854,8 @@ public class LoadBalancedConnectionProxy extends MultiHostConnectionProxy implem
         System.arraycopy(this.responseTimes, 0, newResponseTimes, 0, this.responseTimes.length);
 
         this.responseTimes = newResponseTimes;
-        if (this.hostsList.stream().noneMatch(hi -> hostPortPair.equals(hi.getHostPortPair()))) {
+        if (this.hostsList.stream().noneMatch(hi 
+hostPortPair.equals(hi.getHostPortPair()))) {
             this.hostsList.add(this.connectionUrl.getHostOrSpawnIsolated(hostPortPair));
         }
         this.hostsToListIndexMap.put(hostPortPair, this.responseTimes.length - 1);

@@ -194,7 +194,8 @@ public class MysqlSQLXML implements SQLXML {
         checkClosed();
         checkWorkingWithResult();
 
-        // Note that we try and use streams here wherever possible for the day that the server actually supports streaming from server -> client
+        // Note that we try and use streams here wherever possible for the day that the server actually supports streaming from server 
+client
         // (futureproofing)
 
         if (clazz == null || clazz.equals(SAXSource.class)) {

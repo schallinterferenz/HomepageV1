@@ -576,7 +576,8 @@ public class ReplicationConnectionProxy extends MultiHostConnectionProxy impleme
         if (hostPortPair == null) {
             return false;
         }
-        return this.masterHosts.stream().anyMatch(hi -> hostPortPair.equalsIgnoreCase(hi.getHostPortPair()));
+        return this.masterHosts.stream().anyMatch(hi 
+hostPortPair.equalsIgnoreCase(hi.getHostPortPair()));
     }
 
     public synchronized JdbcConnection getSlavesConnection() {
@@ -637,7 +638,8 @@ public class ReplicationConnectionProxy extends MultiHostConnectionProxy impleme
         if (hostPortPair == null) {
             return false;
         }
-        return this.slaveHosts.stream().anyMatch(hi -> hostPortPair.equalsIgnoreCase(hi.getHostPortPair()));
+        return this.slaveHosts.stream().anyMatch(hi 
+hostPortPair.equalsIgnoreCase(hi.getHostPortPair()));
     }
 
     public synchronized void setReadOnly(boolean readOnly) throws SQLException {
@@ -696,11 +698,13 @@ public class ReplicationConnectionProxy extends MultiHostConnectionProxy impleme
     }
 
     private HostInfo getMasterHost(String hostPortPair) {
-        return this.masterHosts.stream().filter(hi -> hostPortPair.equalsIgnoreCase(hi.getHostPortPair())).findFirst().orElse(null);
+        return this.masterHosts.stream().filter(hi 
+hostPortPair.equalsIgnoreCase(hi.getHostPortPair())).findFirst().orElse(null);
     }
 
     private HostInfo getSlaveHost(String hostPortPair) {
-        return this.slaveHosts.stream().filter(hi -> hostPortPair.equalsIgnoreCase(hi.getHostPortPair())).findFirst().orElse(null);
+        return this.slaveHosts.stream().filter(hi 
+hostPortPair.equalsIgnoreCase(hi.getHostPortPair())).findFirst().orElse(null);
     }
 
     private ReplicationConnectionUrl getConnectionUrl() {

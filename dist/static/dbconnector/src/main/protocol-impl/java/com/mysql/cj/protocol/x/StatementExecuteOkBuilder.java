@@ -84,7 +84,8 @@ public class StatementExecuteOkBuilder implements ResultBuilder<StatementExecute
                     this.rowsAffected = ((XSessionStateChanged) notice).getValue().getVUnsignedInt(); // TODO: handle > 2^63-1?
                     break;
                 case Notice.SessionStateChanged_GENERATED_DOCUMENT_IDS:
-                    this.generatedIds = ((XSessionStateChanged) notice).getValueList().stream().map(v -> v.getVOctets().getValue().toStringUtf8())
+                    this.generatedIds = ((XSessionStateChanged) notice).getValueList().stream().map(v 
+v.getVOctets().getValue().toStringUtf8())
                             .collect(Collectors.toList());
                     break;
                 case Notice.SessionStateChanged_PRODUCED_MESSAGE:

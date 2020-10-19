@@ -3798,7 +3798,8 @@ public class StatementsTest extends BaseTestCase {
 
         Field stmtsCacheField = ConnectionImpl.class.getDeclaredField("serverSideStatementCache");
         stmtsCacheField.setAccessible(true);
-        ToIntFunction<Connection> getStmtsCacheSize = (c) -> {
+        ToIntFunction<Connection> getStmtsCacheSize = (c) 
+{
             try {
                 LRUCache<?, ?> stmtsCacheObj = (LRUCache<?, ?>) stmtsCacheField.get(c);
                 return stmtsCacheObj == null ? -1 : stmtsCacheObj.size();
@@ -3807,7 +3808,8 @@ public class StatementsTest extends BaseTestCase {
                 return -1;
             }
         };
-        Function<Connection, ServerPreparedStatement> getStmtsCacheSingleElem = (c) -> {
+        Function<Connection, ServerPreparedStatement> getStmtsCacheSingleElem = (c) 
+{
             try {
                 @SuppressWarnings("unchecked")
                 LRUCache<?, ServerPreparedStatement> stmtsCacheObj = (LRUCache<?, ServerPreparedStatement>) stmtsCacheField.get(c);
@@ -3863,11 +3865,13 @@ public class StatementsTest extends BaseTestCase {
                 assertEquals(0, testConn.getActiveStatementCount());
                 assertEquals(cachedSPS ? 0 : -1, getStmtsCacheSize.applyAsInt(testConn));
 
-                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () -> {
+                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () 
+{
                     testPstmt.setPoolable(false);
                     return null;
                 });
-                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () -> {
+                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () 
+{
                     testPstmt.isPoolable();
                     return null;
                 });
@@ -3899,11 +3903,13 @@ public class StatementsTest extends BaseTestCase {
                 assertEquals(0, testConn.getActiveStatementCount());
                 assertEquals(cachedSPS ? 0 : -1, getStmtsCacheSize.applyAsInt(testConn));
 
-                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () -> {
+                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () 
+{
                     testPstmt.setPoolable(true);
                     return null;
                 });
-                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () -> {
+                assertThrows(SQLException.class, "No operations allowed after statement closed\\.", () 
+{
                     testPstmt.isPoolable();
                     return null;
                 });

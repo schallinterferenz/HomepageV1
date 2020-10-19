@@ -5372,7 +5372,8 @@ public class ResultSetRegressionTest extends BaseTestCase {
             assertEquals(LocalDateTime.of(2016, 3, 27, 2, 15), rs1.getObject(1, LocalDateTime.class));
             assertEquals(LocalTime.of(2, 15), rs1.getObject(1, LocalTime.class));
             // "2016-03-27 02:15:00" is an impossible datetime for Europe/Berlin tz 
-            assertThrows(SQLException.class, "HOUR_OF_DAY: 2 -> 3", new Callable<Void>() {
+            assertThrows(SQLException.class, "HOUR_OF_DAY: 2 
+3", new Callable<Void>() {
                 public Void call() throws Exception {
                     rs1.getTimestamp(1).toLocalDateTime();
                     return null;
@@ -7278,31 +7279,38 @@ public class ResultSetRegressionTest extends BaseTestCase {
         this.rs = this.stmt.executeQuery("SELECT 'testBug30474158'");
         this.rs.next();
         assertEquals("testBug30474158", this.rs.getString(1));
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.beforeFirst();
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.first();
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.last();
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.afterLast();
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.previous();
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.absolute(1);
             return null;
         });
-        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () -> {
+        assertThrows(SQLException.class, "Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY\\.", () 
+{
             this.rs.relative(-1);
             return null;
         });

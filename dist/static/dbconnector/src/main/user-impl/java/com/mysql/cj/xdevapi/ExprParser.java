@@ -117,7 +117,8 @@ public class ExprParser {
     public ExprParser(String s, boolean allowRelationalColumns) {
         this.string = s;
         lex();
-        // java.util.stream.IntStream.range(0, this.tokens.size()).forEach(i -> System.err.println("[" + i + "] = " + this.tokens.get(i)));
+        // java.util.stream.IntStream.range(0, this.tokens.size()).forEach(i 
+System.err.println("[" + i + "] = " + this.tokens.get(i)));
         this.allowRelationalColumns = allowRelationalColumns;
     }
 
@@ -774,12 +775,15 @@ public class ExprParser {
             case LCURLY: { // JSON object
                 Object.Builder builder = Object.newBuilder();
                 if (currentTokenTypeEquals(TokenType.LSTRING)) {
-                    parseCommaSeparatedList(() -> {
+                    parseCommaSeparatedList(() 
+{
                         String key = consumeToken(TokenType.LSTRING);
                         consumeToken(TokenType.COLON);
                         Expr value = expr();
                         return Collections.singletonMap(key, value);
-                    }).stream().map(pair -> pair.entrySet().iterator().next()).map(e -> ObjectField.newBuilder().setKey(e.getKey()).setValue(e.getValue()))
+                    }).stream().map(pair 
+pair.entrySet().iterator().next()).map(e 
+ObjectField.newBuilder().setKey(e.getKey()).setValue(e.getValue()))
                             .forEach(builder::addFld);
                 }
                 consumeToken(TokenType.RCURLY);
@@ -788,7 +792,8 @@ public class ExprParser {
             case LSQBRACKET: { // Array
                 Array.Builder builder = Expr.newBuilder().setType(Expr.Type.ARRAY).getArrayBuilder();
                 if (!currentTokenTypeEquals(TokenType.RSQBRACKET)) {
-                    parseCommaSeparatedList(() -> {
+                    parseCommaSeparatedList(() 
+{
                         return expr();
                     }).stream().forEach(builder::addValue);
                 }
@@ -1101,7 +1106,8 @@ public class ExprParser {
      * @return list of {@link Order} objects
      */
     public List<Order> parseOrderSpec() {
-        return parseCommaSeparatedList(() -> {
+        return parseCommaSeparatedList(() 
+{
             Order.Builder builder = Order.newBuilder();
             builder.setExpr(expr());
             if (currentTokenTypeEquals(TokenType.ORDERBY_ASC)) {
@@ -1121,7 +1127,8 @@ public class ExprParser {
      * @return list of {@link Projection} objects
      */
     public List<Projection> parseTableSelectProjection() {
-        return parseCommaSeparatedList(() -> {
+        return parseCommaSeparatedList(() 
+{
             Projection.Builder builder = Projection.newBuilder();
             builder.setSource(expr());
             if (currentTokenTypeEquals(TokenType.AS)) {
@@ -1158,7 +1165,8 @@ public class ExprParser {
      */
     public List<Projection> parseDocumentProjection() {
         this.allowRelationalColumns = false;
-        return parseCommaSeparatedList(() -> {
+        return parseCommaSeparatedList(() 
+{
             Projection.Builder builder = Projection.newBuilder();
             builder.setSource(expr());
             // alias is not optional for document projection

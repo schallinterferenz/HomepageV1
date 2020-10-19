@@ -2380,7 +2380,8 @@ public class StatementRegressionTest extends BaseTestCase {
             final String fileName = fileNameBuf.toString();
 
             assertThrows(SQLSyntaxErrorException.class,
-                    versionMeetsMinimum(8, 0, 19) ? "Loading local data is disabled;.*" : "The used command is not allowed with this MySQL version", () -> {
+                    versionMeetsMinimum(8, 0, 19) ? "Loading local data is disabled;.*" : "The used command is not allowed with this MySQL version", () 
+{
                         this.stmt.executeUpdate("LOAD DATA LOCAL INFILE '" + fileName + "' INTO TABLE loadDataRegress CHARACTER SET "
                                 + CharsetMapping.getMysqlCharsetForJavaEncoding(
                                         ((MysqlConnection) this.conn).getPropertySet().getStringProperty(PropertyKey.characterEncoding).getValue(),
@@ -9044,19 +9045,22 @@ public class StatementRegressionTest extends BaseTestCase {
 
             Connection testConn = getConnectionWithProps(props);
 
-            // Send timestamps as Strings, using Statement -> no truncation occurs.
+            // Send timestamps as Strings, using Statement 
+no truncation occurs.
             Statement testStmt = testConn.createStatement();
             testStmt.executeUpdate("INSERT INTO testBug77449 VALUES (1, '2014-12-31 23:59:59.999', '2014-12-31 23:59:59.999')/* no_ts_trunk */");
             testStmt.close();
 
-            // Send timestamps using PreparedStatement -> truncation occurs according to 'sendFractionalSeconds' value.
+            // Send timestamps using PreparedStatement 
+truncation occurs according to 'sendFractionalSeconds' value.
             PreparedStatement testPStmt = testConn.prepareStatement("INSERT INTO testBug77449 VALUES (2, ?, ?)");
             testPStmt.setTimestamp(1, originalTs);
             testPStmt.setTimestamp(2, originalTs);
             assertEquals(1, testPStmt.executeUpdate(), testCase);
             testPStmt.close();
 
-            // Send timestamps using UpdatableResultSet -> truncation occurs according to 'sendFractionalSeconds' value.
+            // Send timestamps using UpdatableResultSet 
+truncation occurs according to 'sendFractionalSeconds' value.
             testStmt = testConn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
             testStmt.executeUpdate("INSERT INTO testBug77449 VALUES (3, NOW(), NOW())/* no_ts_trunk */"); // insert dummy row
             this.rs = testStmt.executeQuery("SELECT * FROM testBug77449 WHERE id = 3");
@@ -9088,7 +9092,8 @@ public class StatementRegressionTest extends BaseTestCase {
 
             this.stmt.execute("DELETE FROM testBug77449");
 
-            // Compare Connector/J with client truncation -> truncation occurs according to 'sendFractionalSeconds' value.
+            // Compare Connector/J with client truncation 
+truncation occurs according to 'sendFractionalSeconds' value.
             testPStmt = testConn.prepareStatement("SELECT ? = ?");
             testPStmt.setTimestamp(1, originalTs);
             testPStmt.setTimestamp(2, truncatedTs);
@@ -9101,7 +9106,8 @@ public class StatementRegressionTest extends BaseTestCase {
             }
             testPStmt.close();
 
-            // Send timestamps using CallableStatement -> truncation occurs according to 'sendFractionalSeconds' value.
+            // Send timestamps using CallableStatement 
+truncation occurs according to 'sendFractionalSeconds' value.
             CallableStatement cstmt = testConn.prepareCall("{call testBug77449(?, ?)}");
             cstmt.setTimestamp("ts_short", originalTs);
             cstmt.setTimestamp("ts_long", originalTs);
@@ -9246,7 +9252,8 @@ public class StatementRegressionTest extends BaseTestCase {
                 query = query.substring(query.indexOf(':') + 2);
             }
             if (query != null && query.indexOf("testBug77681") != -1) {
-                System.out.println(this.execCounter + " --> " + query);
+                System.out.println(this.execCounter + " -
+" + query);
                 if (this.execCounter > this.expected.length) {
                     fail("Failed to rewrite statements");
                 }
@@ -9665,7 +9672,8 @@ public class StatementRegressionTest extends BaseTestCase {
                     } else if (prepCount <= prepStmtCacheSize + 2) {
                         // There should be enough room to prepare server-side prepared statements. (This was checked in the beginning.)
                         assertTrue(isSPS, testCase);
-                    } // prepStmtCacheSize + 1 < prepCount <= maxPrepStmtCount --> can't assert anything as there can statements prepared externally.
+                    } // prepStmtCacheSize + 1 < prepCount <= maxPrepStmtCount -
+can't assert anything as there can statements prepared externally.
 
                     ((StatementImpl) testPstmt2).setPoolable(poolable); // Need to cast, this is a JDBC 4.0 feature.
                     testPstmt2.setInt(1, 0);
@@ -10200,7 +10208,8 @@ public class StatementRegressionTest extends BaseTestCase {
     public void testBug87429() throws Exception {
         Field stmtsCacheField = ConnectionImpl.class.getDeclaredField("serverSideStatementCache");
         stmtsCacheField.setAccessible(true);
-        ToIntFunction<Connection> getStmtsCacheSize = (c) -> {
+        ToIntFunction<Connection> getStmtsCacheSize = (c) 
+{
             try {
                 LRUCache<?, ?> stmtsCacheObj = (LRUCache<?, ?>) stmtsCacheField.get(c);
                 return stmtsCacheObj == null ? -1 : stmtsCacheObj.size();

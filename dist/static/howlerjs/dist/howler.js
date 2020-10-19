@@ -1195,10 +1195,14 @@
 
     /**
      * Get/set the volume of this sound or of the Howl group. This method can optionally take 0, 1 or 2 arguments.
-     *   volume() -> Returns the group's volume value.
-     *   volume(id) -> Returns the sound id's current volume.
-     *   volume(vol) -> Sets the volume of all sounds in this Howl group.
-     *   volume(vol, id) -> Sets the volume of passed sound id.
+     *   volume() 
+Returns the group's volume value.
+     *   volume(id) 
+Returns the sound id's current volume.
+     *   volume(vol) 
+Sets the volume of all sounds in this Howl group.
+     *   volume(vol, id) 
+Sets the volume of passed sound id.
      * @return {Howl/Number} Returns self or current volume.
      */
     volume: function() {
@@ -1422,10 +1426,14 @@
 
     /**
      * Get/set the loop parameter on a sound. This method can optionally take 0, 1 or 2 arguments.
-     *   loop() -> Returns the group's loop value.
-     *   loop(id) -> Returns the sound id's loop value.
-     *   loop(loop) -> Sets the loop value for all sounds in this Howl group.
-     *   loop(loop, id) -> Sets the loop value of passed sound id.
+     *   loop() 
+Returns the group's loop value.
+     *   loop(id) 
+Returns the sound id's loop value.
+     *   loop(loop) 
+Sets the loop value for all sounds in this Howl group.
+     *   loop(loop, id) 
+Sets the loop value of passed sound id.
      * @return {Howl/Boolean} Returns self or current loop value.
      */
     loop: function() {
@@ -1473,10 +1481,14 @@
 
     /**
      * Get/set the playback rate of a sound. This method can optionally take 0, 1 or 2 arguments.
-     *   rate() -> Returns the first sound node's current playback rate.
-     *   rate(id) -> Returns the sound id's current playback rate.
-     *   rate(rate) -> Sets the playback rate of all sounds in this Howl group.
-     *   rate(rate, id) -> Sets the playback rate of passed sound id.
+     *   rate() 
+Returns the first sound node's current playback rate.
+     *   rate(id) 
+Returns the sound id's current playback rate.
+     *   rate(rate) 
+Sets the playback rate of all sounds in this Howl group.
+     *   rate(rate, id) 
+Sets the playback rate of passed sound id.
      * @return {Howl/Number} Returns self or the current playback rate.
      */
     rate: function() {
@@ -1568,10 +1580,14 @@
 
     /**
      * Get/set the seek position of a sound. This method can optionally take 0, 1 or 2 arguments.
-     *   seek() -> Returns the first sound node's current seek position.
-     *   seek(id) -> Returns the sound id's current seek position.
-     *   seek(seek) -> Sets the seek position of the first sound node.
-     *   seek(seek, id) -> Sets the seek position of passed sound id.
+     *   seek() 
+Returns the first sound node's current seek position.
+     *   seek(id) 
+Returns the sound id's current seek position.
+     *   seek(seek) 
+Sets the seek position of the first sound node.
+     *   seek(seek, id) 
+Sets the seek position of passed sound id.
      * @return {Howl/Number} Returns self or the current seek position.
      */
     seek: function() {
@@ -2950,10 +2966,14 @@
   /**
    * Get/set the panner node's attributes for a sound or group of sounds.
    * This method can optionall take 0, 1 or 2 arguments.
-   *   pannerAttr() -> Returns the group's values.
-   *   pannerAttr(id) -> Returns the sound id's values.
-   *   pannerAttr(o) -> Set's the values of all sounds in this Howl group.
-   *   pannerAttr(o, id) -> Set's the values of passed sound id.
+   *   pannerAttr() 
+Returns the group's values.
+   *   pannerAttr(id) 
+Returns the sound id's values.
+   *   pannerAttr(o) 
+Set's the values of all sounds in this Howl group.
+   *   pannerAttr(o, id) 
+Set's the values of passed sound id.
    *
    *   Attributes:
    *     coneInnerAngle - (360 by default) A parameter for directional audio sources, this is an angle, in degrees,

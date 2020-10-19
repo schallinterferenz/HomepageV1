@@ -92,7 +92,8 @@ public class SerializingBufferWriter implements CompletionHandler<Long, Void> {
             // When the number of buffers exceeds this limit, then the I/O operation is performed with the maximum number of buffers allowed by the operating system.
             // That slows down the I/O significantly and could even hang it in case of asynchronous I/O when server response can't be read because write operation has drained all available buffers.
             // 2. With a large number of small asynchronous requests pendingWrites queue is filled much faster than it's freed so that the OS limit can be reached easily.
-            ByteBuffer bufs[] = this.pendingWrites.stream().limit(WRITES_AT_ONCE).map(ByteBufferWrapper::getBuffer).toArray(size -> new ByteBuffer[size]);
+            ByteBuffer bufs[] = this.pendingWrites.stream().limit(WRITES_AT_ONCE).map(ByteBufferWrapper::getBuffer).toArray(size 
+new ByteBuffer[size]);
             this.channel.write(bufs, 0, bufs.length, 0L, TimeUnit.MILLISECONDS, null, this);
         } catch (ReadPendingException | WritePendingException t) {
             return;
@@ -139,7 +140,8 @@ public class SerializingBufferWriter implements CompletionHandler<Long, Void> {
                 completedWrites.add(this.pendingWrites.remove().getHandler());
             }
             // notify handler(s) before initiating write to satisfy ordering guarantees
-            completedWrites.stream().filter(Objects::nonNull).forEach(l -> {
+            completedWrites.stream().filter(Objects::nonNull).forEach(l 
+{
                 // prevent exceptions in handler from blocking other notifications
                 try {
                     l.completed(0L, null);
@@ -176,7 +178,8 @@ public class SerializingBufferWriter implements CompletionHandler<Long, Void> {
             }
         }
 
-        failedWrites.forEach((CompletionHandler<Long, Void> l) -> {
+        failedWrites.forEach((CompletionHandler<Long, Void> l) 
+{
             try {
                 l.failed(t, null);
             } catch (Exception ex) {

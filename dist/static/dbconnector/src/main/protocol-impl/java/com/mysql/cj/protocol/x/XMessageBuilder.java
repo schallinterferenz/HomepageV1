@@ -107,12 +107,14 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
     @SuppressWarnings("unchecked")
     public XMessage buildCapabilitiesSet(Map<String, Object> keyValuePair) {
         Capabilities.Builder capsB = Capabilities.newBuilder();
-        keyValuePair.forEach((k, v) -> {
+        keyValuePair.forEach((k, v) 
+{
             Any val;
             if (XServerCapabilities.KEY_SESSION_CONNECT_ATTRS.equals(k) || XServerCapabilities.KEY_COMPRESSION.equals(k)) {
                 MysqlxDatatypes.Object.Builder attrB = MysqlxDatatypes.Object.newBuilder();
                 ((Map<String, Object>) v)
-                        .forEach((name, value) -> attrB.addFld(ObjectField.newBuilder().setKey(name).setValue(ExprUtil.argObjectToScalarAny(value)).build()));
+                        .forEach((name, value) 
+attrB.addFld(ObjectField.newBuilder().setKey(name).setValue(ExprUtil.argObjectToScalarAny(value)).build()));
                 val = Any.newBuilder().setType(Any.Type.OBJECT).setObj(attrB).build();
 
             } else {
@@ -143,7 +145,8 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
         if (upsert != builder.getUpsert()) {
             builder.setUpsert(upsert);
         }
-        json.stream().map(str -> TypedRow.newBuilder().addField(ExprUtil.argObjectToExpr(str, false)).build()).forEach(builder::addRow);
+        json.stream().map(str 
+TypedRow.newBuilder().addField(ExprUtil.argObjectToExpr(str, false)).build()).forEach(builder::addRow);
         return new XMessage(builder.build());
     }
 
@@ -199,7 +202,8 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
      */
     private Update.Builder commonDocUpdateBuilder(FilterParams filterParams, List<UpdateSpec> updates) {
         Update.Builder builder = Update.newBuilder().setCollection((Collection) filterParams.getCollection());
-        updates.forEach(u -> {
+        updates.forEach(u 
+{
             UpdateOperation.Builder opBuilder = UpdateOperation.newBuilder();
             opBuilder.setOperation((UpdateType) u.getUpdateType());
             opBuilder.setSource((ColumnIdentifier) u.getSource());
@@ -262,7 +266,8 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
     private Update.Builder commonRowUpdateBuilder(FilterParams filterParams, UpdateParams updateParams) {
         Update.Builder builder = Update.newBuilder().setDataModel(DataModel.TABLE).setCollection((Collection) filterParams.getCollection());
         ((Map<ColumnIdentifier, Expr>) updateParams.getUpdates()).entrySet().stream()
-                .map(e -> UpdateOperation.newBuilder().setOperation(UpdateType.SET).setSource(e.getKey()).setValue(e.getValue()).build())
+                .map(e 
+UpdateOperation.newBuilder().setOperation(UpdateType.SET).setSource(e.getKey()).setValue(e.getValue()).build())
                 .forEach(builder::addOperation);
         return builder;
     }
@@ -559,7 +564,8 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
     public XMessage buildPrepareExecute(int preparedStatementId, FilterParams filterParams) {
         Execute.Builder builder = Execute.newBuilder().setStmtId(preparedStatementId);
         if (filterParams.getArgs() != null) {
-            builder.addAllArgs(((List<Scalar>) filterParams.getArgs()).stream().map(s -> Any.newBuilder().setType(Any.Type.SCALAR).setScalar(s).build())
+            builder.addAllArgs(((List<Scalar>) filterParams.getArgs()).stream().map(s 
+Any.newBuilder().setType(Any.Type.SCALAR).setScalar(s).build())
                     .collect(Collectors.toList()));
         }
         if (filterParams.getLimit() != null) {
@@ -828,7 +834,8 @@ public class XMessageBuilder implements MessageBuilder<XMessage> {
         builder.setNamespace(XPLUGIN_NAMESPACE);
         // TODO: encoding (character_set_client?)
         builder.setStmt(ByteString.copyFromUtf8(command.commandName));
-        Arrays.stream(args).forEach(a -> builder.addArgs(a));
+        Arrays.stream(args).forEach(a 
+builder.addArgs(a));
 
         return builder.build();
     }

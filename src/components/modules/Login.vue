@@ -10,18 +10,18 @@
 
       <b-form-input
         type="text"
-        v-model="n"
+        v-model="u"
         placeholder="Nickname"
         style="margin-top: 10px !important"
-        @change="setUser(n)"
+        @change="setUser()"
       ></b-form-input>
-      <div class="mt-2">{{ n }}</div>
+      <div class="mt-2">{{ u }}</div>
 
       <b-form-input
         type="text"
         v-model="p"
         placeholder="Password"
-        @change="setPW(p)"
+        @change="setPW()"
       ></b-form-input>
       <div class="mt-2">{{ p }}</div>
 
@@ -43,20 +43,24 @@ import api from "../api/app/controller/api.controller";
 
 export default {
   name: "Login",
+  props: {
+    u: String,
+    p: String
+  },
   data() {
     return {
-      User: {
+      user: {
         username: "",
         password: ""
       }
     };
   },
   methods: {
-    setUser: (value) => {
-      this.User.username = value;
+    setUser: () => {
+      this.user.username = this.u;
     },
-    setPW: (value) => {
-      this.User.password = value;
+    setPW: () => {
+      this.user.password = this.p;
     },
     login: () => {
       var hash = utils.hashString(string);

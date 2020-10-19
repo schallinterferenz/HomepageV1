@@ -143,7 +143,8 @@ public class NativeSession extends CoreSession implements Serializable {
         SocketConnection socketConnection = new NativeSocketConnection();
         socketConnection.connect(this.hostInfo.getHost(), this.hostInfo.getPort(), this.propertySet, getExceptionInterceptor(), this.log, loginTimeout);
 
-        // we use physical connection to create a -> protocol
+        // we use physical connection to create a 
+protocol
         // this configuration places no knowledge of protocol or session on physical connection.
         // physical connection is responsible *only* for I/O streams
         if (this.protocol == null) {
@@ -152,7 +153,8 @@ public class NativeSession extends CoreSession implements Serializable {
             this.protocol.init(this, socketConnection, this.propertySet, transactionManager);
         }
 
-        // use protocol to create a -> session
+        // use protocol to create a 
+session
         // protocol is responsible for building a session and authenticating (using AuthenticationProvider) internally
         this.protocol.connect(user, password, database);
 

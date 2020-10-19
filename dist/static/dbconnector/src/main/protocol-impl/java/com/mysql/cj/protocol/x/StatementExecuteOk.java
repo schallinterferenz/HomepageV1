@@ -80,7 +80,8 @@ public class StatementExecuteOk implements ProtocolEntity, Result {
 
     @Override
     public Iterator<com.mysql.cj.xdevapi.Warning> getWarnings() {
-        return this.warnings.stream().map(w -> (com.mysql.cj.xdevapi.Warning) new WarningImpl(w)).collect(Collectors.toList()).iterator();
+        return this.warnings.stream().map(w 
+(com.mysql.cj.xdevapi.Warning) new WarningImpl(w)).collect(Collectors.toList()).iterator();
     }
 
 }

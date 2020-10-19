@@ -414,10 +414,14 @@
   /**
    * Get/set the panner node's attributes for a sound or group of sounds.
    * This method can optionall take 0, 1 or 2 arguments.
-   *   pannerAttr() -> Returns the group's values.
-   *   pannerAttr(id) -> Returns the sound id's values.
-   *   pannerAttr(o) -> Set's the values of all sounds in this Howl group.
-   *   pannerAttr(o, id) -> Set's the values of passed sound id.
+   *   pannerAttr() 
+Returns the group's values.
+   *   pannerAttr(id) 
+Returns the sound id's values.
+   *   pannerAttr(o) 
+Set's the values of all sounds in this Howl group.
+   *   pannerAttr(o, id) 
+Set's the values of passed sound id.
    *
    *   Attributes:
    *     coneInnerAngle - (360 by default) A parameter for directional audio sources, this is an angle, in degrees,

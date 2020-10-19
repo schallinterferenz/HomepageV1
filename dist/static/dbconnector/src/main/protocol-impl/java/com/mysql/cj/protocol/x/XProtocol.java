@@ -218,7 +218,8 @@ public class XProtocol extends AbstractProtocol<XMessage> implements Protocol<XM
      *            capabilities name/value map
      */
     public void sendCapabilities(Map<String, Object> keyValuePair) {
-        keyValuePair.forEach((k, v) -> ((XServerCapabilities) getServerSession().getCapabilities()).setCapability(k, v));
+        keyValuePair.forEach((k, v) 
+((XServerCapabilities) getServerSession().getCapabilities()).setCapability(k, v));
         this.sender.send(((XMessageBuilder) this.messageBuilder).buildCapabilitiesSet(keyValuePair));
         readQueryResult(new OkBuilder());
     }
@@ -698,7 +699,8 @@ public class XProtocol extends AbstractProtocol<XMessage> implements Protocol<XM
             @SuppressWarnings("unchecked")
             ProtocolEntityFactory<Field, XMessage> fieldFactory = (ProtocolEntityFactory<Field, XMessage>) this.messageToProtocolEntityFactory
                     .get(ColumnMetaData.class);
-            fromServer.forEach(col -> metadata.add(fieldFactory.createFromMessage(new XMessage(col))));
+            fromServer.forEach(col 
+metadata.add(fieldFactory.createFromMessage(new XMessage(col))));
 
             return new DefaultColumnDefinition(metadata.toArray(new Field[] {}));
         } catch (IOException e) {
@@ -722,7 +724,8 @@ public class XProtocol extends AbstractProtocol<XMessage> implements Protocol<XM
             @SuppressWarnings("unchecked")
             ProtocolEntityFactory<Field, XMessage> fieldFactory = (ProtocolEntityFactory<Field, XMessage>) this.messageToProtocolEntityFactory
                     .get(ColumnMetaData.class);
-            fromServer.forEach(col -> metadata.add(fieldFactory.createFromMessage(new XMessage(col))));
+            fromServer.forEach(col 
+metadata.add(fieldFactory.createFromMessage(new XMessage(col))));
 
             return new DefaultColumnDefinition(metadata.toArray(new Field[] {}));
         } catch (IOException e) {
@@ -889,7 +892,8 @@ public class XProtocol extends AbstractProtocol<XMessage> implements Protocol<XM
         newCommand();
         CompletableFuture<R> f = new CompletableFuture<>();
         MessageListener<XMessage> l = new ResultMessageListener<>(this.messageToProtocolEntityFactory, resultBuilder, f);
-        this.sender.send((XMessage) message, f, () -> this.reader.pushMessageListener(l));
+        this.sender.send((XMessage) message, f, () 
+this.reader.pushMessageListener(l));
         return f;
     }
 

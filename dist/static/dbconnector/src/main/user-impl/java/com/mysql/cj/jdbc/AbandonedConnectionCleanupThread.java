@@ -55,7 +55,8 @@ public class AbandonedConnectionCleanupThread implements Runnable {
     private static Lock threadRefLock = new ReentrantLock();
 
     static {
-        cleanupThreadExcecutorService = Executors.newSingleThreadExecutor(r -> {
+        cleanupThreadExcecutorService = Executors.newSingleThreadExecutor(r 
+{
             Thread t = new Thread(r, "mysql-cj-abandoned-connection-cleanup");
             t.setDaemon(true);
             // Tie the thread's context ClassLoader to the ClassLoader that loaded the class instead of inheriting the context ClassLoader from the current

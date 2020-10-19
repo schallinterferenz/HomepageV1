@@ -133,7 +133,8 @@ public class DnsSrv {
 
         List<Integer> priorities = srvRecordsSortedNatural.stream().map(SrvRecord::getPriority).distinct().collect(Collectors.toList());
         for (Integer priority : priorities) {
-            List<SrvRecord> srvRecordsSamePriority = srvRecordsSortedNatural.stream().filter(s -> s.getPriority() == priority).collect(Collectors.toList());
+            List<SrvRecord> srvRecordsSamePriority = srvRecordsSortedNatural.stream().filter(s 
+s.getPriority() == priority).collect(Collectors.toList());
             while (srvRecordsSamePriority.size() > 1) {
                 int recCount = srvRecordsSamePriority.size();
                 int sumOfWeights = 0;

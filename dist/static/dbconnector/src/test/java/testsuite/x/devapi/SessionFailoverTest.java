@@ -116,7 +116,8 @@ public class SessionFailoverTest extends DevApiBaseTestCase {
 
         try {
             this.fact.getSession(buildConnectionString(this.testsHost)).close();
-            assertThrows(CJCommunicationsException.class, ".*", () -> this.fact.getSession(buildConnectionString(fakeHost)));
+            assertThrows(CJCommunicationsException.class, ".*", () 
+this.fact.getSession(buildConnectionString(fakeHost)));
             assertEquals(1, fakeServer.getAndResetConnectionsCounter());
         } finally {
             fakeServer.shutdownSilently();
@@ -150,7 +151,8 @@ public class SessionFailoverTest extends DevApiBaseTestCase {
             this.fact.getSession(buildConnectionString(fakeHost, fakeHost, fakeHost, this.testsHost)).close();
             assertEquals(3, fakeServer.getAndResetConnectionsCounter());
 
-            assertThrows(CJCommunicationsException.class, ".*", () -> this.fact.getSession(buildConnectionString(fakeHost, fakeHost, fakeHost, fakeHost)));
+            assertThrows(CJCommunicationsException.class, ".*", () 
+this.fact.getSession(buildConnectionString(fakeHost, fakeHost, fakeHost, fakeHost)));
             assertEquals(4, fakeServer.getAndResetConnectionsCounter());
         } finally {
             fakeServer.shutdownSilently();
@@ -270,25 +272,29 @@ public class SessionFailoverTest extends DevApiBaseTestCase {
         // with message "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value 'null' can not be converted to an integer."
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value 'null' can not be converted to an integer.",
-                () -> this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "null", true)));
+                () 
+this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "null", true)));
 
         // TS11_2 Set connection property xdevapi.connect-timeout=-1, try to create Session, check that WrongArgumentException is thrown with
         // message "The connection property 'xdevapi.connect-timeout' only accepts integer values in the range of 0 - 2147483647, the value '-1' exceeds this range."
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.connect-timeout' only accepts integer values in the range of 0 - 2147483647, the value '-1' exceeds this range.",
-                () -> this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "-1", true)));
+                () 
+this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "-1", true)));
 
         // TS11_3 Set connection property xdevapi.connect-timeout=abc, try to create Session, check that WrongArgumentException is thrown with
         // message "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value 'abc' can not be converted to an integer."
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value 'abc' can not be converted to an integer.",
-                () -> this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "abc", true)));
+                () 
+this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "abc", true)));
 
         // TS11_4 Set connection property xdevapi.connect-timeout=, try to create Session, check that WrongArgumentException is thrown with
         // message "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value '' can not be converted to an integer."
         assertThrows(WrongArgumentException.class,
                 "The connection property 'xdevapi.connect-timeout' only accepts integer values. The value '' can not be converted to an integer.",
-                () -> this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "", true)));
+                () 
+this.fact.getSession(buildConnectionString(fakeHost, this.testsHost) + "?" + makeParam(PropertyKey.xdevapiConnectTimeout, "", true)));
 
         // TS11_5 Set connection property xdevapi.connect-timeout=12.8. Please note that c/J truncates decimals w/o exception for integer parameters thus
         // the error message is not thrown against the property value. Try to connect with this connection string and ensure that CJCommunicationsException
@@ -303,7 +309,8 @@ public class SessionFailoverTest extends DevApiBaseTestCase {
 
     private <EX extends Throwable> void testConnectionTimeout_assertFailureTimeout(String url, int expLowLimit, int expUpLimit, Class<EX> throwable) {
         long begin = System.currentTimeMillis();
-        assertThrows(throwable, () -> this.fact.getSession(url));
+        assertThrows(throwable, () 
+this.fact.getSession(url));
         long end = System.currentTimeMillis() - begin;
         assertTrue(end >= expLowLimit && end < expUpLimit, "Expected: " + expLowLimit + ".." + expUpLimit + ". Got " + end);
     }

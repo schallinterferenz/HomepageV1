@@ -1689,7 +1689,8 @@ public class MetadataTest extends BaseTestCase {
         props.setProperty(PropertyKey.useInformationSchema.getKeyName(), "true");
         props.setProperty(PropertyKey.queryInterceptors.getKeyName(), TestGetSqlKeywordsDynamicQueryInterceptor.class.getName());
 
-        // First call to DatabaseMetaData.getSQLKeywords() -> keywords are retrieved from database.
+        // First call to DatabaseMetaData.getSQLKeywords() 
+keywords are retrieved from database.
         Connection testConn = getConnectionWithProps(props);
         assertEquals(expectedSqlKeywords, testConn.getMetaData().getSQLKeywords(), "MySQL keywords don't match expected.");
         assertTrue(TestGetSqlKeywordsDynamicQueryInterceptor.interceptedQueries.contains(keywordsQuery), "MySQL keywords weren't obtained from database.");
@@ -1697,7 +1698,8 @@ public class MetadataTest extends BaseTestCase {
 
         TestGetSqlKeywordsDynamicQueryInterceptor.interceptedQueries.clear();
 
-        // Second call to DatabaseMetaData.getSQLKeywords(), using same connection -> keywords are retrieved from internal cache.
+        // Second call to DatabaseMetaData.getSQLKeywords(), using same connection 
+keywords are retrieved from internal cache.
         assertEquals(expectedSqlKeywords, testConn.getMetaData().getSQLKeywords(), "MySQL keywords don't match expected.");
         assertFalse(TestGetSqlKeywordsDynamicQueryInterceptor.interceptedQueries.contains(keywordsQuery), "MySQL keywords weren't obtained from cache.");
         assertTrue(dbmduisKeywordsCache.containsKey(((JdbcConnection) testConn).getServerVersion()), "Keywords for current server weren't properly cached.");
@@ -1705,7 +1707,8 @@ public class MetadataTest extends BaseTestCase {
 
         TestGetSqlKeywordsDynamicQueryInterceptor.interceptedQueries.clear();
 
-        // Third call to DatabaseMetaData.getSQLKeywords(), using different connection -> keywords are retrieved from internal cache.
+        // Third call to DatabaseMetaData.getSQLKeywords(), using different connection 
+keywords are retrieved from internal cache.
         testConn = getConnectionWithProps(props);
         assertEquals(expectedSqlKeywords, testConn.getMetaData().getSQLKeywords(), "MySQL keywords don't match expected.");
         assertFalse(TestGetSqlKeywordsDynamicQueryInterceptor.interceptedQueries.contains(keywordsQuery), "MySQL keywords weren't obtained from cache.");

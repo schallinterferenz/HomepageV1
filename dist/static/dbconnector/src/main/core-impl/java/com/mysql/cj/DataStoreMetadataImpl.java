@@ -50,7 +50,8 @@ public class DataStoreMetadataImpl implements DataStoreMetadata {
         stmt.append(schemaName.replaceAll("'", "\\'"));
         stmt.append("'");
 
-        Function<com.mysql.cj.result.Row, Long> rowToLong = r -> r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
+        Function<com.mysql.cj.result.Row, Long> rowToLong = r 
+r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
         List<Long> counters = this.session.query(this.session.getMessageBuilder().buildSqlStatement(stmt.toString()), null, rowToLong, Collectors.toList());
         return 1 == counters.get(0);
     }
@@ -63,7 +64,8 @@ public class DataStoreMetadataImpl implements DataStoreMetadata {
         stmt.append(tableName.replaceAll("'", "\\'"));
         stmt.append("'");
 
-        Function<com.mysql.cj.result.Row, Long> rowToLong = r -> r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
+        Function<com.mysql.cj.result.Row, Long> rowToLong = r 
+r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
         List<Long> counters = this.session.query(this.session.getMessageBuilder().buildSqlStatement(stmt.toString()), null, rowToLong, Collectors.toList());
         return 1 == counters.get(0);
     }
@@ -75,7 +77,8 @@ public class DataStoreMetadataImpl implements DataStoreMetadata {
         stmt.append(".");
         stmt.append(ExprUnparser.quoteIdentifier(tableName));
 
-        Function<com.mysql.cj.result.Row, Long> rowToLong = r -> r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
+        Function<com.mysql.cj.result.Row, Long> rowToLong = r 
+r.getValue(0, new LongValueFactory(this.session.getPropertySet()));
         List<Long> counters = this.session.query(this.session.getMessageBuilder().buildSqlStatement(stmt.toString()), null, rowToLong, Collectors.toList());
         return counters.get(0);
     }

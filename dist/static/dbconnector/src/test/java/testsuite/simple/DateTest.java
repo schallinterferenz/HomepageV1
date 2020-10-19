@@ -84,11 +84,16 @@ public class DateTest extends BaseTestCase {
         Timestamp nowDatetime = new Timestamp(cal.getTime().getTime());
         java.sql.Time nowTime = new java.sql.Time(cal.getTime().getTime());
         System.out.println("** Times with given calendar (before storing) **\n");
-        System.out.println("TIMESTAMP:\t" + nowTstamp.getTime() + " -> " + df.format(nowTstamp));
-        System.out.println("DATE:\t\t" + nowDate.getTime() + " -> " + df.format(nowDate));
-        System.out.println("DATETIME:\t" + nowDatetime.getTime() + " -> " + df.format(nowDatetime));
-        System.out.println("DATE:\t\t" + nowDate.getTime() + " -> " + df.format(nowDate));
-        System.out.println("TIME:\t\t" + nowTime.getTime() + " -> " + df.format(nowTime));
+        System.out.println("TIMESTAMP:\t" + nowTstamp.getTime() + " 
+" + df.format(nowTstamp));
+        System.out.println("DATE:\t\t" + nowDate.getTime() + " 
+" + df.format(nowDate));
+        System.out.println("DATETIME:\t" + nowDatetime.getTime() + " 
+" + df.format(nowDatetime));
+        System.out.println("DATE:\t\t" + nowDate.getTime() + " 
+" + df.format(nowDate));
+        System.out.println("TIME:\t\t" + nowTime.getTime() + " 
+" + df.format(nowTime));
         System.out.println("\n");
         this.pstmt.setTimestamp(1, nowTstamp, calGMT);
         // have to use the same TimeZone as used to create or there will be
@@ -114,10 +119,14 @@ public class DateTest extends BaseTestCase {
 
             java.sql.Time thenTime = this.rs.getTime(4, cal);
             System.out.println("** Times with given calendar (retrieved from database) **\n");
-            System.out.println("TIMESTAMP:\t" + thenTstamp.getTime() + " -> " + df.format(thenTstamp));
-            System.out.println("DATE:\t\t" + thenDate.getTime() + " -> " + df.format(thenDate));
-            System.out.println("DATETIME:\t" + thenDatetime.getTime() + " -> " + df.format(thenDatetime));
-            System.out.println("TIME:\t\t" + thenTime.getTime() + " -> " + df.format(thenTime));
+            System.out.println("TIMESTAMP:\t" + thenTstamp.getTime() + " 
+" + df.format(thenTstamp));
+            System.out.println("DATE:\t\t" + thenDate.getTime() + " 
+" + df.format(thenDate));
+            System.out.println("DATETIME:\t" + thenDatetime.getTime() + " 
+" + df.format(thenDatetime));
+            System.out.println("TIME:\t\t" + thenTime.getTime() + " 
+" + df.format(thenTime));
             System.out.println("\n");
         }
 
@@ -335,11 +344,13 @@ public class DateTest extends BaseTestCase {
         this.rs = this.pstmt.executeQuery();
         assertTrue(this.rs.next());
         System.out.println(this.rs.getTime(1));
-        // DATE -> Time not allowed
+        // DATE 
+Time not allowed
         System.out.println(this.rs.getTime(3));
         System.out.println(this.rs.getTime(4));
         System.out.println();
-        // TIME -> Date not allowed
+        // TIME 
+Date not allowed
         System.out.println(this.rs.getDate(2));
         System.out.println(this.rs.getDate(3));
         System.out.println(this.rs.getDate(4));

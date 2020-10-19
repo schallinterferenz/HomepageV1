@@ -53,7 +53,8 @@ public class InsertParams {
      *            projection expressions
      */
     public void setProjection(String[] projection) {
-        this.projection = Arrays.stream(projection).map(p -> new ExprParser(p, true).parseTableInsertField()).collect(Collectors.toList());
+        this.projection = Arrays.stream(projection).map(p 
+new ExprParser(p, true).parseTableInsertField()).collect(Collectors.toList());
     }
 
     /**
@@ -72,7 +73,8 @@ public class InsertParams {
      *            field value expressions for this row
      */
     public void addRow(List<Object> row) {
-        this.rows.add(TypedRow.newBuilder().addAllField(row.stream().map(f -> ExprUtil.argObjectToExpr(f, true)).collect(Collectors.toList())).build());
+        this.rows.add(TypedRow.newBuilder().addAllField(row.stream().map(f 
+ExprUtil.argObjectToExpr(f, true)).collect(Collectors.toList())).build());
     }
 
     /**
@@ -93,7 +95,8 @@ public class InsertParams {
     public void setFieldsAndValues(Map<String, Object> fieldsAndValues) {
         this.projection = new ArrayList<>();
         TypedRow.Builder rowBuilder = TypedRow.newBuilder();
-        fieldsAndValues.entrySet().stream().forEach(e -> {
+        fieldsAndValues.entrySet().stream().forEach(e 
+{
             this.projection.add(new ExprParser(e.getKey(), true).parseTableInsertField());
             rowBuilder.addField(ExprUtil.argObjectToExpr(e.getValue(), true));
         });

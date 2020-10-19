@@ -829,7 +829,10 @@ public final class MysqlErrorNumbers {
     public final static int ER_GTID_UNSAFE_NON_TRANSACTIONAL_TABLE = 1785; //SQLSTATE: HY000 Message: When ENFORCE_GTID_CONSISTENCY = 1, updates to non-transactional tables can only be done in either autocommitted statements or single-statement transactions, and never in the same statement as updates to transactional tables.
     public final static int ER_GTID_UNSAFE_CREATE_SELECT = 1786; //SQLSTATE: HY000 Message: CREATE TABLE ... SELECT is forbidden when ENFORCE_GTID_CONSISTENCY = 1.
     public final static int ER_GTID_UNSAFE_CREATE_DROP_TEMPORARY_TABLE_IN_TRANSACTION = 1787; //SQLSTATE: HY000 Message: When ENFORCE_GTID_CONSISTENCY = 1, the statements CREATE TEMPORARY TABLE and DROP TEMPORARY TABLE can be executed in a non-transactional context only, and require that AUTOCOMMIT = 1.
-    public final static int ER_GTID_MODE_CAN_ONLY_CHANGE_ONE_STEP_AT_A_TIME = 1788; //SQLSTATE: HY000 Message: The value of GTID_MODE can only change one step at a time: OFF <-> UPGRADE_STEP_1 <-> UPGRADE_STEP_2 <-> ON. Also note that this value must be stepped up or down simultaneously on all servers; see the Manual for instructions.
+    public final static int ER_GTID_MODE_CAN_ONLY_CHANGE_ONE_STEP_AT_A_TIME = 1788; //SQLSTATE: HY000 Message: The value of GTID_MODE can only change one step at a time: OFF <
+UPGRADE_STEP_1 <
+UPGRADE_STEP_2 <
+ON. Also note that this value must be stepped up or down simultaneously on all servers; see the Manual for instructions.
     public final static int ER_MASTER_HAS_PURGED_REQUIRED_GTIDS = 1789; //SQLSTATE: HY000 Message: The slave is connecting using CHANGE MASTER TO MASTER_AUTO_POSITION = 1, but the master has purged binary logs containing GTIDs that the slave requires.
     public final static int ER_CANT_SET_GTID_NEXT_WHEN_OWNING_GTID = 1790; //SQLSTATE: HY000 Message: GTID_NEXT cannot be changed by a client that owns a GTID. The client owns %s. Ownership is released on COMMIT or ROLLBACK.
     public final static int ER_UNKNOWN_EXPLAIN_FORMAT = 1791; //SQLSTATE: HY000 Message: Unknown EXPLAIN format name: '%s'

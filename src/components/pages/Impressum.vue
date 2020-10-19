@@ -61,4 +61,7 @@ h1 {
   font-size: 28px !important;
   color: white !important;
 }
+.impressum {
+  min-height: 100vh;
+}
 </style>

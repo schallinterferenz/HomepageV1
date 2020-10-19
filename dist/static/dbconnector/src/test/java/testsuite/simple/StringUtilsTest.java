@@ -712,7 +712,8 @@ public class StringUtilsTest extends BaseTestCase {
         };
 
         // Quoting rules (non-pedantic mode):
-        // * identifiers[n] --> identifiersQuotedNonPedantic[n]
+        // * identifiers[n] -
+identifiersQuotedNonPedantic[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersQuotedNonPedantic[i], StringUtils.quoteIdentifier(identifiers[i], "`", false),
                     i + 1 + ". " + identifiers[i] + ". non-pedantic quoting");
@@ -721,8 +722,10 @@ public class StringUtilsTest extends BaseTestCase {
         }
 
         // Quoting rules (pedantic mode):
-        // * identifiers[n] --> identifiersQuotedPedantic[n]
-        // * identifiersUnQuoted[n] --> identifiersQuotedNonPedantic[n]
+        // * identifiers[n] -
+identifiersQuotedPedantic[n]
+        // * identifiersUnQuoted[n] -
+identifiersQuotedNonPedantic[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersQuotedPedantic[i], StringUtils.quoteIdentifier(identifiers[i], "`", true),
                     i + 1 + ". " + identifiers[i] + ". pedantic quoting");
@@ -735,9 +738,12 @@ public class StringUtilsTest extends BaseTestCase {
         }
 
         // Unquoting rules:
-        // * identifiers[n] --> identifiersUnQuoted[n]
-        // * identifiersQuotedNonPedantic[n] --> identifiersUnQuoted[n]
-        // * identifiersQuotedPedantic[n] --> identifiers[n]
+        // * identifiers[n] -
+identifiersUnQuoted[n]
+        // * identifiersQuotedNonPedantic[n] -
+identifiersUnQuoted[n]
+        // * identifiersQuotedPedantic[n] -
+identifiers[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersUnQuoted[i], StringUtils.unQuoteIdentifier(identifiers[i], "`"), i + 1 + ". " + identifiers[i] + ". unquoting");
             assertEquals(identifiersUnQuoted[i], StringUtils.unQuoteIdentifier(identifiersQuotedNonPedantic[i], "`"),
@@ -809,15 +815,18 @@ public class StringUtilsTest extends BaseTestCase {
         };
 
         // Quoting rules (non-pedantic mode):
-        // * identifiers[n] --> identifiersQuotedNonPedantic[n]
+        // * identifiers[n] -
+identifiersQuotedNonPedantic[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersQuotedNonPedantic[i], StringUtils.quoteIdentifier(identifiers[i], "\"", false),
                     i + 1 + ". " + identifiers[i] + ". non-pedantic quoting");
         }
 
         // Quoting rules (pedantic mode):
-        // * identifiers[n] --> identifiersQuotedPedantic[n]
-        // * identifiersUnQuoted[n] --> identifiersQuotedNonPedantic[n]
+        // * identifiers[n] -
+identifiersQuotedPedantic[n]
+        // * identifiersUnQuoted[n] -
+identifiersQuotedNonPedantic[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersQuotedPedantic[i], StringUtils.quoteIdentifier(identifiers[i], "\"", true),
                     i + 1 + ". " + identifiers[i] + ". pedantic quoting");
@@ -827,9 +836,12 @@ public class StringUtilsTest extends BaseTestCase {
         }
 
         // Unquoting rules:
-        // * identifiers[n] --> identifiersUnQuoted[n]
-        // * identifiersQuotedNonPedantic[n] --> identifiersUnQuoted[n]
-        // * identifiersQuotedPedantic[n] --> identifiers[n]
+        // * identifiers[n] -
+identifiersUnQuoted[n]
+        // * identifiersQuotedNonPedantic[n] -
+identifiersUnQuoted[n]
+        // * identifiersQuotedPedantic[n] -
+identifiers[n]
         for (int i = 0; i < identifiers.length; i++) {
             assertEquals(identifiersUnQuoted[i], StringUtils.unQuoteIdentifier(identifiers[i], "\""), i + 1 + ". " + identifiers[i] + ". unquoting");
             assertEquals(identifiersUnQuoted[i], StringUtils.unQuoteIdentifier(identifiersQuotedNonPedantic[i], "\""),

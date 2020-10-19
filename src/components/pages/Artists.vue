@@ -25,7 +25,7 @@
       <b-row style="padding-bottom: 10px">
         <b-col>
           <b-card>
-            <h1> <b>LABELARTISTS</b></h1>
+            <h1><b>LABELARTISTS</b></h1>
           </b-card>
         </b-col>
       </b-row>
@@ -64,7 +64,7 @@
 
                 <b-card-body>
                   <b-card-text> </b-card-text>
-                  <b-button variant="primary"> PROFIL </b-button>
+                  <b-button :ref=obj.aId variant="primary" v-on:click="setartist"> PROFIL </b-button>
                   <b-button variant="success"> BUCHEN </b-button>
                 </b-card-body>
               </b-card>
@@ -80,7 +80,7 @@
       <b-row style="padding-bottom: 10px">
         <b-col>
           <b-card>
-            <h1> <b>RELEASING ARTISTS</b></h1>
+            <h1><b>RELEASING ARTISTS</b></h1>
           </b-card>
         </b-col>
       </b-row>
@@ -120,7 +120,9 @@
                 <b-card-body>
                   <b-card-text> </b-card-text>
                   <b-button variant="primary"> PROFIL </b-button>
-                  <b-button variant="success" v-if="obj.showBooking == 'True'"> BUCHEN </b-button>
+                  <b-button variant="success" v-if="obj.showBooking == 'True'">
+                    BUCHEN
+                  </b-button>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -135,7 +137,7 @@
       <b-row style="padding-bottom: 10px">
         <b-col>
           <b-card>
-            <h1> <b>AGENGY ARTISTS</b></h1>
+            <h1><b>AGENGY ARTISTS</b></h1>
           </b-card>
         </b-col>
       </b-row>
@@ -190,7 +192,7 @@
       <b-row style="padding-bottom: 10px">
         <b-col>
           <b-card>
-            <h1> <b>COOPERATIONS</b></h1>
+            <h1><b>COOPERATIONS</b></h1>
           </b-card>
         </b-col>
       </b-row>
@@ -230,7 +232,9 @@
                 <b-card-body>
                   <b-card-text> </b-card-text>
                   <b-button variant="primary"> PROFIL </b-button>
-                  <b-button variant="success" v-if="obj.showBooking == 'True'"> BUCHEN </b-button>
+                  <b-button variant="success" v-if="obj.showBooking == 'True'">
+                    BUCHEN
+                  </b-button>
                 </b-card-body>
               </b-card>
             </b-col>
@@ -238,13 +242,13 @@
           <br />
         </div>
       </b-row>
-
     </b-container>
   </div>
 </template>
 
 <script>
 import arDat from "../db/json/a.json";
+import globals from '../../global.utils'
 
 export default {
   name: "Artists",
@@ -253,11 +257,17 @@ export default {
       arDat,
     };
   },
+  methods: {
+    setartist: () => {
+      var id = this.$refs
+      
+    },
+  },
 };
 </script>
 
 <style scoped>
-h1 > b{
+h1 > b {
   font-size: 24px !important;
   color: black !important;
 }

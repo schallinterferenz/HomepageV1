@@ -9,6 +9,7 @@ import CheckOut from '../components/pages/CheckOut.vue'
 import Events from '../components/pages/Events.vue'
 import Impressum from '../components/pages/Impressum.vue'
 import About from '../components/pages/About.vue'
+import ArtistPage from '../components/pages/ArtistPage.vue'
 // import MainPage from '../components/MainPage.vue'
 
 Vue.use(Router)
@@ -59,6 +60,11 @@ export default new Router({
       path: '/impressum',
       name: 'Impressum',
       component: Impressum
+    },
+    {
+      path: '/artistpage',
+      name: 'ArtistPage',
+      component: ArtistPage
     }
   ]
 })

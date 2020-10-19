@@ -63,11 +63,11 @@
             >
           </b-nav-item>
 
-          <b-nav-item>
+          <!-- <b-nav-item>
             <div id="sideBarMain">
               <b-button v-b-toggle.sidebar-right>LOGIN</b-button>
             </div>
-          </b-nav-item>
+          </b-nav-item> -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

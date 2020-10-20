@@ -34,7 +34,6 @@ exports.createNewUser = (req, res) => {
     });
 };
 
-
 exports.createNewNews = (req, res) => {
   if (!req.body.title) {
     res.status(400).send({ message: "You must distribute a Title." });
